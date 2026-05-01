@@ -2,22 +2,35 @@
   <ul class="space-y-6">
   {% for a in articles %}
     <li class="group">
-      <a href="{{ a.url }}" target="_blank" rel="noopener" class="block hover:bg-zinc-100 dark:hover:bg-zinc-900 -mx-3 px-3 py-2 rounded transition-colors">
-        <h2 class="text-base sm:text-lg leading-snug font-medium text-zinc-900 dark:text-zinc-100">
-          {{ a.title }}
-        </h2>
+      <div class="-mx-3 px-3 py-2 rounded hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
+        <a href="{{ a.url }}" target="_blank" rel="noopener noreferrer"
+           title="Read on {{ a.source.name }}"
+           class="block">
+          <h2 class="text-base sm:text-lg leading-snug font-medium text-zinc-900 dark:text-zinc-100">
+            <span>{{ a.title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 class="inline-block w-3.5 h-3.5 ml-1 align-baseline text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 3h7v7M21 3l-9 9M5 5h6M5 12v7h7"/>
+            </svg>
+          </h2>
+        </a>
         <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 mono text-xs text-zinc-500">
-          <span class="uppercase tracking-wide">{{ a.source.name }}</span>
+          <a href="{{ a.source.homepage_url }}" target="_blank" rel="noopener noreferrer"
+             title="Browse {{ a.source.name }}"
+             class="uppercase tracking-wide text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:underline transition-colors">
+            {{ a.source.name }}
+          </a>
           <span>·</span>
           <time>{{ a.published_at | humanize_date }}</time>
           {% if a.section %}<span>·</span><span>{{ a.section | lower }}</span>{% endif %}
           {% for r in a.regions %}<span class="uppercase">{{ r }}</span>{% endfor %}
+          {% if a.companies %}<span>·</span><span class="text-zinc-600 dark:text-zinc-400">{{ a.companies | join(', ') }}</span>{% endif %}
           <span class="ml-auto tabular-nums text-zinc-400 dark:text-zinc-600">{{ a.score | int }}</span>
         </div>
-      </a>
+      </div>
     </li>
   {% endfor %}
   </ul>
 {% else %}
-  <p class="mono text-xs text-zinc-500">no results.</p>
+  <p class="mono text-xs text-zinc-500">no results — try a different filter.</p>
 {% endif %}
