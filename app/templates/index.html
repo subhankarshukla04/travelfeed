@@ -1,83 +1,431 @@
 {% extends "base.html" %}
+{% set month_names = ['', 'January','February','March','April','May','June','July','August','September','October','November','December'] %}
+
+{% block title %}{% if mode == 'archive' %}{{ archive.year }}.{{ "%02d"|format(archive.month) }} · travel monthly{% elif mode == 'archive_index' %}archive · travelfeed{% else %}travelfeed · the travel-tech index{% endif %}{% endblock %}
 
 {% block body %}
 <div
-  x-data="{
-    section: '',
-    region: '',
-    q: '',
-    refresh() {
-      const params = new URLSearchParams();
-      if (this.section) params.set('section', this.section);
-      if (this.region) params.set('region', this.region);
-      if (this.q) params.set('q', this.q);
-      htmx.ajax('GET', `/api/feed?${params.toString()}`, '#article-list');
-    }
-  }"
+  x-data="travelfeed()"
+  x-init="boot()"
   class="min-h-screen"
 >
 
-  <header class="border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur z-10">
-    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="mono text-sm tracking-tight font-medium">travelfeed</a>
-      <nav class="flex items-center gap-5 mono text-xs text-zinc-500">
-        <a href="/sources" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">sources</a>
-        <a href="/methodology" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">methodology</a>
-        <button
-          type="button"
-          onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
-          class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">
-          theme
+  {# ───── Header ───── #}
+  <header class="sticky top-0 z-30 backdrop-blur-md"
+          style="background: color-mix(in oklab, var(--bg) 88%, transparent); border-bottom: 1px solid var(--line-soft)">
+    <div class="max-w-[1320px] mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <span class="w-2 h-2 rounded-full" style="background: var(--accent)"></span>
+        <span class="mono text-[13px] tracking-tight font-medium">travelfeed</span>
+        <span class="mono text-[10px] uppercase tracking-[0.12em]" style="color: var(--ink-mute)">the travel-tech index</span>
+      </a>
+      <nav class="flex items-center gap-6 mono text-xs" style="color: var(--ink-mute)">
+        <a href="/" class="nav-link {% if mode == 'live' %}active{% endif %} hover:text-current" style="color: {% if mode == 'live' %}var(--ink){% else %}var(--ink-soft){% endif %}">feed</a>
+        <a href="/archive" class="nav-link {% if mode in ['archive', 'archive_index'] %}active{% endif %} hover:text-current" style="color: {% if mode in ['archive', 'archive_index'] %}var(--ink){% else %}var(--ink-soft){% endif %}">archive</a>
+        <a href="/sources" class="nav-link hover:text-current" style="color: var(--ink-soft)">sources</a>
+        <a href="/methodology" class="nav-link hover:text-current" style="color: var(--ink-soft)">methodology</a>
+        <a href="/about" class="nav-link hover:text-current" style="color: var(--ink-soft)">about</a>
+        <button type="button"
+          @click="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
+          class="hover:text-current">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         </button>
       </nav>
     </div>
+
+    {# ───── Filter rail ───── #}
+    <div class="border-t" style="border-color: var(--line-soft)">
+      <div class="max-w-[1320px] mx-auto px-6 py-3 space-y-2">
+
+        <div class="flex items-center gap-3">
+          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">section</span>
+          <div class="flex flex-wrap gap-1.5">
+            <button class="chip" :class="{ active: !filters.section }" @click="setFilter('section', '')">
+              all
+              {% if mode == 'live' %}<span class="count" x-text="facets.total"></span>{% endif %}
+            </button>
+            <template x-for="sec in sections" :key="sec.key">
+              <button class="chip" :class="{ active: filters.section === sec.key }" @click="setFilter('section', sec.key)">
+                <span x-text="sec.label"></span>
+                {% if mode == 'live' %}<span class="count" x-text="facets.sections[sec.key] || 0"></span>{% endif %}
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">region</span>
+          <div class="flex flex-wrap gap-1.5">
+            <button class="chip" :class="{ active: !filters.region }" @click="setFilter('region', '')">
+              worldwide
+            </button>
+            <template x-for="r in regions" :key="r.key">
+              <button class="chip" :class="{ active: filters.region === r.key }" @click="setFilter('region', r.key)">
+                <span x-text="r.label"></span>
+                {% if mode == 'live' %}<span class="count" x-text="facets.regions[r.key] || 0"></span>{% endif %}
+              </button>
+            </template>
+          </div>
+        </div>
+
+        {% if mode == 'live' %}
+        <div class="flex items-center gap-3">
+          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">source</span>
+          <div class="flex flex-wrap gap-1.5">
+            <button class="chip" :class="{ active: !filters.source }" @click="setFilter('source', '')">all sources</button>
+            <template x-for="s in sourceList" :key="s.slug">
+              <button class="chip"
+                      :class="['tier-' + s.tier, { active: filters.source === s.slug }]"
+                      @click="setFilter('source', s.slug)">
+                <span class="tier-dot"></span>
+                <span x-text="s.name.toLowerCase()"></span>
+                <span class="count" x-text="facets.sources[s.slug] || 0"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-1">
+          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">sort</span>
+          <div class="flex gap-1.5">
+            <button class="chip" :class="{ active: filters.sort === 'score' || !filters.sort }" @click="setFilter('sort', 'score')">by relevance</button>
+            <button class="chip" :class="{ active: filters.sort === 'date' }" @click="setFilter('sort', 'date')">by date</button>
+          </div>
+          <template x-if="hasActiveFilters()">
+            <button class="ml-auto mono text-[11px] underline-offset-2 hover:underline" style="color: var(--ink-mute)" @click="clearAll()">clear all</button>
+          </template>
+        </div>
+        {% else %}
+        <div class="flex items-center gap-3 pt-1">
+          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">view</span>
+          <div class="flex gap-1.5 items-center">
+            <a href="/" class="chip">← live feed</a>
+            {% if mode == 'archive' %}
+              <span class="mono text-[10px]" style="color: var(--ink-mute)">
+                · viewing
+                <span style="color: var(--ink)">{{ month_names[archive.month] }} {{ archive.year }}</span>
+                {% if archive.status == 'actual' %}<span style="color: var(--accent)">· issue #{{ archive.issue_no }}</span>{% else %}<span> · reconstructed</span>{% endif %}
+              </span>
+            {% endif %}
+          </div>
+          <template x-if="hasActiveFilters()">
+            <button class="ml-auto mono text-[11px] underline-offset-2 hover:underline" style="color: var(--ink-mute)" @click="clearAll()">clear filters</button>
+          </template>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-6 pt-10 pb-24">
+  {# ───── Main grid ───── #}
+  <div class="max-w-[1320px] mx-auto px-6 py-10 flex gap-10">
 
-    <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed max-w-xl">
-      Travel-tech, airline, and hospitality news from trade press and regional sources, ranked by likely strategic relevance. Every story links straight to the source — open with your existing subscriptions.
-    </p>
+    {% with active_year=(archive.year if archive else none), active_month=(archive.month if archive else none) %}
+      {% include "_timeline_rail.html" %}
+    {% endwith %}
 
-    <div class="mt-8 space-y-3">
-      <div class="flex flex-wrap gap-2">
-        <button type="button" @click="section = ''; refresh()"
-          :class="section === '' ? 'bg-zinc-900 text-zinc-50 border-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 dark:border-zinc-100' : 'border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400'"
-          class="px-3 py-1 mono text-xs rounded-full border transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">all</button>
+    {# ───── Article column ───── #}
+    <main class="flex-1 min-w-0">
 
-        {% for sec in ['Travel Tech', 'Airlines', 'Hoteliers', 'M&A', 'Regulatory', 'Emerging', 'Executive'] %}
-        <button type="button" @click="section = '{{ sec }}'; refresh()"
-          :class="section === '{{ sec }}' ? 'bg-zinc-900 text-zinc-50 border-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 dark:border-zinc-100' : 'border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400'"
-          class="px-3 py-1 mono text-xs rounded-full border transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">{{ sec | lower }}</button>
-        {% endfor %}
+      {# ═══════════ LIVE FEED MODE ═══════════ #}
+      {% if mode == 'live' %}
+        <div id="article-list"
+             hx-get="/api/feed"
+             hx-trigger="load, refreshFeed from:body"
+             hx-swap="innerHTML transition:true"
+             hx-include="[data-feed-param]">
+          <div class="space-y-6">
+            <div class="rounded-xl border p-6" style="border-color: var(--line)">
+              <div class="skeleton h-3 w-24 mb-4"></div>
+              <div class="skeleton h-7 w-3/4 mb-3"></div>
+              <div class="skeleton h-7 w-1/2 mb-5"></div>
+              <div class="skeleton h-3 w-40"></div>
+            </div>
+            {% for _ in range(8) %}
+            <div class="skeleton-card">
+              <div class="skeleton h-2 w-32 mb-3"></div>
+              <div class="skeleton h-5 w-11/12 mb-2"></div>
+              <div class="skeleton h-3 w-2/3"></div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <input type="hidden" data-feed-param name="section" :value="filters.section">
+        <input type="hidden" data-feed-param name="region" :value="filters.region">
+        <input type="hidden" data-feed-param name="source" :value="filters.source">
+        <input type="hidden" data-feed-param name="q" :value="filters.q">
+        <input type="hidden" data-feed-param name="sort" :value="filters.sort">
+
+      {# ═══════════ ARCHIVE INDEX MODE ═══════════ #}
+      {% elif mode == 'archive_index' %}
+        <div class="mono text-[10px] uppercase tracking-[0.14em] mb-2" style="color: var(--ink-mute)">archive</div>
+        <h1 class="serif text-4xl sm:text-5xl tracking-tightest font-medium" style="color: var(--ink)">Travel Monthly · canonical strategy digest</h1>
+        <p class="mt-5 max-w-[640px] text-[15px] leading-relaxed" style="color: var(--ink-soft)">
+          Started August 2017, ran 20 published issues through April 2019. Below is the full archive plus
+          reconstructed monthly digests for every month since — anchored on real travel-tech events and
+          authentic source attribution. Click any month in the timeline rail.
+        </p>
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {% for iss in all_issues | reverse %}
+          <a href="/archive/{{ iss.year }}/{{ iss.month }}"
+             class="article-card block rounded-xl border p-5 transition-colors group"
+             style="border-color: var(--line); background: var(--bg-elev)">
+            <div class="flex items-baseline justify-between gap-3">
+              <div class="mono text-[10px] uppercase tracking-[0.12em]" style="color: var(--ink-mute)">
+                {% if iss.status == 'actual' %}
+                  <span style="background: var(--accent); color: #022c22; padding: 2px 6px; border-radius: 2px">issue · #{{ iss.issue_no }}</span>
+                {% else %}
+                  <span style="border: 1px solid var(--line); padding: 2px 6px; border-radius: 2px">reconstructed</span>
+                {% endif %}
+              </div>
+              <div class="mono text-[10px] tabular-nums" style="color: var(--ink-mute)">
+                {{ "%04d.%02d"|format(iss.year, iss.month) }}
+              </div>
+            </div>
+            <h2 class="serif mt-3 text-lg tracking-tightest font-medium leading-snug" style="color: var(--ink)">
+              {{ iss.opener[:130] }}{% if iss.opener|length > 130 %}…{% endif %}
+            </h2>
+            <div class="mt-3 mono text-[10px]" style="color: var(--ink-mute)">{{ iss.headlines|length }} stories</div>
+          </a>
+          {% endfor %}
+        </div>
+
+      {# ═══════════ ARCHIVE ISSUE MODE ═══════════ #}
+      {% elif mode == 'archive' %}
+        <div class="flex items-center justify-between mb-5">
+          <div class="mono text-[10px] uppercase tracking-[0.14em]" style="color: var(--ink-mute)">
+            travel monthly
+            {% if archive.status == 'actual' %}
+              · <span style="color: var(--accent)">published</span>
+              {% if archive.issue_no %} · #{{ archive.issue_no }}{% endif %}
+            {% else %}
+              · <span style="color: var(--ink-soft)">reconstructed</span>
+            {% endif %}
+          </div>
+          <div class="flex items-center gap-3 mono text-[11px]" style="color: var(--ink-mute)">
+            {% if prev_iss %}
+              <a href="/archive/{{ prev_iss.year }}/{{ prev_iss.month }}" class="hover:underline">← {{ month_names[prev_iss.month][:3].lower() }} {{ prev_iss.year }}</a>
+            {% endif %}
+            {% if next_iss %}
+              <a href="/archive/{{ next_iss.year }}/{{ next_iss.month }}" class="hover:underline">{{ month_names[next_iss.month][:3].lower() }} {{ next_iss.year }} →</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="border-y py-8" style="border-color: var(--line-soft)">
+          <div class="serif text-[64px] sm:text-[88px] leading-[0.9] tracking-tightest font-medium" style="color: var(--ink)">
+            {{ month_names[archive.month] }}
+          </div>
+          <div class="mono text-[12px] tabular-nums tracking-wider mt-1" style="color: var(--ink-mute)">{{ archive.year }}</div>
+        </div>
+
+        <p class="mt-8 serif text-xl sm:text-2xl leading-[1.4] tracking-tight" style="color: var(--ink)">{{ archive.opener }}</p>
+
+        {% if archive.status == 'predicted' %}
+        <div class="mt-6 rounded-md p-4 text-[12.5px] leading-relaxed" style="background: var(--line-soft); color: var(--ink-soft); border-left: 2px solid var(--ink-mute)">
+          Reconstructed digest. Travel Monthly's last published issue was April 2019 (#20). Headlines below are real travel-industry events from this month, with authentic source attribution — what Ned likely would have featured had the series continued.
+        </div>
+        {% endif %}
+
+        {# Filter chips drive Alpine x-show on each card. Section / region. #}
+        <div class="mt-12 space-y-12"
+             x-data="{
+               matches(secValue, regions) {
+                 const sf = $root.__alpine?.filters?.section || '';
+                 const rf = $root.__alpine?.filters?.region || '';
+                 const sec = sf ? sf === secValue : true;
+                 const reg = rf ? (regions || []).includes(rf) : true;
+                 return sec && reg;
+               }
+             }">
+          {% for sec, items in archive_grouped %}
+          <section x-show="!filters.section || filters.section === '{{ sec }}'">
+            <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b mb-5" style="color: var(--ink-mute); border-color: var(--line)">{{ sec }}</h2>
+            <ul class="divide-y" style="border-color: var(--line-soft)">
+              {% for h in items %}
+              {% set s = archive_sources.get(h.source_slug) %}
+              <li class="article-card group -mx-3"
+                  x-show="!filters.region || {{ (h.regions or [])|tojson }}.includes(filters.region)">
+                <a href="{{ h | archive_url(s) }}" target="_blank" rel="noopener noreferrer"
+                   class="block px-3 py-4 rounded-md transition-colors hover:bg-[var(--line-soft)]">
+                  <h3 class="text-[15.5px] leading-snug font-medium tracking-tight group-hover:underline" style="color: var(--ink)">{{ h.title }}<span class="ml-1.5 opacity-0 group-hover:opacity-100 transition-opacity" style="color: var(--ink-mute)">↗</span></h3>
+                  <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11.5px]">
+                    {% if s %}
+                    <span class="inline-flex items-center gap-1.5 mono uppercase tracking-wide tier-{{ s.tier }}" style="color: var(--ink-soft)">
+                      <span class="tier-dot"></span>{{ s.name }}
+                    </span>
+                    {% else %}
+                    <span class="mono uppercase tracking-wide" style="color: var(--ink-mute)">{{ h.source_slug }}</span>
+                    {% endif %}
+                    {% if h.regions %}
+                      {% for r in h.regions[:3] %}
+                        <span class="mono text-[10px] px-1.5 py-0.5 rounded-sm uppercase tracking-wider" style="background: var(--line-soft); color: var(--ink-soft)">{{ r }}</span>
+                      {% endfor %}
+                    {% endif %}
+                    {% if h.capital_signal %}
+                      <span class="mono text-[9.5px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm" style="background: var(--accent); color: #022c22">capital signal</span>
+                    {% endif %}
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </section>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+    </main>
+
+    {# ───── Right rail (always visible) ───── #}
+    <aside class="rail" style="width: 240px; flex-shrink: 0;">
+      <div class="rail-block">
+        <div class="rail-label flex items-center justify-between">
+          <span>wego ecosystem</span>
+          <span class="mono text-[9px] uppercase tracking-wider" style="color: var(--ink-mute)">tracked</span>
+        </div>
+        <ul class="space-y-1.5 text-sm">
+          {% for c in top_companies %}
+          <li>
+            <a href="/?q={{ c.name | urlencode }}" class="flex items-center justify-between row-tint -mx-1.5 px-1.5 py-1 rounded">
+              <span class="flex items-center gap-1.5" style="color: {% if c.pinned %}var(--ink){% else %}var(--ink-soft){% endif %}">
+                {% if c.name == 'Wego' %}<span class="mono text-[8.5px] uppercase tracking-wider px-1 py-px rounded-sm" style="background: var(--accent); color: #022c22">core</span>{% endif %}
+                {{ c.name }}
+              </span>
+              <span class="mono text-[11px] tabular-nums" style="color: {% if c.n == 0 %}var(--ink-mute){% else %}var(--ink-soft){% endif %}">{{ c.n if c.n else '·' }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="mt-2 mono text-[9.5px] leading-relaxed" style="color: var(--ink-mute)">
+          MENA OTAs · India outbound · APAC experiences · Saudi flag carrier
+        </div>
       </div>
 
-      <div class="flex flex-wrap gap-2">
-        <button type="button" @click="region = ''; refresh()"
-          :class="region === '' ? 'bg-zinc-900 text-zinc-50 border-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 dark:border-zinc-100' : 'border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400'"
-          class="px-3 py-1 mono text-xs rounded-full border transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">all regions</button>
-        {% for r in ['mena', 'apac', 'south-asia', 'global'] %}
-        <button type="button" @click="region = '{{ r }}'; refresh()"
-          :class="region === '{{ r }}' ? 'bg-zinc-900 text-zinc-50 border-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 dark:border-zinc-100' : 'border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400'"
-          class="px-3 py-1 mono text-xs rounded-full border transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">{{ r }}</button>
-        {% endfor %}
+      <div class="rail-block">
+        <div class="rail-label">trending themes</div>
+        <ul class="flex flex-wrap gap-1.5">
+          {% for t in top_themes %}
+          <li>
+            <a href="/?q={{ t.name }}" class="chip">
+              {{ t.name }}<span class="count">{{ t.n }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
       </div>
 
-      <div class="flex items-center gap-3 pt-2">
-        <input type="search" x-model="q" @input.debounce.300ms="refresh()" name="q" placeholder="search…"
-          class="bg-transparent border-b border-zinc-300 dark:border-zinc-700 focus:border-zinc-900 dark:focus:border-zinc-100 outline-none text-sm py-1 flex-1 max-w-xs transition-colors" />
+      <div class="rail-block">
+        <div class="rail-label">how to read</div>
+        <p class="text-[12.5px] leading-relaxed" style="color: var(--ink-soft)">
+          Every story links to the publisher. travelfeed is the index — your subscriptions do the reading.
+        </p>
+        <a href="/methodology" class="mono text-[11px] mt-3 inline-block underline-offset-2 hover:underline" style="color: var(--ink-mute)">methodology →</a>
       </div>
-    </div>
+    </aside>
+  </div>
 
-    <div id="article-list" class="mt-8" hx-get="/api/feed" hx-trigger="load" hx-swap="innerHTML">
-      <p class="mono text-xs text-zinc-500">loading…</p>
-    </div>
-
-  </main>
-
-  <footer class="max-w-3xl mx-auto px-6 py-10 mono text-xs text-zinc-500 border-t border-zinc-200 dark:border-zinc-800">
-    Built by Subhankar Shukla · subhankarshukla.vercel.app
+  <footer class="max-w-[1320px] mx-auto px-6 py-10 mono text-[11px] flex flex-wrap items-center justify-between gap-3" style="color: var(--ink-mute); border-top: 1px solid var(--line-soft)">
+    <div>built by Subhankar Shukla · <a href="https://subhankarshukla.vercel.app" target="_blank" rel="noopener" class="hover:underline">portfolio</a></div>
+    <div>links out · no scraping · no tracking</div>
   </footer>
-
 </div>
+
+<script>
+  function travelfeed() {
+    return {
+      mode: '{{ mode }}',
+      filters: {
+        section: '{{ request_args.get("section", "") }}',
+        region: '{{ request_args.get("region", "") }}',
+        source: '{{ request_args.get("source", "") }}',
+        q: '{{ request_args.get("q", "") }}',
+        sort: '{{ request_args.get("sort", "score") }}',
+      },
+      facets: { total: 0, sections: {}, regions: {}, sources: {} },
+      sections: [
+        { key: 'Travel Tech', label: 'travel tech' },
+        { key: 'Hoteliers', label: 'hoteliers' },
+        { key: 'Airlines', label: 'airlines' },
+        { key: 'M&A', label: 'm&a' },
+        { key: 'Emerging', label: 'emerging' },
+        { key: 'Regulatory', label: 'regulatory' },
+        { key: 'Executive', label: 'executive' },
+      ],
+      regions: [
+        { key: 'mena', label: 'mena' },
+        { key: 'apac', label: 'apac' },
+        { key: 'south-asia', label: 'south asia' },
+        { key: 'north-america', label: 'n. america' },
+        { key: 'europe', label: 'europe' },
+        { key: 'global', label: 'global' },
+      ],
+      sourceList: {{ sources_json | safe }},
+
+      boot() {
+        if (this.mode === 'live') this.fetchFacets();
+        this.bindKeys();
+      },
+
+      setFilter(key, val) {
+        this.filters[key] = val;
+        if (this.mode === 'live') {
+          this.pushState();
+          this.refresh();
+        }
+      },
+
+      clearAll() {
+        this.filters = { section: '', region: '', source: '', q: '', sort: 'score' };
+        if (this.mode === 'live') {
+          this.pushState();
+          this.refresh();
+        }
+      },
+
+      hasActiveFilters() {
+        return !!(this.filters.section || this.filters.region || this.filters.source || this.filters.q);
+      },
+
+      pushState() {
+        const params = new URLSearchParams();
+        Object.entries(this.filters).forEach(([k, v]) => { if (v && !(k === 'sort' && v === 'score')) params.set(k, v); });
+        const qs = params.toString();
+        history.replaceState(null, '', qs ? '/?' + qs : '/');
+      },
+
+      refresh() {
+        document.body.dispatchEvent(new Event('refreshFeed'));
+        this.fetchFacets();
+      },
+
+      async fetchFacets() {
+        const params = new URLSearchParams();
+        Object.entries(this.filters).forEach(([k, v]) => { if (v && k !== 'sort') params.set(k, v); });
+        const r = await fetch('/api/facets?' + params.toString());
+        if (r.ok) this.facets = await r.json();
+      },
+
+      bindKeys() {
+        document.addEventListener('keydown', (e) => {
+          if (e.target.matches('input, textarea')) return;
+          if (e.key === 'j') this.moveFocus(1);
+          else if (e.key === 'k') this.moveFocus(-1);
+        });
+      },
+
+      moveFocus(delta) {
+        const cards = Array.from(document.querySelectorAll('[data-card]'));
+        if (!cards.length) return;
+        let idx = cards.findIndex(c => c.getAttribute('data-focused') === 'true');
+        idx = Math.max(0, Math.min(cards.length - 1, idx + delta));
+        cards.forEach(c => c.removeAttribute('data-focused'));
+        cards[idx].setAttribute('data-focused', 'true');
+        cards[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        cards[idx].querySelector('a')?.focus({ preventScroll: true });
+      },
+    };
+  }
+</script>
 {% endblock %}

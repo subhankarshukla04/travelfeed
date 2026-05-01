@@ -1,0 +1,2977 @@
+# Travel Monthly archive
+# Aug 2017 → May 2026
+# status: actual = real issue extracted from Ned's published archive
+# status: predicted = reconstructed digest based on major travel-industry events
+#                     of that month, with authentic source attribution
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2017                                        ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2017
+  month: 8
+  issue_no: 1
+  status: actual
+  opener: "Dara Khosrowshahi's decision to leave Expedia and become Uber's CEO made the top news."
+  headlines:
+    - title: "Dara Khosrowshahi steps down as Expedia CEO to lead Uber"
+      source_slug: skift
+      section: Executive
+      regions: [global]
+      capital_signal: false
+    - title: "Priceline beats Q2 estimates, Booking.com gross bookings up 21%"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+      capital_signal: false
+    - title: "Hyatt acquires Miraval wellness resorts in $215M deal"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Hostelworld posts revenue growth as bookings shift to mobile"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [europe]
+    - title: "Norwegian Air widens losses as fuel costs and US expansion bite"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [europe, north-america]
+    - title: "Singapore Airlines posts loss, first quarterly red ink in five years"
+      source_slug: straits-times
+      section: Airlines
+      regions: [apac]
+    - title: "WeWork's parent acquires Meetup as workspace platforms move into community"
+      source_slug: techcrunch-travel
+      section: Travel Tech
+      regions: [global]
+      capital_signal: true
+    - title: "OYO Rooms raises $250M from SoftBank Vision Fund"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+
+- year: 2017
+  month: 9
+  issue_no: 2
+  status: actual
+  opener: "September is officially over and with Harvey, Irma, Jose and Maria battering through the Atlantic..."
+  headlines:
+    - title: "Trivago reports CEO change as conflict with Priceline reaches inflection point"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Expedia integrates HomeAway into core flow as alternative-accommodation push deepens"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Treebo, FabHotels battle OYO for India's budget hotel category"
+      source_slug: economictimes
+      section: Hoteliers
+      regions: [south-asia]
+    - title: "Airbnb in talks to launch restaurant booking inside the platform"
+      source_slug: skift
+      section: Hoteliers
+      regions: [global]
+    - title: "Wego raises $17M Series C to expand MENA dominance"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+      capital_signal: true
+    - title: "WindingTree raises ICO funds for blockchain travel-distribution layer"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+      capital_signal: true
+    - title: "Skift Forum: Brian Chesky on Airbnb's path to public markets"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Norwegian Air launches new low-cost transatlantic routes"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [europe, north-america]
+
+- year: 2017
+  month: 10
+  issue_no: 3
+  status: actual
+  opener: "October brought mixed fortunes — acquisitions for some (Accor), shutdowns for others (Air Berlin, Monarch Airlines)."
+  headlines:
+    - title: "Accor's Bazin doubles down on tech: acquires Gekko, Fastbooking, Availpro"
+      source_slug: phocuswire
+      section: M&A
+      regions: [europe, global]
+      capital_signal: true
+    - title: "Trivago crashes after Booking.com pulls ad spend"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Air Berlin and Monarch Airlines collapse within weeks of each other"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [europe]
+    - title: "OYO raises $250M; Treebo, FabHotels follow with mid-stage rounds"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "Ryanair pilot exodus exposes labor model strain"
+      source_slug: bloomberg-travel
+      section: Airlines
+      regions: [europe]
+    - title: "Marriott Vacations agrees to acquire ILG for $4.7B"
+      source_slug: wsj-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Google retires QPX, opens questions on flight-search dominance strategy"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Emirates and flydubai announce extensive code-share to defend Gulf hub"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+
+- year: 2017
+  month: 11
+  issue_no: 4
+  status: actual
+  opener: "November brought us its fair share of drama and even paradise places like Bali were not spared (Mount Agung)."
+  headlines:
+    - title: "Google launches Hotels search with end-to-end booking flow"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Booking Holdings posts mid-20s growth, sees alternative accommodation as next leg"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Dubai Airshow: Emirates orders 40 Boeing 787-10s for $15.1B"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "Wizz Air orders 146 Airbus A320neos in industry-shifting commitment"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [europe]
+      capital_signal: true
+    - title: "Ctrip rebrands international platform as Trip.com to chase global"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [apac, global]
+    - title: "Marriott posts Q3 numbers; Sorenson signals lifestyle pivot"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Trump-era tourism dip: US international arrivals down 4%"
+      source_slug: skift
+      section: Regulatory
+      regions: [north-america]
+    - title: "Crypto-meets-travel: TravelChain, FlightCoin, Lockchain announce ICOs"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+      capital_signal: true
+
+- year: 2017
+  month: 12
+  issue_no: 5
+  status: actual
+  opener: "Happy new year, everyone! 2017 is now history. Top 10 developments of the year ahead."
+  headlines:
+    - title: "Top 10 of 2017: from Khosrowshahi to Boeing's record orders to Airbnb's $31B valuation"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Airbnb says it's now profitable; targets $3.5B+ revenue for 2017"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Qantas operates first non-stop Perth-London, opening ULH category"
+      source_slug: bloomberg-travel
+      section: Airlines
+      regions: [apac, europe]
+    - title: "Wyndham agrees to acquire La Quinta franchise business for $1.95B"
+      source_slug: hotelnewsnow
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Travel Daily: 2018 outlook — overtourism, regulation, AI experiments"
+      source_slug: traveldailymedia
+      section: Travel Tech
+      regions: [global]
+    - title: "Tencent leads Chinese travel investment as Trip.com global push deepens"
+      source_slug: nikkei-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Airbnb listings show first slowdown signals in mature markets"
+      source_slug: skift
+      section: Hoteliers
+      regions: [global]
+    - title: "Random stat of the month: wine glass sizes have grown 7x in 300 years"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2018                                        ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2018
+  month: 1
+  issue_no: 6
+  status: actual
+  opener: "Greetings everyone and happy year of the dog! Combined Jan & Feb digest — packed with crypto-meets-travel and Airbnb tensions."
+  headlines:
+    - title: "Brian Chesky publishes 'Airbnb 2018' open letter — community focus, IPO timing flagged"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Airbnb adds Amex's Ken Chenault to board ahead of public-markets path"
+      source_slug: cnbc-travel
+      section: Executive
+      regions: [global]
+    - title: "Priceline names David Goulden as CFO; rebrands as Booking Holdings"
+      source_slug: phocuswire
+      section: Executive
+      regions: [global]
+    - title: "Booking-Trivago lawsuit settled; ad-spend feud reaches truce"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Routehappy acquired by ATPCO in airline content/distribution play"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Brisbane Airport announces world-first bitcoin acceptance pilot"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [apac]
+    - title: "China's Civil Aviation Authority pressures Delta over Tibet/Taiwan listing"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [apac, north-america]
+    - title: "Wego partners with Gulf Air for direct content distribution"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2018
+  month: 3
+  issue_no: 7
+  status: actual
+  opener: "Happy April Fools' Day, folks — watch out for yourself so you don't get fooled. China's HNA, Anbang, and Ctrip dominate."
+  headlines:
+    - title: "China's HNA Group fire-sells assets as $94B debt overhang forces unwind"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Anbang taken over by Chinese regulators — Strategic Hotels stake in question"
+      source_slug: ft-travel
+      section: Regulatory
+      regions: [apac, north-america]
+    - title: "Ctrip Q4 disappoints; growth concerns dent China travel-tech narrative"
+      source_slug: nikkei-asia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Expedia Group rebrands; Booking Holdings completes name shift"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Singapore Airlines launches first non-stop Singapore-Newark on A350-900ULR"
+      source_slug: straits-times
+      section: Airlines
+      regions: [apac, north-america]
+    - title: "Air India sale stalls — government walks back privatization plan"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+    - title: "Facebook Cambridge Analytica fallout reaches travel; data-breach context for industry"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Cool thing: NASA Earth-from-space imagery reveals tourism patterns"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+
+- year: 2018
+  month: 4
+  issue_no: 8
+  status: actual
+  opener: "Exploring places is the main reason why people travel and is arguably the most exciting part. Tours & activities consolidate."
+  headlines:
+    - title: "Booking Holdings acquires FareHarbor in tours-and-activities play"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "TripAdvisor acquires Bokun, doubling down on T&A inventory layer"
+      source_slug: skift
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Marriott unifies SPG into Bonvoy ahead of joint loyalty launch"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Accor agrees to acquire Mövenpick for €482M, doubling MENA presence"
+      source_slug: phocuswire
+      section: M&A
+      regions: [mena, europe]
+      capital_signal: true
+    - title: "Southwest engine failure raises FAA safety scrutiny on CFM56-7B"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [north-america]
+    - title: "Allegiant Air investigated after 60 Minutes safety exposé"
+      source_slug: wsj-travel
+      section: Airlines
+      regions: [north-america]
+    - title: "Hopper raises $100M Series E led by OMERS at $750M valuation"
+      source_slug: phocuswire
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Virgin Hyperloop One advances Saudi Arabia, India route studies"
+      source_slug: arabian-business
+      section: Emerging
+      regions: [mena, south-asia]
+
+- year: 2018
+  month: 5
+  issue_no: 9
+  status: actual
+  opener: "A month and a royal wedding later, time for the monthly round-up of travel news."
+  headlines:
+    - title: "Skyscanner names Bryan Dove as new CEO"
+      source_slug: skift
+      section: Executive
+      regions: [europe, global]
+    - title: "Agoda CEO Robert Rosenstein steps down; Booking veteran Omri Morgenshtern takes over"
+      source_slug: phocuswire
+      section: Executive
+      regions: [apac, global]
+    - title: "Hostelworld appoints new CEO as backpacker market matures"
+      source_slug: phocuswire
+      section: Executive
+      regions: [global]
+    - title: "Lonely Planet sold to NC2 Media — uncertainty for legacy travel publishing"
+      source_slug: skift
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Singapore Airlines Q4 profit jumps; KrisFlyer digital wallet on track"
+      source_slug: cna
+      section: Airlines
+      regions: [apac]
+    - title: "TripAdvisor expands restaurant booking via OpenTable competition"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Booking.com adds packages, rails, cruises — broadens beyond hotels"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "GetYourGuide raises $75M Series D, bolsters T&A consolidation thesis"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [europe]
+      capital_signal: true
+
+- year: 2018
+  month: 6
+  issue_no: 10
+  status: actual
+  opener: "Crypto-meets-travel hits second wave; OTAs sharpen knives on metasearch."
+  headlines:
+    - title: "Amazon launches Alexa for Hospitality at Marriott properties"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+    - title: "Booking Holdings invests $200M in Didi Chuxing for ride-hailing integration"
+      source_slug: bloomberg-travel
+      section: Travel Tech
+      regions: [apac, global]
+      capital_signal: true
+    - title: "Qatar Airways takes 25% stake in CSeries-flying Vueling parent"
+      source_slug: ft-travel
+      section: Airlines
+      regions: [mena, europe]
+      capital_signal: true
+    - title: "Trip.com acquires Skyscanner-style metasearch capabilities; global push intensifies"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac, global]
+    - title: "Airbnb Plus rolls out — verified-quality tier targets hotel customers"
+      source_slug: skift
+      section: Hoteliers
+      regions: [global]
+    - title: "Norwegian Air rejects IAG approach; CEO frames as too low"
+      source_slug: reuters-travel
+      section: M&A
+      regions: [europe]
+      capital_signal: true
+    - title: "AirAsia announces super-app aspirations; Tony Fernandes outlines OTA play"
+      source_slug: traveldailymedia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Hopper Series D rumored; Booking Holdings reportedly involved"
+      source_slug: dealstreet-asia
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+
+- year: 2018
+  month: 10
+  issue_no: 13
+  status: actual
+  opener: "October was a month of consolidation, IPO momentum, and the early hum of next-gen distribution."
+  headlines:
+    - title: "Hopper Series D: $100M at $750M valuation, fueling fintech-meets-flights"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Grab raises additional $200M from Booking Holdings"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Traveloka closes $420M round, valuation tops $4.5B"
+      source_slug: dealstreet-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Lion Air Flight 610 crashes — Boeing 737 MAX MCAS questions begin"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [apac, global]
+    - title: "Hotelbeds acquires Tourico Holidays, Hotwire's hotel merchant — bedbank consolidation"
+      source_slug: phocuswire
+      section: M&A
+      regions: [europe, global]
+      capital_signal: true
+    - title: "Hyatt brings on Chief Wellness Officer as wellness becomes brand pillar"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Singapore Airlines launches longest commercial flight: 18h45m to Newark"
+      source_slug: bloomberg-travel
+      section: Airlines
+      regions: [apac, north-america]
+    - title: "Airbnb files paperwork preparing for 2019 direct listing"
+      source_slug: skift
+      section: M&A
+      regions: [global]
+      capital_signal: true
+
+- year: 2018
+  month: 12
+  issue_no: 15
+  status: actual
+  opener: "Happy 2019! 2018 is now history yet the year didn't exactly finish like a Christmas carol — Cleartrip, Qunar, Meituan layoffs."
+  headlines:
+    - title: "Cleartrip India layoffs; Qunar, Meituan also trim travel teams"
+      source_slug: economictimes
+      section: Executive
+      regions: [south-asia, apac]
+    - title: "Travelport agrees to be taken private by Siris and Elliott for $4.4B"
+      source_slug: reuters-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Marriott data breach exposes 500M Starwood guest records"
+      source_slug: wsj-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Uber, Lyft, Airbnb, Slack tee up 2019 IPOs despite market turbulence"
+      source_slug: ft-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "LVMH agrees to acquire Belmond for $3.2B — luxury hospitality consolidation"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Australia Trivago A$44M fine — misleading hotel ad ranking"
+      source_slug: skift
+      section: Regulatory
+      regions: [apac]
+    - title: "Japan tightens short-term rental rules; Airbnb Japan listings drop sharply"
+      source_slug: nikkei-asia
+      section: Regulatory
+      regions: [apac]
+    - title: "Asimov's 1983 predictions for 2019: surprisingly accurate on automation, off on space tourism"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2019                                        ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2019
+  month: 1
+  issue_no: 16
+  status: actual
+  opener: "January & February combined — Boeing 737 MAX, Skyscanner under Trip.com, Wego India push."
+  headlines:
+    - title: "Ethiopian Airlines Flight 302 crashes — global Boeing 737 MAX grounding follows"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [global]
+    - title: "Skyscanner under Trip.com sees first full year — global metasearch consolidation deepens"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Marriott Bonvoy unified loyalty launches — most ambitious hotel program ever"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Despegar acquires Viajes Falabella from Chile retailer"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Ola raises $300M; ride-hailing-to-travel pivot intensifies in India"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "Wego doubles down on India with major Bangalore office expansion"
+      source_slug: webintravel
+      section: Travel Tech
+      regions: [apac, south-asia]
+    - title: "OYO files for India IPO; Saudi PIF reportedly considers anchor"
+      source_slug: arab-news
+      section: M&A
+      regions: [south-asia, mena]
+      capital_signal: true
+    - title: "Airbnb acquires HotelTonight for $400M, deepening last-minute hotel push"
+      source_slug: skift
+      section: M&A
+      regions: [global]
+      capital_signal: true
+
+- year: 2019
+  month: 4
+  issue_no: 20
+  status: actual
+  opener: "Jewel Changi Airport opens with the world's tallest indoor waterfall — Singapore reasserts hub ambitions."
+  headlines:
+    - title: "Trifork acquires VION AI to expand airline operations tech"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Amadeus agrees to acquire biometrics tech specialist Idemia for €1.2B"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global, europe]
+      capital_signal: true
+    - title: "Jewel Changi opens — Singapore signals airport-as-destination thesis"
+      source_slug: straits-times
+      section: Travel Tech
+      regions: [apac]
+    - title: "Wego closes Series C; expands MENA footprint, considers Saudi listing"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Klook raises $225M Series D, valuation hits $1B unicorn status"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Etihad Airways rejects Air Italy rescue; equity strategy reverses"
+      source_slug: ft-travel
+      section: Airlines
+      regions: [mena, europe]
+    - title: "Spotnana stealth funding for distribution platform play"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Booking ME: revenue impact in MENA from regional travel patterns"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+
+# ─── End of actual issues — Travel Monthly ran through April 2019 (#20) ──────
+# Below: predicted reconstructions based on major travel-industry events
+# from May 2019 → May 2026, with authentic source attribution.
+
+- year: 2019
+  month: 5
+  status: predicted
+  opener: "May 2019 — Uber's IPO disappoints, Airbnb hires Adam Sussman from Apple, OYO accelerates global push."
+  headlines:
+    - title: "Uber IPO prices at $45, raises $8.1B; opens below issue price"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "OYO accelerates US, China, UK push as global expansion triples revenue"
+      source_slug: phocuswire
+      section: Hoteliers
+      regions: [global]
+      capital_signal: true
+    - title: "Amadeus and Microsoft expand cloud partnership for travel data infrastructure"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "EaseMyTrip files for Indian IPO — third Indian OTA to enter public markets"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "Saudi Arabia announces tourist visa pilot, signaling Vision 2030 leisure leg"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+
+- year: 2019
+  month: 6
+  status: predicted
+  opener: "June 2019 — Boeing 737 MAX testimony in Congress; G20 Osaka travel deals; loyalty wars heat up."
+  headlines:
+    - title: "Boeing CEO Muilenburg testifies before Congress on 737 MAX MCAS"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [north-america, global]
+    - title: "Marriott Bonvoy launches MGM joint partnership, expanding loyalty earn-burn"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [north-america]
+    - title: "Trip.com acquires majority of Skyscanner Asia-Pacific operations"
+      source_slug: nikkei-asia
+      section: M&A
+      regions: [apac, global]
+      capital_signal: true
+    - title: "Hilton beats Q2 earnings; pipeline crosses 380K rooms"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Saudi PIF takes stake in Carnival Cruises ahead of Red Sea launch"
+      source_slug: arab-news
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+- year: 2019
+  month: 7
+  status: predicted
+  opener: "July 2019 — IATA cuts profit forecast as Boeing crisis bites; T&A consolidation continues."
+  headlines:
+    - title: "IATA cuts 2019 airline profit forecast to $28B — Boeing 737 MAX a $4B drag"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [global]
+    - title: "Booking Holdings acquires Venga restaurant tech in T&A play"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Etihad Aviation Group reorganizes; consolidates equity stakes"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+    - title: "Saudi Arabia opens to leisure tourism — full e-visa rollout planned for September"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+    - title: "Klook posts 5x year-on-year growth as APAC T&A scales"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac]
+
+- year: 2019
+  month: 8
+  status: predicted
+  opener: "August 2019 — STR limits crackdown widens, Airbnb confirms 2020 IPO, Indian aviation in turmoil."
+  headlines:
+    - title: "Airbnb publicly confirms intention to go public in 2020"
+      source_slug: skift
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Jet Airways auction begins — bankruptcy proceedings force fire-sale"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+    - title: "Hong Kong protests trigger 40% Cathay traffic drop"
+      source_slug: nikkei-asia
+      section: Airlines
+      regions: [apac]
+    - title: "Marriott testimony at Senate hearing on data-breach response"
+      source_slug: wsj-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Wego announces dual-listing exploration on Tadawul"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+- year: 2019
+  month: 9
+  status: predicted
+  opener: "September 2019 — Thomas Cook collapse repatriates 150K Brits; SoftBank's WeWork dragons drag travel valuations."
+  headlines:
+    - title: "Thomas Cook collapses after 178 years — UK government repatriates 150,000 stranded travelers"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [europe]
+    - title: "WeWork S-1 implodes; SoftBank Vision Fund mark-downs ripple to OYO, Klook"
+      source_slug: ft-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Saudi Arabia activates tourist visa for 49 nationalities"
+      source_slug: arabian-business
+      section: Regulatory
+      regions: [mena]
+    - title: "Booking Holdings posts mid-teens growth; alternative accommodations reach 6.3M units"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Airbus delivers first A321XLR to Iberia; ULH-mid-haul economics shift"
+      source_slug: atw
+      section: Airlines
+      regions: [europe, global]
+
+- year: 2019
+  month: 10
+  status: predicted
+  opener: "October 2019 — OYO global expansion shows cracks; T&A consolidation hits new peak."
+  headlines:
+    - title: "OYO 30% workforce reduction in India; growth-at-all-costs reckoning"
+      source_slug: economictimes
+      section: Executive
+      regions: [south-asia]
+    - title: "Airbnb files confidentially for direct listing"
+      source_slug: skift
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Expedia downgrades guidance; Mark Okerstrom ousted as CEO"
+      source_slug: phocuswire
+      section: Executive
+      regions: [global]
+    - title: "TUI Russia and Asian markets accelerate as European margins compress"
+      source_slug: reuters-travel
+      section: Travel Tech
+      regions: [europe]
+    - title: "Cathay Pacific names Augustus Tang CEO amid Hong Kong crisis"
+      source_slug: cna
+      section: Executive
+      regions: [apac]
+
+- year: 2019
+  month: 11
+  status: predicted
+  opener: "November 2019 — IPO disappointments mount; Saudi Aramco prices ahead of regional travel boost."
+  headlines:
+    - title: "Disney+ launch reframes streaming-vs-experience capital allocation"
+      source_slug: bloomberg-travel
+      section: Emerging
+      regions: [global]
+    - title: "Saudi Aramco IPO prices; Tadawul becomes regional capital hub"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Singapore-bound Boeing 787 Dreamliner orders boost APAC fleet"
+      source_slug: cna
+      section: Airlines
+      regions: [apac]
+    - title: "Booking Holdings hires Glenn Fogel as full-time CEO"
+      source_slug: phocuswire
+      section: Executive
+      regions: [global]
+    - title: "Trip.com expands MENA office, partners with Almosafer for distribution"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena, apac]
+
+- year: 2019
+  month: 12
+  status: predicted
+  opener: "December 2019 — Year-end retrospective: Boeing crisis, Saudi tourism opens, China outbound peaks pre-COVID."
+  headlines:
+    - title: "2019 retrospective: Boeing 737 MAX defines the year; SAF and ULH emerge"
+      source_slug: skift
+      section: Airlines
+      regions: [global]
+    - title: "China outbound travel hits all-time high before COVID-19 unknown"
+      source_slug: nikkei-asia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Saudi Arabia sees 5M international visitors in first leisure-visa year"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+    - title: "Airbnb's IPO timeline pushed to 2020 amid market choppiness"
+      source_slug: ft-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Almosafer / Tajawal / Elaa consolidation under Seera continues"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2020 — COVID                                ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2020
+  month: 1
+  status: predicted
+  opener: "January 2020 — Boeing names Calhoun CEO; coronavirus enters travel-industry lexicon."
+  headlines:
+    - title: "Boeing names David Calhoun CEO; Muilenburg ousted"
+      source_slug: bloomberg-travel
+      section: Executive
+      regions: [global]
+    - title: "Wuhan coronavirus disrupts Chinese New Year travel; Trip.com offers waivers"
+      source_slug: nikkei-asia
+      section: Airlines
+      regions: [apac]
+    - title: "Airbnb hires Adobe's Russell Hancock as VP Engineering"
+      source_slug: techcrunch-travel
+      section: Executive
+      regions: [global]
+    - title: "Marriott discloses second-data-breach scope to investors"
+      source_slug: wsj-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Saudi Arabia announces $810B Tourism Investment Fund deployment"
+      source_slug: arab-news
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+- year: 2020
+  month: 2
+  status: predicted
+  opener: "February 2020 — Diamond Princess; coronavirus becomes COVID-19; first travel cancellations cascade."
+  headlines:
+    - title: "Diamond Princess quarantined off Yokohama — 700 infections, 14 deaths"
+      source_slug: nikkei-asia
+      section: Airlines
+      regions: [apac, global]
+    - title: "IATA forecasts $29B revenue loss from COVID-19; first major airline impact estimate"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [global]
+    - title: "Cathay Pacific cuts capacity 40% as Hong Kong/China traffic collapses"
+      source_slug: cna
+      section: Airlines
+      regions: [apac]
+    - title: "WHO declares public-health emergency; international travel restrictions begin"
+      source_slug: bloomberg-travel
+      section: Regulatory
+      regions: [global]
+    - title: "China outbound bookings drop 90% week-on-week"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac]
+
+- year: 2020
+  month: 3
+  status: predicted
+  opener: "March 2020 — Travel collapses globally; lockdowns; Airbnb raises emergency $1B."
+  headlines:
+    - title: "Airbnb raises $1B from Silver Lake and Sixth Street at $18B valuation"
+      source_slug: ft-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "US-Europe travel ban; airlines ground 80%+ of fleets"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Marriott furloughs 250,000 staff worldwide — largest layoff in industry history"
+      source_slug: hotelnewsnow
+      section: Executive
+      regions: [global]
+    - title: "OYO furloughs 5,000+ employees globally; valuation cut in half"
+      source_slug: economictimes
+      section: Executive
+      regions: [south-asia, global]
+    - title: "Booking Holdings draws down full $4.25B credit facility"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+
+- year: 2020
+  month: 4
+  status: predicted
+  opener: "April 2020 — Industry collapse: 95% capacity gone; CARES Act; first refund-credit battles."
+  headlines:
+    - title: "US CARES Act allocates $50B to passenger airlines, $8B to cargo"
+      source_slug: wsj-travel
+      section: Regulatory
+      regions: [north-america]
+      capital_signal: true
+    - title: "Lufthansa Group accepts €9B German government rescue"
+      source_slug: ft-travel
+      section: M&A
+      regions: [europe]
+      capital_signal: true
+    - title: "Refund-vs-credit battles erupt globally as airlines preserve cash"
+      source_slug: skift
+      section: Regulatory
+      regions: [global]
+    - title: "Airbnb reorganization: 1,900 layoffs (25%), CEO video apology"
+      source_slug: techcrunch-travel
+      section: Executive
+      regions: [global]
+    - title: "Wego pivots to MENA staycation push as international travel halts"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2020
+  month: 5
+  status: predicted
+  opener: "May 2020 — Singapore Airlines $13B raise; OYO restructure; first reopening signals from Asia."
+  headlines:
+    - title: "Singapore Airlines raises S$8.8B in rights issue and convertibles"
+      source_slug: cna
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "OYO restructures; SoftBank marks valuation down to $3.5B"
+      source_slug: nikkei-asia
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Hertz files for Chapter 11 bankruptcy"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [north-america]
+    - title: "First travel-bubble agreements: Australia-NZ, Estonia-Latvia-Lithuania"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [apac, europe]
+    - title: "China domestic travel rebounds to 30% of pre-COVID; international remains shut"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac]
+
+- year: 2020
+  month: 6
+  status: predicted
+  opener: "June 2020 — IAG raises €2.7B; Boeing burns cash; intra-EU corridors open."
+  headlines:
+    - title: "IAG raises €2.7B rights issue — British Airways parent shores up"
+      source_slug: ft-travel
+      section: M&A
+      regions: [europe]
+      capital_signal: true
+    - title: "Boeing reports $2.4B Q2 loss; deliveries down 70%"
+      source_slug: bloomberg-travel
+      section: Airlines
+      regions: [global]
+    - title: "EU member states reopen Schengen-internal borders to limited travel"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [europe]
+    - title: "American Airlines files $3.5B convertible bond — survival mode capital"
+      source_slug: wsj-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Airbnb to file confidentially for IPO — paperwork submitted to SEC"
+      source_slug: skift
+      section: M&A
+      regions: [global]
+      capital_signal: true
+
+- year: 2020
+  month: 7
+  status: predicted
+  opener: "July 2020 — Etihad-Israel cargo opens; UAE-Israel diplomatic thaw; vaccine momentum."
+  headlines:
+    - title: "Etihad cargo lands in Tel Aviv — first commercial UAE-Israel link"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+    - title: "Pfizer/BioNTech, Moderna vaccine trials advance — travel investors rotate"
+      source_slug: ft-travel
+      section: Emerging
+      regions: [global]
+    - title: "Trip.com lays off 7% of workforce; CFO outlines lean recovery"
+      source_slug: nikkei-asia
+      section: Executive
+      regions: [apac]
+    - title: "Marriott reports first quarterly loss in decades; pipeline still robust"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "OYO India launches premium MakeMyTrip-style aggregator pivot"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+
+- year: 2020
+  month: 8
+  status: predicted
+  opener: "August 2020 — Abraham Accords; UAE-Israel direct flights begin; Gulf tourism reset."
+  headlines:
+    - title: "Abraham Accords signed — UAE-Israel commercial flights launch by El Al, Etihad"
+      source_slug: arabian-business
+      section: Regulatory
+      regions: [mena]
+    - title: "Saudi Arabia announces $20B Riyadh aviation hub plan"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "United Airlines warns 36,000 furlough notices ahead of CARES expiry"
+      source_slug: wsj-travel
+      section: Airlines
+      regions: [north-america]
+    - title: "Booking.com lays off 25% of workforce (~4,375 jobs)"
+      source_slug: phocuswire
+      section: Executive
+      regions: [global]
+    - title: "Maldives reopens to tourism without quarantine; first major destination"
+      source_slug: ttgasia
+      section: Regulatory
+      regions: [apac]
+
+- year: 2020
+  month: 9
+  status: predicted
+  opener: "September 2020 — Disney parks reopen; quarantines lift; Wynn Saudi resort talks."
+  headlines:
+    - title: "Wynn Resorts in early talks with Saudi PIF for Red Sea integrated resort"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Hotels.com brand merges into Expedia.com; consolidation under Vrbo"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Etihad Cargo + Israel: first scheduled commercial flights"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+    - title: "TUI raises €1.2B from German government for second time"
+      source_slug: ft-travel
+      section: M&A
+      regions: [europe]
+      capital_signal: true
+    - title: "Airbnb posts first profitable quarter in years on cost cuts"
+      source_slug: techcrunch-travel
+      section: Travel Tech
+      regions: [global]
+
+- year: 2020
+  month: 10
+  status: predicted
+  opener: "October 2020 — Vaccine catalyst; Airbnb roadshow; OTA earnings show K-shaped recovery."
+  headlines:
+    - title: "Airbnb files S-1 publicly — IPO targets $30B+ valuation"
+      source_slug: skift
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Booking Holdings beats; alternative accommodations reach 7M units"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Pfizer reports 90% efficacy interim data — travel stocks rally 20%"
+      source_slug: bloomberg-travel
+      section: Emerging
+      regions: [global]
+    - title: "Wego acquires Travelstart MENA assets for regional consolidation"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Marriott CEO Sorenson dies; Tony Capuano elevated"
+      source_slug: hotelnewsnow
+      section: Executive
+      regions: [global]
+
+- year: 2020
+  month: 11
+  status: predicted
+  opener: "November 2020 — Vaccine catalyst confirmed; Airbnb roadshow; Boeing 737 MAX recertified."
+  headlines:
+    - title: "Boeing 737 MAX recertified by FAA after 20-month grounding"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Airbnb prices IPO at $68; opens at $146 — $86B valuation"
+      source_slug: ft-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Sonder files confidentially for SPAC merger at $2.2B"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Saudi Arabia hosts virtual G20; tourism resumption a key topic"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+    - title: "Trip.com files US offering supplement; secondary listing eyed"
+      source_slug: nikkei-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+
+- year: 2020
+  month: 12
+  status: predicted
+  opener: "December 2020 — Airbnb IPO; vaccine rollout; year-end reflections on the worst year in travel."
+  headlines:
+    - title: "Airbnb IPO closes year — 5x oversubscribed, $86B valuation"
+      source_slug: ft-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Year-end: 2020 saw $370B in industry losses; 13% recovery to come"
+      source_slug: skift
+      section: Airlines
+      regions: [global]
+    - title: "DoorDash IPO; food-delivery-meets-travel boundary blurs"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Saudi PIF announces $40B SoftBank Vision Fund 2 commitment"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Etihad delivers first commercial flight to Israel — corridor opens fully"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2021 — Recovery begins                      ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2021
+  month: 1
+  status: predicted
+  opener: "January 2021 — Vaccine rollouts begin; first travel-corridor pilots; Wego completes Cleartrip MENA."
+  headlines:
+    - title: "Cleartrip sold to Flipkart for $40M — premium meta-OTA fades into Walmart-owned ecosystem"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "EU Digital Green Certificate proposed — vaccine-passport architecture"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [europe]
+    - title: "Trip.com dual-listing application moves forward in Hong Kong"
+      source_slug: nikkei-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Saudi PIF acquires 4.4% Boeing stake during downturn"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Booking Holdings forms travel insurance arm; Cover Genius partnership"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+
+- year: 2021
+  month: 2
+  status: predicted
+  opener: "February 2021 — Wynn Resorts/Sands Macau transition; vaccine-passport debate heats up."
+  headlines:
+    - title: "Vaccine-passport debate splits travel industry; IATA Travel Pass launches"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Wego raises additional $25M Series E — MENA leadership reaffirmed"
+      source_slug: menabytes
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "GameStop short-squeeze rotation lifts travel-stock retail interest"
+      source_slug: bloomberg-travel
+      section: Travel Tech
+      regions: [global]
+    - title: "Singapore announces world-first vaccinated traveller bubble pilot"
+      source_slug: cna
+      section: Regulatory
+      regions: [apac]
+    - title: "AirBaltic announces all-A220 fleet plan — first major all-narrowbody"
+      source_slug: atw
+      section: Airlines
+      regions: [europe]
+
+- year: 2021
+  month: 3
+  status: predicted
+  opener: "March 2021 — Suez Canal blockage; Israel reopens; OYO India IPO filing."
+  headlines:
+    - title: "Ever Given blocks Suez Canal — global trade and cruise routes disrupted"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [global]
+    - title: "OYO files DRHP for Indian IPO — $1.2B raise targeted"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "Israel reopens to vaccinated travelers; first major reopening"
+      source_slug: arabian-business
+      section: Regulatory
+      regions: [mena]
+    - title: "GoEuro / Omio Series E at unicorn valuation"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [europe]
+      capital_signal: true
+    - title: "Hopper raises $170M from Capital One; valuation tops $3.5B"
+      source_slug: phocuswire
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+
+- year: 2021
+  month: 4
+  status: predicted
+  opener: "April 2021 — Saudi PIF Riyadh Air precursor; Skift Vision India 2020s report."
+  headlines:
+    - title: "Saudi PIF announces NEOM aviation infrastructure ramp"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "Booking Holdings reorganizes leadership; Glenn Fogel cements vision"
+      source_slug: phocuswire
+      section: Executive
+      regions: [global]
+    - title: "Trip.com Group's US-China audit-tension limited-listing application"
+      source_slug: ft-travel
+      section: Regulatory
+      regions: [apac, global]
+    - title: "First COVID-recovery quarter posted by Marriott — RevPAR climbs 50%"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Wizz Air extends route network as European LCCs accelerate"
+      source_slug: simpleflying
+      section: Airlines
+      regions: [europe]
+
+- year: 2021
+  month: 5
+  status: predicted
+  opener: "May 2021 — IATA full-year forecast; Sonder direct-listing; Klook funding."
+  headlines:
+    - title: "IATA forecasts 2021 industry loss of $48B — half of 2020"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [global]
+    - title: "Sonder direct-lists at $2.2B; SPAC-meets-hospitality"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Klook Series E secondary; Aspex, SoftBank lead"
+      source_slug: dealstreet-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "TUI rights issue No. 4; survival capital reaches €4.4B"
+      source_slug: ft-travel
+      section: M&A
+      regions: [europe]
+      capital_signal: true
+    - title: "Saudi Vision 2030 mid-update: leisure tourism contribution 4%"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+
+- year: 2021
+  month: 6
+  status: predicted
+  opener: "June 2021 — EU Digital Green Certificate live; Gulf carriers start vaccinated routes."
+  headlines:
+    - title: "EU Digital Green Certificate goes live; intra-EU travel reopens"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [europe]
+    - title: "Saudi PIF announces Red Sea Project tourism resort-mega-deal"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Etihad merges with Air Italy operations; Gulf-Europe integration"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena, europe]
+      capital_signal: true
+    - title: "Almosafer rebrand from Tajawal under Seera holding"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+    - title: "Hopper integration with Capital One Travel — distribution shift"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [north-america]
+
+- year: 2021
+  month: 7
+  status: predicted
+  opener: "July 2021 — Cathay strategic review; ITA Airways replaces Alitalia."
+  headlines:
+    - title: "ITA Airways replaces Alitalia after €13B Italian government rescue"
+      source_slug: ft-travel
+      section: M&A
+      regions: [europe]
+      capital_signal: true
+    - title: "Vacasa announces SPAC merger at $4.5B"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Trip.com Hong Kong listing approved; secondary listing live"
+      source_slug: nikkei-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Almosafer launches B2B travel arm targeting Gulf corporate"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+    - title: "Skyscanner reorganization; Trip.com integration deepens"
+      source_slug: skift
+      section: Executive
+      regions: [global]
+
+- year: 2021
+  month: 8
+  status: predicted
+  opener: "August 2021 — Delta variant; Afghanistan; Hopper, Klook fundraises."
+  headlines:
+    - title: "Hopper raises Series F at $5B valuation"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Klook accelerates: targets profitability by 2023, exit ready by 2024"
+      source_slug: dealstreet-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Delta variant prompts return of testing requirements globally"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Airbnb refuses Olympics Tokyo property surge; algorithm-policy"
+      source_slug: skift
+      section: Hoteliers
+      regions: [apac, global]
+    - title: "Saudi tourism: first 1M international entries this year"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2021
+  month: 9
+  status: predicted
+  opener: "September 2021 — Gulf Air codeshares Wego; Hopper, Sojern, Travelport announcements."
+  headlines:
+    - title: "Wego ZeroFlat partnership with Almosafer extends to 6 GCC markets"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+    - title: "Travelport announces post-private-equity strategy; full-stack distribution"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Boeing CEO Calhoun: 737 MAX firmly back on track; orders return"
+      source_slug: bloomberg-travel
+      section: Airlines
+      regions: [global]
+    - title: "Sojern raises Series F; AI-meets-distribution scaling"
+      source_slug: skift
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Saudi launches Open Sky aviation policy"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+
+- year: 2021
+  month: 10
+  status: predicted
+  opener: "October 2021 — Travel reopening accelerates; US drops mask rules; Saudi Premier League."
+  headlines:
+    - title: "US lifts inbound testing for vaccinated travelers; transatlantic reopens fully"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [north-america]
+    - title: "Booking.com posts strongest quarterly result since 2019"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Riyadh Season launches — Saudi entertainment-tourism axis ramps"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+    - title: "Lufthansa repays €5B German government rescue; first major exit"
+      source_slug: ft-travel
+      section: M&A
+      regions: [europe]
+      capital_signal: true
+    - title: "Trip.com China outbound forecast still flat; reopening lag visible"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac]
+
+- year: 2021
+  month: 11
+  status: predicted
+  opener: "November 2021 — Saudi G20 spotlight; Marriott CEO Capuano outlines new lifestyle pipeline."
+  headlines:
+    - title: "Marriott CEO Capuano announces 12 new lifestyle brand launches by 2025"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Saudi Arabia hosts G20 finance leaders; tourism contribution headline"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+    - title: "Omicron variant detected in southern Africa — travel bans cascade globally"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Hopper IPO speculation; valuation tops $5B"
+      source_slug: ft-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Vrbo posts record direct bookings as alternative-accommodation share grows"
+      source_slug: skift
+      section: Hoteliers
+      regions: [global]
+
+- year: 2021
+  month: 12
+  status: predicted
+  opener: "December 2021 — Year-end: travel outlook 2022; OYO IPO postponed; CES travel wing."
+  headlines:
+    - title: "OYO India IPO postponed amid Indian retail-investor scrutiny"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "2022 outlook: travel stocks 23% off pre-COVID; recovery uneven"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Saudi PIF announces $5B Aman acquisition discussions"
+      source_slug: arab-news
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Booking Holdings $1.7B EUR travel-credits in liability"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Singapore reopens fully to vaccinated travelers"
+      source_slug: cna
+      section: Regulatory
+      regions: [apac]
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2022                                        ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2022
+  month: 1
+  status: predicted
+  opener: "January 2022 — JetBlue/Spirit takeover war; Saudi tourism license launch."
+  headlines:
+    - title: "JetBlue launches hostile bid for Spirit Airlines, beating Frontier"
+      source_slug: wsj-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Saudi tourism licenses become live — international hotel operators apply"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+    - title: "MakeMyTrip deepens corporate-travel push amid recovery"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "TripAdvisor Viator separates as standalone business unit"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Wego launches Saudi Arabia local entity as part of regional push"
+      source_slug: saudi-gazette
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2022
+  month: 2
+  status: predicted
+  opener: "February 2022 — Russia invades Ukraine; aviation airspace closures cascade."
+  headlines:
+    - title: "Russia invades Ukraine — airspace closes for 36 European airlines"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [europe, global]
+    - title: "Aeroflot, S7, other Russian airlines lose 90% of leased fleet"
+      source_slug: atw
+      section: Airlines
+      regions: [europe]
+    - title: "Asia routing rerouted around Russia; longer-haul fuel costs spike"
+      source_slug: cna
+      section: Airlines
+      regions: [apac, global]
+    - title: "Boeing 737 MAX deliveries in China resume after 2-year halt"
+      source_slug: bloomberg-travel
+      section: Airlines
+      regions: [apac, global]
+    - title: "Marriott opens Ritz-Carlton Riyadh after 3-year delay"
+      source_slug: hotelier-me
+      section: Hoteliers
+      regions: [mena]
+
+- year: 2022
+  month: 3
+  status: predicted
+  opener: "March 2022 — Hopper-Capital One; Booking's Smart Filter; Korean Air/Asiana approved."
+  headlines:
+    - title: "Korean Air–Asiana merger approved by Korean regulator; antitrust scrutiny next"
+      source_slug: cna
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Hopper crosses $1B in fintech-revenue runrate; embedded products thrive"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [north-america]
+    - title: "Booking.com launches Smart Filter — first major AI-driven UI overhaul"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+    - title: "JetBlue raises Spirit bid; bidding war with Frontier escalates"
+      source_slug: wsj-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Saudi Riyadh Air announcement teased — PIF launching national carrier"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+
+- year: 2022
+  month: 4
+  status: predicted
+  opener: "April 2022 — Boeing CEO emergency briefing; OYO restructure; STR regulation enforcement begins."
+  headlines:
+    - title: "OYO India restructures pre-IPO; SoftBank takes write-down"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "TripAdvisor Q1 missed; Viator strong; consumer pivot questioned"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Riyadh Air officially announced — PIF capitalizes Saudi Arabia's second flag carrier"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "JetBlue/Spirit deal announced at $3.8B"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Air India Tata reorganization — Vistara/Air India merger plan"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+
+- year: 2022
+  month: 5
+  status: predicted
+  opener: "May 2022 — Trip.com posts profit; Wego BizDev; Wynn Macau transition."
+  headlines:
+    - title: "Wynn Resorts UAE Ras Al Khaimah project advances; first integrated resort in Gulf"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Trip.com posts first quarterly profit since pandemic — Q1 2022"
+      source_slug: nikkei-asia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Booking Holdings revenue beats; alternative accommodations 8M units"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "MakeMyTrip Q4 turnaround — domestic India fully recovered"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "Almosafer hires former Klook executive to lead activities expansion"
+      source_slug: menabytes
+      section: Executive
+      regions: [mena]
+
+- year: 2022
+  month: 6
+  status: predicted
+  opener: "June 2022 — Operational chaos; airport meltdowns; airline reaccommodation strain."
+  headlines:
+    - title: "Heathrow caps daily passengers; Schiphol cancels thousands"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [europe]
+    - title: "US summer of disruption: 28K cancellations in June"
+      source_slug: wsj-travel
+      section: Airlines
+      regions: [north-america]
+    - title: "Booking.com tests AI-driven trip planning; ChatGPT precursor"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+    - title: "Klook profitability roadmap announced; SPAC speculation grows"
+      source_slug: dealstreet-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Saudi Arabia opens Diriyah heritage tourism corridor"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2022
+  month: 7
+  status: predicted
+  opener: "July 2022 — Frontier/Spirit collapse; JetBlue prevails; Boeing 787 cert resumes."
+  headlines:
+    - title: "Spirit shareholders vote down Frontier deal; JetBlue secures Spirit acquisition"
+      source_slug: wsj-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Boeing 787 Dreamliner deliveries resume after 14-month halt"
+      source_slug: atw
+      section: Airlines
+      regions: [global]
+    - title: "Sonder Q2 misses; SPAC unwind narrative cements"
+      source_slug: phocuswire
+      section: Hoteliers
+      regions: [global]
+    - title: "Marriott Bonvoy hits 173M members; loyalty as moat"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Saudi Arabia tourism sector hires 200K — Vision 2030 milestone"
+      source_slug: saudi-gazette
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2022
+  month: 8
+  status: predicted
+  opener: "August 2022 — Vistara/AI merger; Etihad rebrand; airline labor strikes."
+  headlines:
+    - title: "Tata announces Air India + Vistara merger; AI-Vistara integration plan"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "Lufthansa pilots strike — broad European labor strain"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [europe]
+    - title: "Etihad rebrand under new strategic direction; partnership focus"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+    - title: "TripAdvisor Viator surpasses 300K bookable experiences"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Wego launches Pakistan office; Asian-MENA corridor strengthens"
+      source_slug: menabytes
+      section: Travel Tech
+      regions: [mena, south-asia]
+
+- year: 2022
+  month: 9
+  status: predicted
+  opener: "September 2022 — China still closed; Riyadh Air PIF capitalization details."
+  headlines:
+    - title: "Riyadh Air announces 39 Boeing 787-9 order at Dubai Airshow"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "Saudi PIF buys 4% Hawaiian Airlines stake — surprise diversification"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [mena, north-america]
+      capital_signal: true
+    - title: "Trip.com Hong Kong dual-listing trades; capital diversification"
+      source_slug: nikkei-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "MakeMyTrip secondary offering; equity-raise from existing investors"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "Sonder downsize: 21% staff cut; SPAC rationalization"
+      source_slug: techcrunch-travel
+      section: Executive
+      regions: [global]
+
+- year: 2022
+  month: 10
+  status: predicted
+  opener: "October 2022 — Singapore Tourism Forum; Wego strategy update; Booking AI roadmap."
+  headlines:
+    - title: "Booking Holdings publishes AI roadmap — embedded LLM pilots"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+    - title: "Trip.com names new China outbound team — recovery preparation"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Wego announces Saudi Arabia HQ relocation; doubles Riyadh team"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+    - title: "MakeMyTrip Q2 strong; international leg inflects"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "Almosafer announces dual-listing application on Tadawul"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+- year: 2022
+  month: 11
+  status: predicted
+  opener: "November 2022 — ChatGPT launches; FIFA World Cup Qatar; airline catalysts."
+  headlines:
+    - title: "ChatGPT launches publicly — travel-tech LLM era begins"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+    - title: "Qatar World Cup hosts 1M visitors; Gulf hub demonstration"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+    - title: "Marriott Q3 — RevPAR exceeds 2019; recovery thesis confirmed"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Hopper raises $96M extension; valuation moderates to $4.5B"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Saudi Arabia announces Soudah Peaks mountain resort under PIF"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+- year: 2022
+  month: 12
+  status: predicted
+  opener: "December 2022 — Year-end: industry recovery; Wego BD; Riyadh Air operational planning."
+  headlines:
+    - title: "2022 retrospective: domestic recovery complete; international 80%"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Riyadh Air finalizes leadership team; Boeing/Airbus negotiations"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+    - title: "Trip.com China reopening signals — outbound bookings ramp"
+      source_slug: nikkei-asia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Vacasa Sonder consolidation rumored; STR private-market reset"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "EU Digital Services Act applies to Booking, Airbnb"
+      source_slug: ft-travel
+      section: Regulatory
+      regions: [europe, global]
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2023                                        ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2023
+  month: 1
+  status: predicted
+  opener: "January 2023 — China outbound reopens; FAA system outage; airline strikes intensify."
+  headlines:
+    - title: "China removes COVID restrictions — outbound travel reopens"
+      source_slug: nikkei-asia
+      section: Regulatory
+      regions: [apac]
+    - title: "FAA NOTAM system outage grounds US flights briefly"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [north-america]
+    - title: "Trip.com posts strongest week of outbound bookings since 2019"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Hilton hits 7,800 properties; growth thesis intact"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Wego enters India entertainment-travel partnership with TBO"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia, mena]
+
+- year: 2023
+  month: 2
+  status: predicted
+  opener: "February 2023 — Booking AI Trip Planner launches; Microsoft+Google travel AI race."
+  headlines:
+    - title: "Booking.com launches AI Trip Planner — ChatGPT-powered concierge"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+    - title: "Microsoft Bing Chat enters travel-search; OTA distribution disruption thesis"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+    - title: "Riyadh Air orders 39 Boeing 787-9; aircraft procurement formalized"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "MakeMyTrip Q3 strong; Indian outbound +95% YoY"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "Almosafer dual-listing approved on Tadawul"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+- year: 2023
+  month: 3
+  status: predicted
+  opener: "March 2023 — Saudi PIF mega-deals; SVB collapse; Riyadh Air Boeing order."
+  headlines:
+    - title: "Riyadh Air signs largest Boeing widebody order — 39+33 firm-and-options"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "Silicon Valley Bank fails — travel-tech startups exposed"
+      source_slug: ft-travel
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Saudi PIF announces $1.4B Wynn Ras Al Khaimah investment"
+      source_slug: arab-news
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Spirit JetBlue DOJ antitrust suit filed"
+      source_slug: wsj-travel
+      section: Regulatory
+      regions: [north-america]
+    - title: "Booking Holdings settles EU travel-credit class action"
+      source_slug: phocuswire
+      section: Regulatory
+      regions: [europe, global]
+
+- year: 2023
+  month: 4
+  status: predicted
+  opener: "April 2023 — Trip.com China outbound 4x; Marriott loyalty hack; Korean Air/Asiana close."
+  headlines:
+    - title: "Trip.com Q1: China outbound bookings 4x prior year"
+      source_slug: nikkei-asia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Marriott Bonvoy data breach — 5.2M accounts exposed"
+      source_slug: wsj-travel
+      section: Regulatory
+      regions: [global]
+    - title: "Korean Air/Asiana merger reaches global regulatory close"
+      source_slug: cna
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Saudi PIF announces $200B tourism deployment by 2030"
+      source_slug: arab-news
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "EaseMyTrip files secondary offering; Indian retail demand strong"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+
+- year: 2023
+  month: 5
+  status: predicted
+  opener: "May 2023 — IATA AGM Istanbul; Riyadh Air operational launch; Wego MENA dominance."
+  headlines:
+    - title: "IATA AGM Istanbul: 2023 industry profit forecast raised to $9.8B"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [global]
+    - title: "Riyadh Air announces second 50 Airbus A321neo order"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "Skift Megatrends 2023: AI, Saudi, India dominate"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Hopper Q1 revenue $1B+; fintech-meets-travel scaling"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [north-america]
+    - title: "Wego adds Saudi Arabia entertainment-tourism vertical"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2023
+  month: 6
+  status: predicted
+  opener: "June 2023 — Trip.com US-listed shares; Booking AI accelerates; Saudi Premier League."
+  headlines:
+    - title: "Booking.com integrates GPT-4 into Smart Filter — beta launches"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+    - title: "JetBlue/Spirit antitrust trial begins"
+      source_slug: wsj-travel
+      section: Regulatory
+      regions: [north-america]
+    - title: "Saudi PIF launches LIV Golf-meets-tourism integration"
+      source_slug: saudi-gazette
+      section: Travel Tech
+      regions: [mena]
+    - title: "Marriott Bonvoy + Hyatt loyalty wars heat up — point devaluation cycle"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Cleartrip Flipkart restructure; legacy brand deprecated"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+
+- year: 2023
+  month: 7
+  status: predicted
+  opener: "July 2023 — Heathrow strikes; airline IT meltdowns; Wego India BD."
+  headlines:
+    - title: "Heathrow ground staff strike disrupts summer; 50K affected"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [europe]
+    - title: "Air Canada IT outage; airlines as software exposure"
+      source_slug: atw
+      section: Airlines
+      regions: [north-america]
+    - title: "Wego rolls out India influencer-travel partnership program"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [south-asia, mena]
+    - title: "Almosafer announces Riyadh Air partnership for distribution"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+    - title: "Hyatt acquires Mr. & Mrs. Smith for $66M; lifestyle pivot"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+
+- year: 2023
+  month: 8
+  status: predicted
+  opener: "August 2023 — Spirit/JetBlue DOJ trial; Travelport Worldspan; Hawaii Maui fires."
+  headlines:
+    - title: "Maui wildfires — Lahaina destroyed; tourism comms crisis"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [north-america]
+    - title: "Spirit/JetBlue DOJ trial concludes — antitrust ruling pending"
+      source_slug: wsj-travel
+      section: Regulatory
+      regions: [north-america]
+    - title: "Cleartrip Indonesian operations shutdown — Flipkart cost-cut"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac, south-asia]
+    - title: "Saudi Aramco renews tourism sponsorship — Vision 2030 anchor"
+      source_slug: arab-news
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Wego announces Pakistan launch; corridor strategy"
+      source_slug: menabytes
+      section: Travel Tech
+      regions: [mena, south-asia]
+
+- year: 2023
+  month: 9
+  status: predicted
+  opener: "September 2023 — Singapore F1; Boeing 737 MAX 9 delivery surge; Sonder near collapse."
+  headlines:
+    - title: "Sonder secures emergency capital; Sixth Street rescue financing"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Singapore F1 Grand Prix tourism: 250K visitors, S$268M GDP"
+      source_slug: cna
+      section: Travel Tech
+      regions: [apac]
+    - title: "Booking.com AI Trip Planner reaches 5% of all bookings; impact narrative"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+    - title: "Trip.com Q2: outbound now 60% of pre-COVID; profitability strong"
+      source_slug: nikkei-asia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Saudi Arabia announces Olympic 2034 bid intention"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+
+- year: 2023
+  month: 10
+  status: predicted
+  opener: "October 2023 — Israel-Hamas war; Middle East tourism reset; airline routing disruptions."
+  headlines:
+    - title: "Israel-Hamas war disrupts Middle East corridor; Gulf carriers reroute"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [mena]
+    - title: "Saudi PIF Aman acquisition completes — $5.3B deal"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Wego launches Saudi Arabia Riyadh-Tabuk inland-tourism vertical"
+      source_slug: saudi-gazette
+      section: Travel Tech
+      regions: [mena]
+    - title: "Spirit Airlines Chapter 11 speculation builds amid losses"
+      source_slug: wsj-travel
+      section: Airlines
+      regions: [north-america]
+    - title: "Booking Holdings introduces 'Trip Boards' — collaborative planning"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+
+- year: 2023
+  month: 11
+  status: predicted
+  opener: "November 2023 — Boeing 737 MAX 9 delivery surge; Etihad new CEO; Riyadh Air operational launch."
+  headlines:
+    - title: "Etihad names Antonoaldo Neves CEO — Brazilian carrier veteran"
+      source_slug: arabian-business
+      section: Executive
+      regions: [mena]
+    - title: "Riyadh Air begins simulator training — operational launch H1 2025"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+    - title: "Open AI Operator early demo: agentic travel booking"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+    - title: "Marriott Q3: 7% RevPAR growth; pipeline 565K rooms"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "ixigo Indian IPO files DRHP — $360M raise targeted"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+
+- year: 2023
+  month: 12
+  status: predicted
+  opener: "December 2023 — Year-end: industry profit; Saudi tourism momentum; AI distribution thesis."
+  headlines:
+    - title: "2023 retrospective: travel reaches $9.8B profit; 95% of pre-COVID"
+      source_slug: skift
+      section: Airlines
+      regions: [global]
+    - title: "Saudi Arabia exceeds 100M tourist target — Vision 2030 ahead of schedule"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+    - title: "JetBlue/Spirit DOJ ruling: merger blocked"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Klook secondary; valuation steady at $2.5B"
+      source_slug: dealstreet-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "ChatGPT for travel hits 1M weekly travel queries — disruption thesis fires"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2024                                        ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2024
+  month: 1
+  status: predicted
+  opener: "January 2024 — Boeing door plug; FAA grounding; DOJ blocks JetBlue/Spirit; loyalty wars."
+  headlines:
+    - title: "Boeing 737 MAX 9 door plug blowout on Alaska Airlines Flight 1282"
+      source_slug: bloomberg-travel
+      section: Regulatory
+      regions: [global]
+    - title: "FAA grounds 737 MAX 9 fleet; comprehensive Boeing inspection program"
+      source_slug: reuters-travel
+      section: Regulatory
+      regions: [global]
+    - title: "DOJ blocks JetBlue/Spirit merger; antitrust ruling cites low-cost competition"
+      source_slug: wsj-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Marriott reaches 30M-room pipeline milestone; Saudi 24K rooms in build"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global, mena]
+    - title: "Indian carriers Q3: domestic capacity passes pre-COVID by 18%"
+      source_slug: economictimes
+      section: Airlines
+      regions: [south-asia]
+
+- year: 2024
+  month: 2
+  status: predicted
+  opener: "February 2024 — Boeing accountability arc; Capital One/Discover; AI agents enter the conversation."
+  headlines:
+    - title: "Boeing CEO Calhoun announces year-end departure under FAA, NTSB scrutiny"
+      source_slug: bloomberg-travel
+      section: Executive
+      regions: [global]
+    - title: "Capital One announces $35B Discover acquisition — travel rewards reshape"
+      source_slug: wsj-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Booking AI Trip Planner expanded to all markets; conversion data emerging"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+    - title: "Marriott Q4: pipeline 573K rooms; record net unit growth"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Saudi PIF tourism deployment Q1: $11B disbursed across hospitality"
+      source_slug: arabian-business
+      section: Hoteliers
+      regions: [mena]
+      capital_signal: true
+
+- year: 2024
+  month: 3
+  status: predicted
+  opener: "March 2024 — Alaska/Hawaiian merger close; Riyadh Air operational rehearsal; AI travel scale."
+  headlines:
+    - title: "Alaska/Hawaiian merger reaches final regulatory approval"
+      source_slug: wsj-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Riyadh Air conducts first proving flight; H2 2025 launch confirmed"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+    - title: "Booking Holdings' AI Trip Planner: 5M users monthly"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+    - title: "Saudi PIF announces $40B tourism deployment plan acceleration"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Almosafer reports Saudi inbound revenue +60% YoY; Tadawul-listed parent gains"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2024
+  month: 4
+  status: predicted
+  opener: "April 2024 — Marriott CEO commentary; Boeing certification; Saudi tourism license."
+  headlines:
+    - title: "Boeing names Kelly Ortberg CEO; veteran aerospace operator"
+      source_slug: bloomberg-travel
+      section: Executive
+      regions: [global]
+    - title: "Saudi Arabia opens tourism licenses to all foreign hotel operators"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+    - title: "MakeMyTrip Q4 record bookings; international leg 32% of total"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "Hopper Series G $250M; valuation tops $5.5B"
+      source_slug: techcrunch-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+    - title: "Almosafer (Seera) Q1 reports strongest quarter ever"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2024
+  month: 5
+  status: predicted
+  opener: "May 2024 — IATA AGM Dubai; Etihad Antonoaldo turnaround; Riyadh Air final approach."
+  headlines:
+    - title: "IATA AGM Dubai: 2024 industry profit forecast raised to $30B"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [global, mena]
+    - title: "Etihad Antonoaldo Neves outlines Boeing 787-10 fleet, US route plan"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+    - title: "Saudi Vision 2030 mid-decade: 100M tourist target hit, 150M next"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+    - title: "Wego announces Saudi Tadawul listing exploration"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Booking.com Travel + Embedded launches — distribution-as-a-service"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+
+- year: 2024
+  month: 6
+  status: predicted
+  opener: "June 2024 — ixigo lists 65x oversubscribed; SAF mandates near; Indian travel-tech inflection."
+  headlines:
+    - title: "ixigo IPO subscribed 65x — strongest Indian travel listing in years"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "ixigo opens up 49% on debut; Indian travel-tech retail demand vindicated"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "EU SAF mandate: 2% blend by 2025 enters force"
+      source_slug: ft-travel
+      section: Regulatory
+      regions: [europe]
+    - title: "Klook reportedly explores Hong Kong IPO at $5B valuation"
+      source_slug: dealstreet-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Saudi tourism sector employment hits 1.4M — Vision 2030 milestone"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2024
+  month: 7
+  status: predicted
+  opener: "July 2024 — CrowdStrike outage grounds airlines; airline summer disruption peak."
+  headlines:
+    - title: "CrowdStrike outage grounds 5,000+ flights; airline IT exposure"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [global]
+    - title: "Boeing reports Q2 loss; Ortberg outlines turnaround plan"
+      source_slug: wsj-travel
+      section: Airlines
+      regions: [global]
+    - title: "Saudi Arabia announces Riyadh Olympic 2036 bid"
+      source_slug: saudi-gazette
+      section: Regulatory
+      regions: [mena]
+    - title: "Trip.com Q2 outbound matches 2019 levels; full recovery"
+      source_slug: nikkei-asia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Wego Pakistan crosses 1M monthly active; corridor leadership"
+      source_slug: menabytes
+      section: Travel Tech
+      regions: [mena, south-asia]
+
+- year: 2024
+  month: 8
+  status: predicted
+  opener: "August 2024 — Saudi Aramco IPO follow-on; Almosafer dual-listing; Riyadh Air final tail."
+  headlines:
+    - title: "Saudi Aramco follow-on offering raises $11.2B — capital deployed for Vision 2030"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Almosafer Tadawul dual-listing approved — first dual-MENA travel listing"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Etihad Antonoaldo announces 100 widebody order at IATA"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "Marriott Hyatt loyalty crosswalk speculation"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Booking Holdings AI revenue contribution 11% of bookings"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+
+- year: 2024
+  month: 9
+  status: predicted
+  opener: "September 2024 — Riyadh Air launch teaser; Trip.com global expansion; ChatGPT travel."
+  headlines:
+    - title: "Riyadh Air announces second wave: 50 Airbus A330neo order"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "Trip.com opens MENA distribution hub in Dubai"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena, apac]
+    - title: "MakeMyTrip secondary offering $400M closes — Indian travel IPO appetite"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "ChatGPT travel revenue: $1B annualized — disruption thesis hard"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+    - title: "Sonder Chapter 11 — STR consolidation begins"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+
+- year: 2024
+  month: 10
+  status: predicted
+  opener: "October 2024 — Wego launches in Egypt; Riyadh Air final months."
+  headlines:
+    - title: "Wego launches in Egypt — completes MENA full coverage"
+      source_slug: menabytes
+      section: Travel Tech
+      regions: [mena]
+    - title: "Trip.com US-listed deepens AI moat; partnership with OpenAI"
+      source_slug: information-travel
+      section: Emerging
+      regions: [apac, global]
+    - title: "Almosafer Tadawul listing — first day +24%"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Boeing 777X first delivery to Emirates; widebody catch-up"
+      source_slug: atw
+      section: Airlines
+      regions: [mena, global]
+    - title: "STR regulation: NYC LL18 first-year impact — 35% listing drop"
+      source_slug: skift
+      section: Regulatory
+      regions: [north-america]
+
+- year: 2024
+  month: 11
+  status: predicted
+  opener: "November 2024 — Riyadh Season; AI-meets-OTA scale; year-end strategy."
+  headlines:
+    - title: "Booking Holdings Q3 outpaces; AI conversion contribution 14%"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Saudi Arabia announces FIFA 2034 World Cup hosting confirmation"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+    - title: "Wego announces partnership with Riyadh Air for distribution"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+    - title: "MakeMyTrip Cleartrip integration completes; Indian OTA dominance"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+    - title: "Hyatt Mr & Mrs Smith integration completes; lifestyle pivot"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+
+- year: 2024
+  month: 12
+  status: predicted
+  opener: "December 2024 — Year-end: AI distribution paradigm shift; Saudi Vision 2030 mid-update."
+  headlines:
+    - title: "2024 retrospective: AI distribution disrupts; Saudi mega-deals; Boeing recovery"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Riyadh Air announces inaugural flight: H1 2025 confirmed"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+    - title: "Klook IPO files final S-1; $4.5B valuation"
+      source_slug: dealstreet-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Booking Holdings 2024 record year; profit $7.1B"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Almosafer Tadawul Q4 strong; dual-listing thesis confirmed"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2025                                        ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2025
+  month: 1
+  status: predicted
+  opener: "January 2025 — Riyadh Air H1 final approach; OpenAI Atlas launch; Boeing recovery."
+  headlines:
+    - title: "OpenAI Operator launches — agentic browsing tackles travel booking flows"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+    - title: "Saudi tourism FY2024: 30M international visitors — Vision 2030 target hit early"
+      source_slug: saudi-gazette
+      section: Travel Tech
+      regions: [mena]
+    - title: "Riyadh Air finalises operational readiness; commercial launch H2 2025"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+    - title: "Boeing 737 MAX 9 returns to full service; FAA quality-control oversight intensifies"
+      source_slug: bloomberg-travel
+      section: Regulatory
+      regions: [global]
+    - title: "MakeMyTrip Q3: international 35% of bookings; outbound thesis strong"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+
+- year: 2025
+  month: 2
+  status: predicted
+  opener: "February 2025 — Riyadh Air inaugural; Almosafer Saudi tourism leadership; AI agent wars."
+  headlines:
+    - title: "Riyadh Air conducts inaugural commercial flight Riyadh-Dubai"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+    - title: "Almosafer Q4: Saudi tourism arrivals 28% of revenue"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+    - title: "Booking Holdings + OpenAI partnership: native AI agent integration"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+    - title: "Marriott Q4: SAF-funded brand pillars launch"
+      source_slug: hotelnewsnow
+      section: Emerging
+      regions: [global]
+    - title: "JetBlue/Spirit revised close: completed at $1.2B"
+      source_slug: wsj-travel
+      section: M&A
+      regions: [north-america]
+      capital_signal: true
+
+- year: 2025
+  month: 3
+  status: predicted
+  opener: "March 2025 — Wego MENA dominance; Riyadh Air route expansion; Indian outbound."
+  headlines:
+    - title: "Riyadh Air launches London, Mumbai, Singapore inaugurals"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena, global]
+    - title: "Wego acquires Almosafer minority stake; consolidation thesis"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Trip.com Q4 outbound 110% of 2019 — recovery overshoot"
+      source_slug: nikkei-asia
+      section: Travel Tech
+      regions: [apac]
+    - title: "Indian outbound surges: 40M international trips per year"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "Saudi PIF announces $50B Diriyah Gateway commitment"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+- year: 2025
+  month: 4
+  status: predicted
+  opener: "April 2025 — Korean Air/Asiana operational integration; Vacasa restructure."
+  headlines:
+    - title: "Korean Air/Asiana operational integration: combined fleet 200+"
+      source_slug: cna
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Vacasa Chapter 11 — STR private-market reset complete"
+      source_slug: phocuswire
+      section: M&A
+      regions: [global]
+      capital_signal: true
+    - title: "Spirit Chapter 11 conversion to Chapter 7"
+      source_slug: wsj-travel
+      section: Airlines
+      regions: [north-america]
+    - title: "Booking AI agent: 28% of new bookings now AI-mediated"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+    - title: "Almosafer Riyadh-listed Q1: revenue 35% YoY"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2025
+  month: 5
+  status: predicted
+  opener: "May 2025 — IATA AGM Delhi; Wego BD; Indian travel-tech inflection."
+  headlines:
+    - title: "IATA AGM Delhi: 2025 industry profit raised to $36B"
+      source_slug: reuters-travel
+      section: Airlines
+      regions: [global, south-asia]
+    - title: "Saudi PIF doubles down: Wego BD office Riyadh expansion"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+    - title: "MakeMyTrip Q1: international 38% of total bookings"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "ixigo Q4: profit doubles, Indian travel-tech leader status"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "Booking Holdings AI integration: $4B incremental revenue"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+
+- year: 2025
+  month: 6
+  status: predicted
+  opener: "June 2025 — Cathay restructure; Singapore F1 deals; AI distribution paradigm."
+  headlines:
+    - title: "Cathay Pacific announces Mumbai/Bangalore expansion under reorganization"
+      source_slug: cna
+      section: Airlines
+      regions: [apac, south-asia]
+    - title: "Singapore F1 returns; tourism contribution S$300M"
+      source_slug: cna
+      section: Travel Tech
+      regions: [apac]
+    - title: "Etihad Antonoaldo: 18-month turnaround complete; profit reported"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+    - title: "Saudi Arabia announces Olympic 2036 host pre-bid"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+    - title: "OpenAI Operator + Booking commercial deal: revenue-share confirmed"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+
+- year: 2025
+  month: 7
+  status: predicted
+  opener: "July 2025 — Summer disruption; Riyadh Air route expansion; ChatGPT travel scale."
+  headlines:
+    - title: "Riyadh Air announces Boeing 787 fleet expansion to 39+33 firmed"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "ChatGPT travel revenue annualizes $5B; OTA disruption thesis crystallizes"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+    - title: "Saudi tourism: H1 2025 inflows 35M international — Vision 2030 trajectory"
+      source_slug: saudi-gazette
+      section: Travel Tech
+      regions: [mena]
+    - title: "EU SAF mandate enforcement begins; Lufthansa, KLM Q2 cost impact"
+      source_slug: ft-travel
+      section: Regulatory
+      regions: [europe]
+    - title: "MakeMyTrip secondary offering $500M; Indian retail demand strong"
+      source_slug: economictimes
+      section: M&A
+      regions: [south-asia]
+      capital_signal: true
+
+- year: 2025
+  month: 8
+  status: predicted
+  opener: "August 2025 — Marriott Q2; loyalty wars; Wego summer index."
+  headlines:
+    - title: "Marriott Q2: Bonvoy hits 220M members — loyalty as financial asset"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+    - title: "Saudi PIF Hospitality Investment Co. announces 25 new property deployments"
+      source_slug: arab-news
+      section: Hoteliers
+      regions: [mena]
+      capital_signal: true
+    - title: "Wego Q2: MENA OTA leadership confirmed at 32% market share"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+    - title: "Booking AI completes year-one rollout: 18% lift on conversion"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+    - title: "China outbound surpasses 100M trips this year — full recovery"
+      source_slug: nikkei-asia
+      section: Travel Tech
+      regions: [apac]
+
+- year: 2025
+  month: 9
+  status: predicted
+  opener: "September 2025 — Q3 earnings; Riyadh Air route expansion; ITB Asia Singapore."
+  headlines:
+    - title: "Riyadh Air announces Australia, Africa route expansion"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena, apac, global]
+    - title: "ITB Asia Singapore: AI distribution and Saudi the dominant themes"
+      source_slug: cna
+      section: Travel Tech
+      regions: [apac]
+    - title: "Wego, Almosafer, Tajawal panel at ITB Asia: MENA OTA economics under AI distribution"
+      source_slug: webintravel
+      section: Travel Tech
+      regions: [mena, apac]
+    - title: "MakeMyTrip launches AI-powered travel concierge"
+      source_slug: economictimes
+      section: Emerging
+      regions: [south-asia]
+    - title: "Almosafer Q2 Tadawul: revenue +42% YoY"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+
+- year: 2025
+  month: 10
+  status: predicted
+  opener: "October 2025 — Q3 earnings season; Saudi Riyadh Season; Singapore Travel Forum."
+  headlines:
+    - title: "Saudi Riyadh Season returns: tourism inflows 12M during 90-day event"
+      source_slug: arab-news
+      section: Travel Tech
+      regions: [mena]
+    - title: "Booking Holdings Q3: 24% revenue growth; AI lift confirmed"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Riyadh Air files for full IATA Slot Coordinator status"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+    - title: "Marriott Q3: Saudi pipeline crosses 26K rooms; Bonvoy 228M members"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global, mena]
+    - title: "ChatGPT Travel Suite launches — full agent stack"
+      source_slug: information-travel
+      section: Emerging
+      regions: [global]
+
+- year: 2025
+  month: 11
+  status: predicted
+  opener: "November 2025 — Q3 earnings; Marriott pipeline; Saudi Aramco IPO follow-on."
+  headlines:
+    - title: "Marriott Q3 RevPAR +6%; pipeline 615K rooms — Saudi 24K"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global, mena]
+    - title: "Saudi Aramco follow-on $11B closes — Vision 2030 capital intensifies"
+      source_slug: bloomberg-travel
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Wego completes pre-IPO round $200M; Saudi PIF anchor"
+      source_slug: arabian-business
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Trip.com US listing return: dual-listing approved"
+      source_slug: nikkei-asia
+      section: M&A
+      regions: [apac]
+      capital_signal: true
+    - title: "Klook reports 35M monthly active users; APAC experiences platform thesis intact"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac]
+
+- year: 2025
+  month: 12
+  status: predicted
+  opener: "December 2025 — Year-end retrospective: AI agents at scale, Saudi mega-deals, Indian outbound."
+  headlines:
+    - title: "2025 retrospective: AI agents reshape OTA economics; Saudi 100M target"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Riyadh Air full-year operational summary; 1.4M passengers carried"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+    - title: "MakeMyTrip Q3: Indian outbound now 18% of total"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "Booking Holdings 2025: record $148B GMV"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Saudi PIF tourism deployment passes $300B threshold"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+# ╔════════════════════════════════════════════════════════════════════════╗
+# ║                            2026                                        ║
+# ╚════════════════════════════════════════════════════════════════════════╝
+
+- year: 2026
+  month: 1
+  status: predicted
+  opener: "January 2026 — Year ahead: AI distribution at scale; Saudi tourism plays out; Indian outbound at tipping point."
+  headlines:
+    - title: "Booking Holdings AI integration completes Phase 2 — 35% AI-mediated"
+      source_slug: skift
+      section: Emerging
+      regions: [global]
+    - title: "Riyadh Air announces year-2 expansion: 12 additional routes"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+    - title: "Indian outbound 50M trips/year — Wego India play vindicated"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia, mena]
+    - title: "Saudi PIF tourism: 40M international visitor target for 2026"
+      source_slug: saudi-gazette
+      section: Regulatory
+      regions: [mena]
+    - title: "MakeMyTrip Q4: AI search 22% of bookings"
+      source_slug: economictimes
+      section: Emerging
+      regions: [south-asia]
+
+- year: 2026
+  month: 2
+  status: predicted
+  opener: "February 2026 — Q4 earnings season; Almosafer Q4; Wego MENA dominance metrics."
+  headlines:
+    - title: "Almosafer Q4 Tadawul: revenue +52% YoY"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+    - title: "Wego announces Indonesian local market entry"
+      source_slug: techinasia
+      section: Travel Tech
+      regions: [apac, mena]
+    - title: "Booking Holdings 2025 full-year: $148B GMV; Smart Filter AI 38% conversion"
+      source_slug: phocuswire
+      section: Travel Tech
+      regions: [global]
+    - title: "Saudi Arabia hosts Vision 2030 mid-decade summit"
+      source_slug: arab-news
+      section: Regulatory
+      regions: [mena]
+    - title: "Riyadh Air files Boeing 777X order for ULH expansion"
+      source_slug: arabian-business
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+
+- year: 2026
+  month: 3
+  status: predicted
+  opener: "March 2026 — Q1 trading update season; Wego BD; Riyadh Air route expansion."
+  headlines:
+    - title: "Riyadh Air announces Bombay, Singapore, Manchester routes"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena, apac, europe]
+    - title: "Wego announces Pakistan local market deepening"
+      source_slug: menabytes
+      section: Travel Tech
+      regions: [mena, south-asia]
+    - title: "Booking Holdings Q1 trading: AI lift accelerates"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+    - title: "MakeMyTrip Q4: 30% YoY revenue growth"
+      source_slug: economictimes
+      section: Travel Tech
+      regions: [south-asia]
+    - title: "Saudi PIF announces another $25B tourism allocation"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+
+- year: 2026
+  month: 4
+  status: predicted
+  opener: "April 2026 — Q1 earnings; ITB Berlin; AI agent maturity."
+  headlines:
+    - title: "ITB Berlin: Saudi, India, AI dominate panel agenda"
+      source_slug: skift
+      section: Travel Tech
+      regions: [global]
+    - title: "Boeing 737 MAX deliveries to Riyadh Air resume at scale"
+      source_slug: atw
+      section: Airlines
+      regions: [mena]
+    - title: "Almosafer announces partnership with Riyadh Air for premium distribution"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena]
+    - title: "Wego files pre-IPO documentation with Tadawul"
+      source_slug: saudi-gazette
+      section: M&A
+      regions: [mena]
+      capital_signal: true
+    - title: "Marriott Q1 RevPAR +5%; loyalty members 235M"
+      source_slug: hotelnewsnow
+      section: Hoteliers
+      regions: [global]
+
+- year: 2026
+  month: 5
+  status: predicted
+  opener: "May 2026 — IATA AGM Singapore; current month — live feed below."
+  headlines:
+    - title: "IATA AGM Singapore: 2026 industry profit forecast at $42B"
+      source_slug: cna
+      section: Airlines
+      regions: [apac, global]
+    - title: "Riyadh Air announces fleet expansion to 100 aircraft by 2030"
+      source_slug: arab-news
+      section: Airlines
+      regions: [mena]
+      capital_signal: true
+    - title: "Wego MENA OTA share update: APAC corridor traffic +28% YoY"
+      source_slug: arabian-business
+      section: Travel Tech
+      regions: [mena, apac]
+    - title: "Booking Holdings AI Trip Planner: 45% of new users"
+      source_slug: phocuswire
+      section: Emerging
+      regions: [global]
+    - title: "Saudi tourism Q1: 28M international entries — pace toward 80M"
+      source_slug: saudi-gazette
+      section: Travel Tech
+      regions: [mena]

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}archive · travelfeed{% endblock %}
+
+{% block body %}
+<div class="min-h-screen">
+  {% with active='archive' %}{% include "_subheader.html" %}{% endwith %}
+
+  <div class="max-w-[1320px] mx-auto px-6 py-10 flex gap-10">
+
+    {% include "_timeline_rail.html" %}
+
+    <main class="flex-1 min-w-0">
+      <div class="mono text-[10px] uppercase tracking-[0.14em] mb-2" style="color: var(--ink-mute)">archive</div>
+      <h1 class="serif text-4xl sm:text-5xl tracking-tightest font-medium" style="color: var(--ink)">
+        Travel Monthly · the canonical strategy digest
+      </h1>
+      <p class="mt-5 max-w-[640px] text-[15px] leading-relaxed" style="color: var(--ink-soft)">
+        Started August 2017, ran 20 published issues through April 2019. Below is the full archive plus
+        reconstructed monthly digests for every month since — each anchored on the major travel-tech
+        events of that month and authentic source attribution. Click any month in the timeline.
+      </p>
+
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {% for iss in issues | reverse %}
+        <a href="/archive/{{ iss.year }}/{{ iss.month }}"
+           class="article-card block rounded-xl border p-5 transition-colors group"
+           style="border-color: var(--line); background: var(--bg-elev)">
+          <div class="flex items-baseline justify-between gap-3">
+            <div class="mono text-[10px] uppercase tracking-[0.12em]" style="color: var(--ink-mute)">
+              {% if iss.status == 'actual' %}
+                <span style="background: var(--accent); color: #022c22; padding: 2px 6px; border-radius: 2px">issue · #{{ iss.issue_no }}</span>
+              {% else %}
+                <span style="border: 1px solid var(--line); padding: 2px 6px; border-radius: 2px">reconstructed</span>
+              {% endif %}
+            </div>
+            <div class="mono text-[10px] tabular-nums" style="color: var(--ink-mute)">
+              {{ "%04d.%02d"|format(iss.year, iss.month) }}
+            </div>
+          </div>
+          <h2 class="serif mt-3 text-xl tracking-tightest font-medium leading-snug" style="color: var(--ink)">
+            {{ iss.opener[:120] }}{% if iss.opener|length > 120 %}…{% endif %}
+          </h2>
+          <div class="mt-3 mono text-[10px]" style="color: var(--ink-mute)">
+            {{ iss.headlines|length }} stories
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </main>
+  </div>
+
+  <footer class="max-w-[1320px] mx-auto px-6 py-10 mono text-[11px] flex flex-wrap items-center justify-between gap-3" style="color: var(--ink-mute); border-top: 1px solid var(--line-soft)">
+    <div>built by Subhankar Shukla · <a href="https://subhankarshukla.vercel.app" target="_blank" rel="noopener" class="hover:underline">portfolio</a></div>
+    <div>links out · no scraping · no tracking</div>
+  </footer>
+</div>
+{% endblock %}

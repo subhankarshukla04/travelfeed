@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}about · travelfeed{% endblock %}
+
+{% block body %}
+<div class="min-h-screen">
+  {% with active='about' %}{% include "_subheader.html" %}{% endwith %}
+
+  <main class="max-w-[720px] mx-auto px-6 pt-16 pb-24">
+
+    <div class="mono text-[10px] uppercase tracking-[0.14em] mb-3" style="color: var(--ink-mute)">about</div>
+    <h1 class="serif text-4xl sm:text-5xl tracking-tightest font-medium leading-[1.05]" style="color: var(--ink)">
+      Built by Subhankar Shukla as a working artifact for a Wego BD conversation.
+    </h1>
+
+    <p class="mt-8 text-[16px] leading-[1.7]" style="color: var(--ink-soft)">
+      I'm an NUS NOC candidate interviewing with Nedyalko Terziev for a BD role at Wego. Rather than
+      send a deck, I built the thing I'd actually want to use on the job — a daily index of the
+      travel-tech beat, scored for the kind of stories a strategy reader notices first.
+    </p>
+
+    <section class="mt-14">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">why it exists</h2>
+      <p class="mt-5 text-[14.5px] leading-[1.75]" style="color: var(--ink-soft)">
+        Ned ran <em>Travel Monthly</em> from August 2017 through April 2019 — twenty issues of carefully
+        sourced travel-industry analysis, ending after he joined Wego. The discipline of the series
+        (consistent sections, repeat publications, capital-flow emphasis, MENA + APAC focus) is the
+        most legible map of what a Wego strategy reader actually pays attention to.
+      </p>
+      <p class="mt-4 text-[14.5px] leading-[1.75]" style="color: var(--ink-soft)">
+        Every source on this site was cited in that archive. The taxonomy and scoring weights were
+        reverse-engineered from it. The <a href="/archive" class="underline-offset-2 hover:underline" style="color: var(--ink)">/archive</a>
+        page reproduces all twenty original issues and reconstructs every month since — same
+        structure, real events, authentic source attribution.
+      </p>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">honest disclosures</h2>
+      <ul class="mt-5 space-y-3 text-[14px] leading-[1.7]" style="color: var(--ink-soft)">
+        <li><strong style="color: var(--ink)">·</strong>&nbsp; The 13 issues marked <em>published</em> on the timeline are extracted from Ned's LinkedIn Pulse and Medium archive. Headlines and openers are his.</li>
+        <li><strong style="color: var(--ink)">·</strong>&nbsp; The 91 issues marked <em>reconstructed</em> are not Ned's — they are my reconstructions of what a Travel Monthly issue might have looked like for that month, anchored on real travel-industry events I sourced separately. Treat them as a historical reading list, not as his work.</li>
+        <li><strong style="color: var(--ink)">·</strong>&nbsp; Every headline links out to the publisher. No content is hosted, scraped, or excerpted here.</li>
+        <li><strong style="color: var(--ink)">·</strong>&nbsp; The live feed pulls from RSS only; nothing is paid, nothing is sponsored.</li>
+      </ul>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">stack</h2>
+      <p class="mt-5 text-[14.5px] leading-[1.7]" style="color: var(--ink-soft)">
+        Flask · Postgres · feedparser · Tailwind · Alpine. Hosted locally during the interview window;
+        deployable in one command. The full <a href="/methodology" class="underline-offset-2 hover:underline" style="color: var(--ink)">methodology</a> walks through the editorial choices.
+      </p>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">contact</h2>
+      <p class="mt-5 text-[14.5px] leading-[1.7]" style="color: var(--ink-soft)">
+        Subhankar Shukla · <a href="mailto:subhankar.shukla04@gmail.com" class="underline-offset-2 hover:underline" style="color: var(--ink)">subhankar.shukla04@gmail.com</a>
+        · <a href="https://subhankarshukla.vercel.app" target="_blank" rel="noopener" class="underline-offset-2 hover:underline" style="color: var(--ink)">portfolio</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="max-w-[1200px] mx-auto px-6 py-10 mono text-[11px] flex flex-wrap items-center justify-between gap-3" style="color: var(--ink-mute); border-top: 1px solid var(--line-soft)">
+    <div>built by Subhankar Shukla · for the conversation with Ned at Wego</div>
+    <div>links out · no scraping · no tracking</div>
+  </footer>
+</div>
+{% endblock %}

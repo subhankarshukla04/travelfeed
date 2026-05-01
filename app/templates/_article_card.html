@@ -1,0 +1,30 @@
+<li data-card class="article-card group -mx-3">
+  <a href="{{ a.url }}" target="_blank" rel="noopener noreferrer"
+     title="Read on {{ a.source.name }}"
+     class="block px-3 py-4 rounded-md transition-colors hover:bg-[var(--line-soft)] focus:bg-[var(--line-soft)]">
+    <div class="flex items-baseline gap-3">
+      <h3 class="flex-1 text-[15.5px] sm:text-[16px] leading-snug font-medium tracking-tight" style="color: var(--ink)">
+        {{ a.title }}
+        <svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7M21 3l-9 9M5 5h6M5 12v7h7"/></svg>
+      </h3>
+      <span class="hidden sm:inline mono text-[11px] tabular-nums shrink-0" style="color: var(--ink-mute)">{{ a.score | int }}</span>
+    </div>
+    <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11.5px]">
+      <span class="inline-flex items-center gap-1.5 mono uppercase tracking-wide tier-{{ a.source.tier }}" style="color: var(--ink-soft)">
+        <span class="tier-dot"></span>{{ a.source.name }}
+      </span>
+      <span style="color: var(--line)">·</span>
+      <time class="mono" style="color: var(--ink-mute)">{{ a.published_at | humanize_date }}</time>
+      {% if a.section %}<span style="color: var(--line)">·</span><span class="mono" style="color: var(--ink-mute)">{{ a.section | lower }}</span>{% endif %}
+      {% for r in a.regions[:2] %}
+        <span class="mono text-[10px] px-1.5 py-0.5 rounded-sm uppercase tracking-wider" style="background: var(--line-soft); color: var(--ink-soft)">{{ r }}</span>
+      {% endfor %}
+      {% if a.companies %}
+        {% for c in a.companies[:3] %}
+          <span class="mono text-[10px] px-1.5 py-0.5 rounded-sm" style="background: var(--line-soft); color: var(--ink-soft)">{{ c }}</span>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="mt-2.5 score-bar w-full"><span style="width: {{ (a.score / 70 * 100) | round | int }}%"></span></div>
+  </a>
+</li>

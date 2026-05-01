@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}{{ issue.year }}.{{ "%02d"|format(issue.month) }} · travel monthly{% endblock %}
+
+{% block body %}
+{% set month_names = ['', 'January','February','March','April','May','June','July','August','September','October','November','December'] %}
+<div class="min-h-screen">
+  {% with active='archive' %}{% include "_subheader.html" %}{% endwith %}
+
+  <div class="max-w-[1320px] mx-auto px-6 py-10 flex gap-10">
+
+    {% with active_year=issue.year, active_month=issue.month %}
+      {% include "_timeline_rail.html" %}
+    {% endwith %}
+
+    <main class="flex-1 min-w-0 max-w-[760px]">
+
+      {# ──── header strip ──── #}
+      <div class="flex items-center justify-between mb-5">
+        <div class="mono text-[10px] uppercase tracking-[0.14em]" style="color: var(--ink-mute)">
+          travel monthly
+          {% if issue.status == 'actual' %}
+            · <span style="color: var(--accent)">published</span>
+            {% if issue.issue_no %} · #{{ issue.issue_no }}{% endif %}
+          {% else %}
+            · <span style="color: var(--ink-soft)">reconstructed</span>
+          {% endif %}
+        </div>
+        <div class="flex items-center gap-3 mono text-[11px]" style="color: var(--ink-mute)">
+          {% if prev_iss %}
+            <a href="/archive/{{ prev_iss.year }}/{{ prev_iss.month }}" class="hover:underline">← {{ month_names[prev_iss.month][:3].lower() }} {{ prev_iss.year }}</a>
+          {% endif %}
+          {% if next_iss %}
+            <a href="/archive/{{ next_iss.year }}/{{ next_iss.month }}" class="hover:underline">{{ month_names[next_iss.month][:3].lower() }} {{ next_iss.year }} →</a>
+          {% endif %}
+        </div>
+      </div>
+
+      {# ──── masthead ──── #}
+      <div class="border-y py-8" style="border-color: var(--line-soft)">
+        <div class="serif text-[64px] sm:text-[88px] leading-[0.9] tracking-tightest font-medium" style="color: var(--ink)">
+          {{ month_names[issue.month] }}
+        </div>
+        <div class="mono text-[12px] tabular-nums tracking-wider mt-1" style="color: var(--ink-mute)">
+          {{ issue.year }}
+        </div>
+      </div>
+
+      {# ──── opener ──── #}
+      <p class="mt-8 serif text-xl sm:text-2xl leading-[1.4] tracking-tight" style="color: var(--ink)">
+        {{ issue.opener }}
+      </p>
+
+      {% if issue.status == 'predicted' %}
+      <div class="mt-6 rounded-md p-4 text-[12.5px] leading-relaxed" style="background: var(--line-soft); color: var(--ink-soft); border-left: 2px solid var(--ink-mute)">
+        Reconstructed digest. Travel Monthly's last published issue was April 2019 (#20). The headlines
+        below are real travel-industry events from this month, with authentic source attribution —
+        what Ned would likely have featured had the series continued.
+      </div>
+      {% endif %}
+
+      <div class="mt-12 space-y-12">
+        {% for sec, items in grouped %}
+          <section>
+            <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b mb-5" style="color: var(--ink-mute); border-color: var(--line)">{{ sec }}</h2>
+            <ul class="divide-y" style="border-color: var(--line-soft)">
+              {% for h in items %}
+              {% set s = sources.get(h.source_slug) %}
+              <li class="article-card group -mx-3">
+                <div class="block px-3 py-4 rounded-md transition-colors hover:bg-[var(--line-soft)]">
+                  <h3 class="text-[15.5px] leading-snug font-medium tracking-tight" style="color: var(--ink)">
+                    {{ h.title }}
+                  </h3>
+                  <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11.5px]">
+                    {% if s %}
+                    <a href="{{ s.homepage_url }}" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-1.5 mono uppercase tracking-wide tier-{{ s.tier }} hover:underline" style="color: var(--ink-soft)">
+                      <span class="tier-dot"></span>{{ s.name }}
+                    </a>
+                    {% else %}
+                    <span class="mono uppercase tracking-wide" style="color: var(--ink-mute)">{{ h.source_slug }}</span>
+                    {% endif %}
+                    {% if h.regions %}
+                      {% for r in h.regions[:3] %}
+                        <span class="mono text-[10px] px-1.5 py-0.5 rounded-sm uppercase tracking-wider" style="background: var(--line-soft); color: var(--ink-soft)">{{ r }}</span>
+                      {% endfor %}
+                    {% endif %}
+                    {% if h.capital_signal %}
+                      <span class="mono text-[9.5px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm" style="background: var(--accent); color: #022c22">capital signal</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </section>
+        {% endfor %}
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="max-w-[1320px] mx-auto px-6 py-10 mono text-[11px] flex flex-wrap items-center justify-between gap-3" style="color: var(--ink-mute); border-top: 1px solid var(--line-soft)">
+    <div>built by Subhankar Shukla · <a href="https://subhankarshukla.vercel.app" target="_blank" rel="noopener" class="hover:underline">portfolio</a></div>
+    <div>links out · no scraping · no tracking</div>
+  </footer>
+</div>
+{% endblock %}

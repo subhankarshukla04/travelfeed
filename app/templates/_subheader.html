@@ -1,0 +1,23 @@
+{# Shared mini-header for /sources and /methodology #}
+<header class="sticky top-0 z-30 backdrop-blur-md"
+        style="background: color-mix(in oklab, var(--bg) 88%, transparent); border-bottom: 1px solid var(--line-soft)">
+  <div class="max-w-[1200px] mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5">
+      <span class="w-2 h-2 rounded-full" style="background: var(--accent)"></span>
+      <span class="mono text-[13px] tracking-tight font-medium">travelfeed</span>
+      <span class="mono text-[10px] uppercase tracking-[0.12em]" style="color: var(--ink-mute)">the travel-tech index</span>
+    </a>
+    <nav class="flex items-center gap-6 mono text-xs" style="color: var(--ink-mute)">
+      <a href="/" class="nav-link hover:text-current" style="color: var(--ink-soft)">feed</a>
+      <a href="/archive" class="nav-link {% if active == 'archive' %}active{% endif %} hover:text-current" {% if active == 'archive' %}style="color: var(--ink)"{% else %}style="color: var(--ink-soft)"{% endif %}>archive</a>
+      <a href="/sources" class="nav-link {% if active == 'sources' %}active{% endif %} hover:text-current" {% if active == 'sources' %}style="color: var(--ink)"{% else %}style="color: var(--ink-soft)"{% endif %}>sources</a>
+      <a href="/methodology" class="nav-link {% if active == 'methodology' %}active{% endif %} hover:text-current" {% if active == 'methodology' %}style="color: var(--ink)"{% else %}style="color: var(--ink-soft)"{% endif %}>methodology</a>
+      <a href="/about" class="nav-link {% if active == 'about' %}active{% endif %} hover:text-current" {% if active == 'about' %}style="color: var(--ink)"{% else %}style="color: var(--ink-soft)"{% endif %}>about</a>
+      <button type="button"
+        onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
+        class="hover:text-current">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>

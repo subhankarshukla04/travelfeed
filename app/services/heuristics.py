@@ -14,9 +14,12 @@ from app.models import Article
 # Section keyword rules — first match wins.
 SECTION_RULES = [
     ("M&A", [
-        r"\bacqui(?:re|red|ring|sition)\b", r"\bmerger\b", r"\bbuyout\b",
+        r"\bacqui(?:re|res|red|ring|sition|sitions)\b", r"\bmerg(?:er|ers|ing|es|ed)\b", r"\bbuyout\b",
         r"\bIPO\b", r"\binvestment round\b", r"\bSeries [A-E]\b",
-        r"\braised \$\d", r"\bvaluation of \$\d", r"\b\$\d+(?:\.\d+)?[MB]n? (?:funding|round|deal)",
+        r"\braise[ds]? \$\d", r"\bvaluation of \$\d",
+        r"\b\$\d+(?:\.\d+)?[MB]n? (?:funding|round|deal|investment|acquisition)",
+        r"\btakeover\b", r"\bdeal worth\b", r"\bsells? to\b", r"\bsale to\b",
+        r"\bspin[- ]?off\b", r"\bgo(?:es|ing)? public\b",
     ]),
     ("Executive", [
         r"\bappoints?\b", r"\b(?:names|named) (?:new |the new )?(?:CEO|CFO|COO|CTO|chairman|president)\b",
@@ -143,7 +146,16 @@ def heuristic_tag_one(article: Article) -> bool:
     if not haystack.strip():
         return False
     article.section = detect_section(haystack)
-    article.regions = detect_regions(haystack) or ["global"]
+
+    detected = detect_regions(haystack)
+    source_region = article.source.region if article.source else None
+    if detected:
+        if source_region and source_region not in detected and source_region != "global":
+            detected.insert(0, source_region)
+        article.regions = detected
+    else:
+        article.regions = [source_region] if source_region else ["global"]
+
     article.themes = detect_themes(haystack)
     article.capital_signal = detect_capital_signal(haystack)
     article.tagged_at = datetime.now(timezone.utc)

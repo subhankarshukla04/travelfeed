@@ -1,6 +1,7 @@
 from datetime import datetime, timezone, timedelta
 from flask import Blueprint, request, render_template, jsonify
-from sqlalchemy import or_
+from sqlalchemy import or_, func
+from app.extensions import db
 from app.models import Article, Source
 
 bp = Blueprint("api", __name__)
@@ -35,6 +36,7 @@ def _query_from_request():
         Article.published_at.between(date_from, date_to),
         Article.tagged_at.isnot(None),
         Article.travel_relevant.is_(True),
+        Source.active.is_(True),
     )
     if section:
         query = query.filter(Article.section == section)
@@ -83,3 +85,60 @@ def feed():
 @bp.route("/health")
 def health():
     return jsonify(ok=True)
+
+
+@bp.route("/facets")
+def facets():
+    now = datetime.now(timezone.utc)
+    date_from = _parse_date(request.args.get("from"), now - timedelta(days=30))
+    date_to = _parse_date(request.args.get("to"), now)
+
+    base = Article.query.join(Source).filter(
+        Article.published_at.between(date_from, date_to),
+        Article.tagged_at.isnot(None),
+        Article.travel_relevant.is_(True),
+        Source.active.is_(True),
+    )
+
+    section_arg = request.args.get("section")
+    region_arg = request.args.get("region")
+    source_arg = request.args.get("source")
+    q = (request.args.get("q") or "").strip()
+
+    def apply_other_filters(query, *, except_filter=None):
+        if except_filter != "section" and section_arg:
+            query = query.filter(Article.section == section_arg)
+        if except_filter != "region" and region_arg:
+            query = query.filter(Article.regions.any(region_arg))
+        if except_filter != "source" and source_arg:
+            query = query.filter(Source.slug == source_arg)
+        if q:
+            like = f"%{q}%"
+            query = query.filter(or_(Article.title.ilike(like), Article.summary.ilike(like)))
+        return query
+
+    total = apply_other_filters(base).count()
+
+    section_q = apply_other_filters(base, except_filter="section")
+    section_counts = dict(
+        section_q.with_entities(Article.section, func.count(Article.id))
+        .group_by(Article.section).all()
+    )
+
+    region_q = apply_other_filters(base, except_filter="region")
+    region_counts = {}
+    for r in ("global", "mena", "apac", "south-asia", "north-america", "europe"):
+        region_counts[r] = region_q.filter(Article.regions.any(r)).count()
+
+    source_q = apply_other_filters(base, except_filter="source")
+    source_counts = dict(
+        source_q.with_entities(Source.slug, func.count(Article.id))
+        .group_by(Source.slug).all()
+    )
+
+    return jsonify({
+        "total": total,
+        "sections": section_counts,
+        "regions": region_counts,
+        "sources": source_counts,
+    })

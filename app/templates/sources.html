@@ -3,62 +3,75 @@
 
 {% block body %}
 <div class="min-h-screen">
-  <header class="border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur z-10">
-    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="mono text-sm tracking-tight font-medium">travelfeed</a>
-      <nav class="flex items-center gap-5 mono text-xs text-zinc-500">
-        <a href="/sources" class="text-zinc-900 dark:text-zinc-100">sources</a>
-        <a href="/methodology" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">methodology</a>
-        <button type="button"
-          onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
-          class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">theme</button>
-      </nav>
+  {% with active='sources' %}{% include "_subheader.html" %}{% endwith %}
+
+  <main class="max-w-[1100px] mx-auto px-6 pt-12 pb-20">
+
+    <div class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-end gap-6 mb-10">
+      <div>
+        <div class="mono text-[10px] uppercase tracking-[0.14em] mb-2" style="color: var(--ink-mute)">sources</div>
+        <h1 class="serif text-4xl tracking-tightest font-medium" style="color: var(--ink)">{{ rows|length }} feeds, ranked by tier</h1>
+        <p class="mt-3 max-w-xl text-[14.5px] leading-relaxed" style="color: var(--ink-soft)">
+          Trade press first, then premium business and regional outlets in MENA, APAC, and South Asia.
+          Every story links straight to the publisher.
+        </p>
+      </div>
+      <div class="flex items-center gap-4 mono text-[11px]" style="color: var(--ink-mute)">
+        <span class="inline-flex items-center gap-1.5 tier-1"><span class="tier-dot"></span>tier 1 · trade press</span>
+        <span class="inline-flex items-center gap-1.5 tier-2"><span class="tier-dot"></span>tier 2 · business</span>
+        <span class="inline-flex items-center gap-1.5 tier-3"><span class="tier-dot"></span>tier 3 · regional</span>
+      </div>
     </div>
-  </header>
 
-  <main class="max-w-3xl mx-auto px-6 pt-10 pb-24">
+    <div class="overflow-hidden rounded-xl border" style="border-color: var(--line); background: var(--bg-elev)">
+      <table class="w-full text-sm">
+        <thead class="mono text-[10px] uppercase tracking-[0.1em]" style="color: var(--ink-mute); background: var(--line-soft)">
+          <tr>
+            <th class="text-left py-3 px-5 font-normal">Source</th>
+            <th class="text-left py-3 px-3 font-normal">Tier</th>
+            <th class="text-left py-3 px-3 font-normal">Region</th>
+            <th class="text-right py-3 px-3 font-normal">Articles</th>
+            <th class="text-right py-3 px-3 font-normal">Travel-relevant</th>
+            <th class="text-right py-3 px-5 font-normal">Latest</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in rows %}
+          <tr class="row-tint" style="border-top: 1px solid var(--line-soft)">
+            <td class="py-3.5 px-5">
+              <a href="{{ r.homepage_url }}" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 group">
+                <span class="font-medium" style="color: var(--ink)">{{ r.name }}</span>
+                <svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7M21 3l-9 9M5 5h6M5 12v7h7"/></svg>
+              </a>
+            </td>
+            <td class="py-3.5 px-3 tier-{{ r.tier }}">
+              <span class="inline-flex items-center gap-1.5 mono text-[11px]" style="color: var(--ink-soft)">
+                <span class="tier-dot"></span>T{{ r.tier }}
+              </span>
+            </td>
+            <td class="py-3.5 px-3 mono text-[11px]" style="color: var(--ink-soft)">{{ r.region }}</td>
+            <td class="py-3.5 px-3 text-right tabular-nums mono text-[12px]" style="color: var(--ink-mute)">{{ r.n }}</td>
+            <td class="py-3.5 px-3 text-right tabular-nums mono text-[12px] font-medium" style="color: var(--ink)">{{ r.n_relevant }}</td>
+            <td class="py-3.5 px-5 text-right mono text-[11px]" style="color: var(--ink-mute)">
+              {% if r.latest %}{{ r.latest.strftime('%b %d') }}{% else %}—{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
 
-    <h1 class="text-2xl font-semibold tracking-tight">Sources</h1>
-    <p class="mt-3 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed max-w-xl">
-      {{ rows|length }} active feeds across global trade press, business press, and regional publications
-      in MENA, APAC, and South Asia. Travel-relevance count shows articles after the keyword filter.
+    <p class="mt-6 text-[12.5px]" style="color: var(--ink-mute)">
+      Source list curated for travel-tech, OTA, hospitality, and regional Wego-relevant coverage.
+      Article counts reflect the last 30 days.
     </p>
-
-    <table class="mt-8 w-full text-sm">
-      <thead class="mono text-xs uppercase tracking-wide text-zinc-500 border-b border-zinc-200 dark:border-zinc-800">
-        <tr>
-          <th class="text-left py-2 pr-4">Source</th>
-          <th class="text-left py-2 pr-4">Tier</th>
-          <th class="text-left py-2 pr-4">Region</th>
-          <th class="text-right py-2 pr-4">Total</th>
-          <th class="text-right py-2 pr-4">Relevant</th>
-          <th class="text-right py-2 mono text-xs">Latest</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for r in rows %}
-        <tr class="border-b border-zinc-100 dark:border-zinc-900 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition-colors">
-          <td class="py-3 pr-4">
-            <a href="{{ r.homepage_url }}" target="_blank" rel="noopener" class="hover:text-zinc-900 dark:hover:text-zinc-100">
-              {{ r.name }}
-            </a>
-          </td>
-          <td class="py-3 pr-4 mono text-xs text-zinc-500">T{{ r.tier }}</td>
-          <td class="py-3 pr-4 mono text-xs text-zinc-500">{{ r.region }}</td>
-          <td class="py-3 pr-4 text-right tabular-nums text-zinc-500">{{ r.n }}</td>
-          <td class="py-3 pr-4 text-right tabular-nums">{{ r.n_relevant }}</td>
-          <td class="py-3 text-right mono text-xs text-zinc-500">
-            {% if r.latest %}{{ r.latest.strftime('%b %d') }}{% else %}—{% endif %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
 
   </main>
 
-  <footer class="max-w-3xl mx-auto px-6 py-10 mono text-xs text-zinc-500 border-t border-zinc-200 dark:border-zinc-800">
-    Built by Subhankar Shukla · subhankarshukla.vercel.app
+  <footer class="max-w-[1200px] mx-auto px-6 py-10 mono text-[11px] flex flex-wrap items-center justify-between gap-3" style="color: var(--ink-mute); border-top: 1px solid var(--line-soft)">
+    <div>built by Subhankar Shukla · <a href="https://subhankarshukla.vercel.app" target="_blank" rel="noopener" class="hover:underline">portfolio</a></div>
+    <div>links out · no scraping · no tracking</div>
   </footer>
 </div>
 {% endblock %}

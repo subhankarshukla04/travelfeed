@@ -1,0 +1,80 @@
+{# Left-side timeline rail. Pass: timeline (grouped_timeline output),
+   active_year, active_month — for highlighting the current page. #}
+<aside class="timeline-rail">
+  <div class="rail-block first">
+    <div class="rail-label">archive</div>
+    <a href="/archive" class="block mono text-[12px] mb-1 hover:opacity-100"
+       style="color: var(--ink-mute); opacity: 0.85">all issues →</a>
+    <p class="text-[11px] leading-relaxed" style="color: var(--ink-mute)">
+      Aug 2017 → today. Original issues #1–20 + reconstructed monthly digests.
+    </p>
+  </div>
+
+  {% for year, months in timeline %}
+    <div class="rail-block">
+      <div class="mono text-[11px] tabular-nums mb-2" style="color: var(--ink); letter-spacing: 0.04em">{{ year }}</div>
+      <ul class="space-y-[3px]">
+        {% for m in months %}
+        {% set is_active = (active_year == m.year and active_month == m.month) %}
+        <li>
+          {% if m.has_data %}
+          <a href="/archive/{{ m.year }}/{{ m.month }}"
+             class="timeline-month {% if is_active %}active{% endif %} {% if m.is_current %}current{% endif %}"
+             title="{{ m.month_full }} {{ m.year }}{% if m.issue_no %} · #{{ m.issue_no }}{% endif %} · {{ m.status }}">
+            <span class="dot dot-{{ m.status }}{% if m.is_current %} dot-current{% endif %}"></span>
+            <span class="mono text-[11px]">{{ m.label }}</span>
+            {% if m.issue_no %}
+              <span class="mono text-[9px] tabular-nums ml-auto" style="color: var(--ink-mute)">#{{ m.issue_no }}</span>
+            {% elif m.is_current %}
+              <span class="mono text-[9px] uppercase ml-auto" style="color: var(--accent)">live</span>
+            {% endif %}
+          </a>
+          {% else %}
+          <span class="timeline-month disabled">
+            <span class="dot dot-missing"></span>
+            <span class="mono text-[11px]">{{ m.label }}</span>
+          </span>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</aside>
+
+<style>
+  .timeline-rail { width: 180px; flex-shrink: 0; padding-right: 16px; }
+  .timeline-rail .rail-block { padding: 14px 0 14px 0; border-top: 1px solid var(--line-soft); }
+  .timeline-rail .rail-block.first { border-top: none; padding-top: 0; }
+  .timeline-rail .rail-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+  .timeline-month {
+    display: flex; align-items: center; gap: 8px;
+    padding: 3px 8px 3px 6px;
+    border-radius: 4px;
+    color: var(--ink-mute);
+    transition: all 120ms ease;
+  }
+  a.timeline-month:hover { color: var(--ink); background: var(--line-soft); }
+  a.timeline-month.active { background: var(--ink); color: var(--bg); }
+  a.timeline-month.active .mono { color: var(--bg); }
+  .timeline-month.disabled { opacity: 0.35; cursor: default; }
+  .timeline-month .dot {
+    width: 6px; height: 6px; border-radius: 999px; flex-shrink: 0;
+    background: var(--line);
+  }
+  .dot-actual { background: var(--accent); }
+  .dot-predicted { background: var(--ink-mute); border: 1px solid var(--line); background: transparent; }
+  .dot-missing { background: var(--line); }
+  .dot-current { background: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 30%, transparent); }
+
+  @media (max-width: 1100px) {
+    .timeline-rail { display: none; }
+  }
+</style>

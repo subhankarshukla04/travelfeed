@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% block title %}travelfeed{% endblock %}</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2280%22 font-size=%2280%22>·</text></svg>">
-  <meta name="description" content="Travel-tech, airline, and hospitality news aggregated from trade press and regional sources, ranked by likely strategic relevance.">
-  <meta property="og:title" content="travelfeed">
-  <meta property="og:description" content="Travel-tech, airline, and hospitality news. Aggregated from trade press and regional sources, ranked by likely strategic relevance.">
+  <title>{% block title %}travelfeed · the travel-tech index{% endblock %}</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22%2310b981%22/></svg>">
+  <meta name="description" content="The travel-tech index. Trade press, regional MENA / APAC / South Asia, and premium business coverage — ranked by strategic relevance, linking out to publishers.">
+  <meta property="og:title" content="travelfeed · the travel-tech index">
+  <meta property="og:description" content="Trade press · regional · ranked by strategic relevance.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="robots" content="index,follow">
@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -33,6 +33,17 @@
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+            serif: ['Fraunces', 'Georgia', 'serif'],
+          },
+          colors: {
+            paper: { light: '#fafaf9', DEFAULT: '#f5f5f4', dark: '#0a0a0a' },
+            ink: { DEFAULT: '#0c0a09', soft: '#3f3f46', mute: '#71717a' },
+            tier1: { DEFAULT: '#10b981', soft: '#d1fae5', dark: '#022c22' },
+            tier2: { DEFAULT: '#f59e0b', soft: '#fef3c7', dark: '#451a03' },
+            tier3: { DEFAULT: '#64748b', soft: '#e2e8f0', dark: '#0f172a' },
+          },
+          letterSpacing: {
+            tightest: '-0.04em',
           },
         },
       },
@@ -40,16 +51,208 @@
   </script>
 
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x"></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x" defer></script>
 
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
+    :root {
+      --bg: #fafaf9;
+      --bg-elev: #ffffff;
+      --line: #e7e5e4;
+      --line-soft: #f0eeed;
+      --ink: #0c0a09;
+      --ink-soft: #3f3f46;
+      --ink-mute: #71717a;
+      --accent: #10b981;
+    }
+    html.dark {
+      --bg: #0a0a0a;
+      --bg-elev: #131312;
+      --line: #232321;
+      --line-soft: #1a1a18;
+      --ink: #f5f5f4;
+      --ink-soft: #d4d4d2;
+      --ink-mute: #828280;
+      --accent: #34d399;
+    }
+    html, body { background: var(--bg); }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
     .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .serif { font-family: 'Fraunces', Georgia, serif; font-feature-settings: 'ss01', 'ss03'; }
     [x-cloak] { display: none !important; }
-    .htmx-swapping { opacity: 0.4; transition: opacity 150ms; }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; border: 2px solid var(--bg); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--ink-mute); }
+
+    /* HTMX swap fade */
+    .htmx-swapping { opacity: 0; transition: opacity 120ms ease-out; }
+    .htmx-settling { opacity: 1; transition: opacity 240ms ease-in; }
+
+    /* Skeleton shimmer */
+    @keyframes shimmer {
+      0% { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, var(--line-soft) 0%, var(--line) 50%, var(--line-soft) 100%);
+      background-size: 800px 100%;
+      animation: shimmer 1.4s linear infinite;
+      border-radius: 4px;
+    }
+
+    /* Selection */
+    ::selection { background: var(--accent); color: #022c22; }
+
+    /* Focus ring */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Article card hover */
+    .article-card {
+      transition: transform 160ms cubic-bezier(.2,.7,.2,1), background-color 160ms ease;
+    }
+    .article-card:hover { transform: translateY(-1px); }
+
+    /* Score bar */
+    .score-bar {
+      height: 2px;
+      background: var(--line);
+      border-radius: 1px;
+      overflow: hidden;
+      position: relative;
+    }
+    .score-bar > span {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      transition: width 600ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    /* Tier dots */
+    .tier-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 999px;
+      vertical-align: middle;
+    }
+    .tier-1 .tier-dot { background: #10b981; }
+    .tier-2 .tier-dot { background: #f59e0b; }
+    .tier-3 .tier-dot { background: #64748b; }
+
+    /* Filter chip — quiet by default, accents on active */
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--ink-soft);
+      background: transparent;
+      transition: all 140ms ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .chip:hover { color: var(--ink); border-color: var(--ink-mute); }
+    .chip.active {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+    .chip .count {
+      opacity: 0.55;
+      font-size: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+    .chip.active .count { opacity: 0.7; }
+
+    /* Date group label */
+    .group-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    /* Sidebar block */
+    .rail-block { border-top: 1px solid var(--line-soft); padding: 18px 0; }
+    .rail-block:first-child { border-top: none; padding-top: 4px; }
+    .rail-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 10px;
+    }
+
+    /* External arrow */
+    .ext-arrow {
+      display: inline-block;
+      width: 11px; height: 11px;
+      vertical-align: -1px;
+      margin-left: 4px;
+      stroke: currentColor;
+      opacity: 0.4;
+      transition: opacity 140ms, transform 140ms;
+    }
+    .article-card:hover .ext-arrow { opacity: 0.9; transform: translate(1px, -1px); }
+
+    /* Cmd-K palette */
+    .palette-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(10,10,10,0.55);
+      backdrop-filter: blur(6px);
+      z-index: 50;
+    }
+    .palette {
+      position: fixed; left: 50%; top: 18vh;
+      transform: translateX(-50%);
+      width: min(560px, 92vw);
+      background: var(--bg-elev);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 20px 50px -12px rgba(0,0,0,0.4);
+      z-index: 51;
+      overflow: hidden;
+    }
+
+    /* Loading skeleton card */
+    .skeleton-card {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    /* Hover row tint */
+    .row-tint:hover { background: var(--line-soft); }
+
+    /* Section nav underline */
+    .nav-link { position: relative; padding-bottom: 2px; }
+    .nav-link.active::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -2px;
+      height: 1px; background: var(--ink);
+    }
+
+    @media (max-width: 900px) {
+      .rail { display: none; }
+    }
   </style>
 </head>
-<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased">
+<body>
   {% block body %}{% endblock %}
 </body>
 </html>

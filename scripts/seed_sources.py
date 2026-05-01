@@ -9,6 +9,8 @@ with app.app_context():
     with open("sources.yaml") as f:
         data = yaml.safe_load(f)
 
+    yaml_slugs = {entry["slug"] for entry in data}
+
     for entry in data:
         existing = Source.query.filter_by(slug=entry["slug"]).first()
         if existing:
@@ -19,5 +21,12 @@ with app.app_context():
         else:
             db.session.add(Source(**entry))
 
+    deactivated = 0
+    for src in Source.query.all():
+        if src.slug not in yaml_slugs and src.active:
+            src.active = False
+            deactivated += 1
+
     db.session.commit()
-    print(f"Sources synced: {Source.query.count()} total")
+    active = Source.query.filter_by(active=True).count()
+    print(f"Sources synced: {active} active, {deactivated} deactivated")

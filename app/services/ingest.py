@@ -22,6 +22,26 @@ def _strip_html(text: str) -> str:
     return BeautifulSoup(text, "html.parser").get_text(" ", strip=True)[:2000]
 
 
+def _clean_title(title: str, source_name: str) -> str:
+    """Strip ' - PublisherName' / ' | PublisherName' / ' - CoStar' tail Google News appends.
+    Strip leading 'News | ' / 'Article | ' breadcrumbs from CoStar/etc."""
+    if not title:
+        return ""
+    t = title.strip()
+    # Strip leading "News | " / "Article | " breadcrumb
+    for prefix in ("News | ", "Article | ", "NEWS | "):
+        if t.startswith(prefix):
+            t = t[len(prefix):]
+    # Strip trailing " - <publisher>"
+    for sep in (" - ", " | ", " — ", " – "):
+        if sep in t:
+            head, _, tail = t.rpartition(sep)
+            if head and len(tail) <= 60 and any(ch.isalpha() for ch in tail):
+                t = head
+                break
+    return t.strip()[:500]
+
+
 def _parse_date(entry):
     if entry.get("published_parsed"):
         return datetime.fromtimestamp(mktime(entry.published_parsed), tz=timezone.utc)
@@ -69,7 +89,7 @@ def ingest_source(source: Source) -> int:
             tags = [t.term for t in entry.get("tags", [])] if entry.get("tags") else []
         except Exception:
             tags = []
-        clean_title = title.strip()[:500]
+        clean_title = _clean_title(title, source.name)
         clean_summary = _strip_html(entry.get("summary", ""))
         article = Article(
             source_id=source.id,

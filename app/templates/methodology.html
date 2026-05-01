@@ -3,113 +3,105 @@
 
 {% block body %}
 <div class="min-h-screen">
-  <header class="border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur z-10">
-    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="mono text-sm tracking-tight font-medium">travelfeed</a>
-      <nav class="flex items-center gap-5 mono text-xs text-zinc-500">
-        <a href="/sources" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">sources</a>
-        <a href="/methodology" class="text-zinc-900 dark:text-zinc-100">methodology</a>
-        <button type="button"
-          onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
-          class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">theme</button>
-      </nav>
-    </div>
-  </header>
+  {% with active='methodology' %}{% include "_subheader.html" %}{% endwith %}
 
-  <main class="max-w-3xl mx-auto px-6 pt-10 pb-24 space-y-8">
+  <main class="max-w-[760px] mx-auto px-6 pt-12 pb-24">
 
-    <section>
-      <h1 class="text-2xl font-semibold tracking-tight">Methodology</h1>
-      <p class="mt-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-        travelfeed aggregates RSS feeds from a curated set of travel-tech, airline, and hospitality
-        publications. Each article is filtered for travel relevance, tagged for section / region / theme,
-        matched against a list of tracked travel companies, and scored for likely strategic relevance to a
-        strategy reader.
+    <div class="mono text-[10px] uppercase tracking-[0.14em] mb-2" style="color: var(--ink-mute)">methodology</div>
+    <h1 class="serif text-4xl sm:text-5xl tracking-tightest font-medium" style="color: var(--ink)">Built backwards from twenty issues of Travel Monthly.</h1>
+
+    <p class="mt-6 text-[15px] leading-[1.7]" style="color: var(--ink-soft)">
+      The source list, section taxonomy, and scoring weights here are reverse-engineered from every
+      issue of <em>Travel Monthly</em> Nedyalko Terziev published between August 2017 and April 2019 —
+      twenty issues, ~160 stories, ~70 distinct publications cited. The premise is simple: if a working
+      VP of Strategy spent two years curating a beat, the beat is already defined. This site only has
+      to follow it.
+    </p>
+
+    <section class="mt-12">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">how the source list was chosen</h2>
+      <p class="mt-5 text-[14.5px] leading-relaxed" style="color: var(--ink-soft)">
+        Every publication cited more than once across the twenty issues is in. Trade press came first
+        (Skift, PhocusWire, Web in Travel, Travolution, TTG Asia, Travel Daily Media). Specialty desks
+        followed (CAPA, The Air Current, Hospitality Net, The Company Dime). Premium business is in for
+        the M&amp;A and capital-flow stories that drive the sector (Bloomberg, Reuters, FT, WSJ, The
+        Information). Regional anchors handle MENA (Arabian Business, Khaleej Times, The National,
+        Arab News, Saudi Gazette, MENABytes) and APAC (Channel News Asia, DealStreetAsia, Tech in Asia,
+        Nikkei Asia, Straits Times). India is its own lane via Economic Times and Mint.
+      </p>
+      <p class="mt-4 text-[14.5px] leading-relaxed" style="color: var(--ink-soft)">
+        Sources he <em>didn't</em> cite are not here. No general consumer travel media, no aggregator
+        blogs, no PR wires. The 20-issue archive lives on the
+        <a href="/archive" class="underline-offset-2 hover:underline" style="color: var(--ink)">/archive</a>
+        page — every reconstructed digest from May 2019 onward follows the same source pattern.
       </p>
     </section>
 
-    <section>
-      <h2 class="text-lg font-medium">Pipeline</h2>
-      <ol class="mt-3 space-y-2 text-sm text-zinc-600 dark:text-zinc-400 list-decimal list-inside leading-relaxed">
-        <li><span class="text-zinc-900 dark:text-zinc-100">Ingest.</span> RSS feeds polled every 4 hours. Real-browser User-Agent. Polite rate limits.</li>
-        <li><span class="text-zinc-900 dark:text-zinc-100">Filter.</span> Travel-relevance check rejects articles without travel keywords or tracked-company mentions.</li>
-        <li><span class="text-zinc-900 dark:text-zinc-100">Tag.</span> Heuristic regex pass first (free, instant). LLM tagger refines where needed.</li>
-        <li><span class="text-zinc-900 dark:text-zinc-100">Match.</span> Word-boundary regex against ~30 tracked travel companies and aliases.</li>
-        <li><span class="text-zinc-900 dark:text-zinc-100">Score.</span> Multi-factor formula — see below.</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2 class="text-lg font-medium">Score formula</h2>
-      <pre class="mt-3 mono text-xs text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-900 rounded p-4 overflow-x-auto leading-relaxed">score = source_tier_weight        (1–25)
-      + theme_match               (0–25, capped)
-      + region_boost              (0–15 — MENA/APAC weighted higher)
-      + company_match             (0–15 — tracked travel co's)
-      + capital_signal            (+10 if M&A / IPO / funding / commission topic)
-      + recency_decay             (0–10, linear over 30 days)</pre>
-      <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-        Strict enum validation on tags — out-of-vocabulary section / region / theme values are dropped
-        rather than displayed.
+    <section class="mt-14">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">section taxonomy</h2>
+      <p class="mt-5 text-[14.5px] leading-relaxed" style="color: var(--ink-soft)">
+        The seven sections — Travel Tech, Airlines, Hoteliers, M&amp;A, Regulatory, Emerging, Executive
+        — are the recurring columns Ned organised every issue around. M&amp;A always led when the deal
+        was big; Executive moves anchored the back half. Emerging covered frontier tech (blockchain
+        then; AI agents now). The taxonomy is unchanged.
       </p>
     </section>
 
-    <section>
-      <h2 class="text-lg font-medium">Sections</h2>
-      <ul class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
-        <li>Travel Tech</li>
-        <li>Airlines</li>
-        <li>Hoteliers</li>
-        <li>M&amp;A</li>
-        <li>Regulatory</li>
-        <li>Emerging</li>
-        <li>Executive</li>
-        <li>Other</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2 class="text-lg font-medium">Themes</h2>
-      <ul class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
-        <li>consolidation</li>
-        <li>competitive-dynamics</li>
-        <li>commission-warfare</li>
-        <li>tech-disruption</li>
-        <li>regulatory-pressure</li>
-        <li>asian-expansion</li>
-        <li>new-product</li>
-        <li>funding</li>
-        <li>executive-move</li>
-        <li>partnership</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2 class="text-lg font-medium">How reading works</h2>
-      <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-        Every story on travelfeed links straight out to the original publication. Article content is
-        never excerpted or hosted here. If you have a subscription to Skift, Bloomberg, the FT, or any
-        other source, your subscription works exactly as it does anywhere else. travelfeed is the index;
-        the publishers are where you read.
+    <section class="mt-14">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">scoring</h2>
+      <p class="mt-5 text-[14.5px] leading-relaxed" style="color: var(--ink-soft)">
+        Each story scores on five axes. Source tier reflects which publications Ned cited most (Skift,
+        PhocusWire, CAPA carry the most weight). Region weight skews toward MENA, APAC, and South Asia
+        — the three growth corridors Wego operates in. Company match boosts stories that name a tracked
+        operator. Capital signal flags M&amp;A, IPO, funding, and commission stories — the ones that
+        move strategy, not just news. Recency decays linearly over thirty days.
       </p>
-      <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-        Click a headline to open the article in a new tab. Click a source name to open that publisher's
-        homepage. The full source list with article counts is at <a href="/sources" class="underline hover:text-zinc-900 dark:hover:text-zinc-100">/sources</a>.
+      <pre class="mt-5 mono text-[12px] leading-relaxed p-5 rounded-xl overflow-x-auto"
+           style="background: var(--bg-elev); border: 1px solid var(--line); color: var(--ink-soft)">score = source_tier        (1–25)
+      + theme_match       (0–25)
+      + region_boost      (0–15  · MENA / APAC / South Asia weighted up)
+      + company_match     (0–15  · tracked travel operators)
+      + capital_signal    (+10   · M&amp;A · IPO · funding · commission)
+      + recency           (0–10  · 30-day linear)</pre>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">tracked operators</h2>
+      <p class="mt-5 text-[14.5px] leading-relaxed" style="color: var(--ink-soft)">
+        The right rail pins the Wego ecosystem: Wego, Almosafer, Seera, Tajawal, Riyadh Air,
+        MakeMyTrip, ixigo, IndiGo, Klook, Trip.com. These aren't "trending" — they're the
+        operators a Wego BD reader watches every day. The count next to each is mention volume in the
+        last 30 days; a low count means a quiet month, not a deprioritisation.
       </p>
     </section>
 
-    <section>
-      <h2 class="text-lg font-medium">What it isn't</h2>
-      <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-        travelfeed is the input layer. It doesn't write summaries, generate commentary, or replicate
-        editorial judgment. No analytics on this site. No login. No newsletter signup. No content
-        scraped or hosted — only links to the publishers who do the work.
+    <section class="mt-14">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">how reading works</h2>
+      <p class="mt-5 text-[14.5px] leading-relaxed" style="color: var(--ink-soft)">
+        Every headline links straight to the publisher. No content is excerpted, scraped, or hosted
+        here. If you subscribe to Skift, Bloomberg, the FT, or any other paywalled source, your
+        subscription works exactly as it does anywhere else — travelfeed is the index, the publishers
+        are where you read.
       </p>
     </section>
+
+    <section class="mt-14">
+      <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b" style="color: var(--ink-mute); border-color: var(--line)">what it isn't</h2>
+      <p class="mt-5 text-[14.5px] leading-relaxed" style="color: var(--ink-soft)">
+        Not a summariser. Not an AI commentator. No analytics, no login, no newsletter signup. The
+        editorial judgment lives in the source list and the scoring weights — not in generated text.
+      </p>
+    </section>
+
+    <p class="mt-14 text-[13.5px]" style="color: var(--ink-mute)">
+      More on why this exists: <a href="/about" class="underline-offset-2 hover:underline" style="color: var(--ink)">/about</a>.
+    </p>
 
   </main>
 
-  <footer class="max-w-3xl mx-auto px-6 py-10 mono text-xs text-zinc-500 border-t border-zinc-200 dark:border-zinc-800">
-    Built by Subhankar Shukla · subhankarshukla.vercel.app
+  <footer class="max-w-[1200px] mx-auto px-6 py-10 mono text-[11px] flex flex-wrap items-center justify-between gap-3" style="color: var(--ink-mute); border-top: 1px solid var(--line-soft)">
+    <div>built by Subhankar Shukla · <a href="https://subhankarshukla.vercel.app" target="_blank" rel="noopener" class="hover:underline">portfolio</a></div>
+    <div>links out · no scraping · no tracking</div>
   </footer>
 </div>
 {% endblock %}
