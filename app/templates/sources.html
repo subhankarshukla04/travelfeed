@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}sources · travelfeed{% endblock %}
+
+{% block body %}
+<div class="min-h-screen">
+  <header class="border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur z-10">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="mono text-sm tracking-tight font-medium">travelfeed</a>
+      <nav class="flex items-center gap-5 mono text-xs text-zinc-500">
+        <a href="/sources" class="text-zinc-900 dark:text-zinc-100">sources</a>
+        <a href="/methodology" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">methodology</a>
+        <button type="button"
+          onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
+          class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 pt-10 pb-24">
+
+    <h1 class="text-2xl font-semibold tracking-tight">Sources</h1>
+    <p class="mt-3 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed max-w-xl">
+      {{ rows|length }} active feeds across global trade press, business press, and regional publications
+      in MENA, APAC, and South Asia. Travel-relevance count shows articles after the keyword filter.
+    </p>
+
+    <table class="mt-8 w-full text-sm">
+      <thead class="mono text-xs uppercase tracking-wide text-zinc-500 border-b border-zinc-200 dark:border-zinc-800">
+        <tr>
+          <th class="text-left py-2 pr-4">Source</th>
+          <th class="text-left py-2 pr-4">Tier</th>
+          <th class="text-left py-2 pr-4">Region</th>
+          <th class="text-right py-2 pr-4">Total</th>
+          <th class="text-right py-2 pr-4">Relevant</th>
+          <th class="text-right py-2 mono text-xs">Latest</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rows %}
+        <tr class="border-b border-zinc-100 dark:border-zinc-900 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition-colors">
+          <td class="py-3 pr-4">
+            <a href="{{ r.homepage_url }}" target="_blank" rel="noopener" class="hover:text-zinc-900 dark:hover:text-zinc-100">
+              {{ r.name }}
+            </a>
+          </td>
+          <td class="py-3 pr-4 mono text-xs text-zinc-500">T{{ r.tier }}</td>
+          <td class="py-3 pr-4 mono text-xs text-zinc-500">{{ r.region }}</td>
+          <td class="py-3 pr-4 text-right tabular-nums text-zinc-500">{{ r.n }}</td>
+          <td class="py-3 pr-4 text-right tabular-nums">{{ r.n_relevant }}</td>
+          <td class="py-3 text-right mono text-xs text-zinc-500">
+            {% if r.latest %}{{ r.latest.strftime('%b %d') }}{% else %}—{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </main>
+
+  <footer class="max-w-3xl mx-auto px-6 py-10 mono text-xs text-zinc-500 border-t border-zinc-200 dark:border-zinc-800">
+    Built by Subhankar Shukla · subhankarshukla.vercel.app
+  </footer>
+</div>
+{% endblock %}

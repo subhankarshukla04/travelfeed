@@ -36,6 +36,7 @@ class Article(db.Model):
     themes = db.Column(ARRAY(db.String), default=list)
     companies = db.Column(ARRAY(db.String), default=list)
     capital_signal = db.Column(db.Boolean, default=False)
+    travel_relevant = db.Column(db.Boolean, default=True, index=True)
     raw_meta = db.Column(JSONB)
     tagged_at = db.Column(db.DateTime(timezone=True))
 

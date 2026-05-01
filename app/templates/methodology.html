@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}methodology · travelfeed{% endblock %}
+
+{% block body %}
+<div class="min-h-screen">
+  <header class="border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur z-10">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="mono text-sm tracking-tight font-medium">travelfeed</a>
+      <nav class="flex items-center gap-5 mono text-xs text-zinc-500">
+        <a href="/sources" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">sources</a>
+        <a href="/methodology" class="text-zinc-900 dark:text-zinc-100">methodology</a>
+        <button type="button"
+          onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
+          class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 pt-10 pb-24 space-y-8">
+
+    <section>
+      <h1 class="text-2xl font-semibold tracking-tight">Methodology</h1>
+      <p class="mt-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        travelfeed aggregates RSS feeds from a curated set of travel-tech, airline, and hospitality
+        publications. Each article is filtered for travel relevance, tagged for section / region / theme,
+        matched against a list of tracked travel companies, and scored for likely strategic relevance to a
+        strategy reader.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium">Pipeline</h2>
+      <ol class="mt-3 space-y-2 text-sm text-zinc-600 dark:text-zinc-400 list-decimal list-inside leading-relaxed">
+        <li><span class="text-zinc-900 dark:text-zinc-100">Ingest.</span> RSS feeds polled every 4 hours. Real-browser User-Agent. Polite rate limits.</li>
+        <li><span class="text-zinc-900 dark:text-zinc-100">Filter.</span> Travel-relevance check rejects articles without travel keywords or tracked-company mentions.</li>
+        <li><span class="text-zinc-900 dark:text-zinc-100">Tag.</span> Heuristic regex pass first (free, instant). LLM tagger refines where needed.</li>
+        <li><span class="text-zinc-900 dark:text-zinc-100">Match.</span> Word-boundary regex against ~30 tracked travel companies and aliases.</li>
+        <li><span class="text-zinc-900 dark:text-zinc-100">Score.</span> Multi-factor formula — see below.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium">Score formula</h2>
+      <pre class="mt-3 mono text-xs text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-900 rounded p-4 overflow-x-auto leading-relaxed">score = source_tier_weight        (1–25)
+      + theme_match               (0–25, capped)
+      + region_boost              (0–15 — MENA/APAC weighted higher)
+      + company_match             (0–15 — tracked travel co's)
+      + capital_signal            (+10 if M&A / IPO / funding / commission topic)
+      + recency_decay             (0–10, linear over 30 days)</pre>
+      <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        Strict enum validation on tags — out-of-vocabulary section / region / theme values are dropped
+        rather than displayed.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium">Sections</h2>
+      <ul class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <li>Travel Tech</li>
+        <li>Airlines</li>
+        <li>Hoteliers</li>
+        <li>M&amp;A</li>
+        <li>Regulatory</li>
+        <li>Emerging</li>
+        <li>Executive</li>
+        <li>Other</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium">Themes</h2>
+      <ul class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <li>consolidation</li>
+        <li>competitive-dynamics</li>
+        <li>commission-warfare</li>
+        <li>tech-disruption</li>
+        <li>regulatory-pressure</li>
+        <li>asian-expansion</li>
+        <li>new-product</li>
+        <li>funding</li>
+        <li>executive-move</li>
+        <li>partnership</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium">What it isn't</h2>
+      <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        travelfeed is the input layer. It doesn't write summaries, generate commentary, or replicate
+        editorial judgment. Articles link directly out to the original source. No analytics on this site.
+        No login. No newsletter signup.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="max-w-3xl mx-auto px-6 py-10 mono text-xs text-zinc-500 border-t border-zinc-200 dark:border-zinc-800">
+    Built by Subhankar Shukla · subhankarshukla.vercel.app
+  </footer>
+</div>
+{% endblock %}

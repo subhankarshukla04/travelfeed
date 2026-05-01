@@ -20,12 +20,16 @@
   <header class="border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-zinc-50/90 dark:bg-zinc-950/90 backdrop-blur z-10">
     <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="mono text-sm tracking-tight font-medium">travelfeed</a>
-      <button
-        type="button"
-        onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
-        class="mono text-xs text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition">
-        theme
-      </button>
+      <nav class="flex items-center gap-5 mono text-xs text-zinc-500">
+        <a href="/sources" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">sources</a>
+        <a href="/methodology" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">methodology</a>
+        <button
+          type="button"
+          onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
+          class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">
+          theme
+        </button>
+      </nav>
     </div>
   </header>
 

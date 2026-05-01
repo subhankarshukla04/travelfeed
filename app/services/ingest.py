@@ -6,6 +6,8 @@ from dateutil import parser as dateparser
 from bs4 import BeautifulSoup
 from app.extensions import db
 from app.models import Source, Article
+from app.services.relevance import is_travel_relevant
+from app.services.companies import match_companies_one
 
 UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) "
@@ -67,13 +69,18 @@ def ingest_source(source: Source) -> int:
             tags = [t.term for t in entry.get("tags", [])] if entry.get("tags") else []
         except Exception:
             tags = []
+        clean_title = title.strip()[:500]
+        clean_summary = _strip_html(entry.get("summary", ""))
         article = Article(
             source_id=source.id,
             url=url,
-            title=title.strip()[:500],
-            summary=_strip_html(entry.get("summary", "")),
+            title=clean_title,
+            summary=clean_summary,
             published_at=_parse_date(entry),
             raw_meta={"author": entry.get("author"), "tags": tags},
+            travel_relevant=is_travel_relevant(
+                source.slug, clean_title, clean_summary, has_company_match=False
+            ),
         )
         db.session.add(article)
         inserted += 1

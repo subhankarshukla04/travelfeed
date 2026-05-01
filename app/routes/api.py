@@ -34,6 +34,7 @@ def _query_from_request():
     query = Article.query.join(Source).filter(
         Article.published_at.between(date_from, date_to),
         Article.tagged_at.isnot(None),
+        Article.travel_relevant.is_(True),
     )
     if section:
         query = query.filter(Article.section == section)
