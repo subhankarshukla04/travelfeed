@@ -1,0 +1,106 @@
+# Sources verified PASS in Hour 0 RSS gate (2026-04-30).
+# 14 working feeds across global / APAC / MENA / South Asia.
+
+# Tier 1 — industry trade press
+- slug: skift
+  name: Skift
+  tier: 1
+  region: global
+  rss_url: https://skift.com/feed/
+  homepage_url: https://skift.com
+
+- slug: phocuswire
+  name: Phocuswire
+  tier: 1
+  region: global
+  rss_url: https://news.google.com/rss/search?q=site:phocuswire.com&hl=en-US
+  homepage_url: https://www.phocuswire.com
+
+- slug: webintravel
+  name: Web in Travel
+  tier: 1
+  region: apac
+  rss_url: https://www.webintravel.com/feed/
+  homepage_url: https://www.webintravel.com
+
+- slug: traveldailymedia
+  name: Travel Daily Media
+  tier: 1
+  region: apac
+  rss_url: https://www.traveldailymedia.com/feed/
+  homepage_url: https://www.traveldailymedia.com
+
+# Tier 2 — tech press
+- slug: techcrunch
+  name: TechCrunch
+  tier: 2
+  region: global
+  rss_url: https://techcrunch.com/feed/
+  homepage_url: https://techcrunch.com
+
+- slug: techcrunch-travel
+  name: TechCrunch (Travel)
+  tier: 2
+  region: global
+  rss_url: https://news.google.com/rss/search?q=site:techcrunch.com+(travel+OR+airline+OR+hotel+OR+booking)&hl=en-US
+  homepage_url: https://techcrunch.com
+
+# Tier 2 — business press (filtered to travel via Google News)
+- slug: bloomberg-travel
+  name: Bloomberg (Travel)
+  tier: 2
+  region: global
+  rss_url: https://news.google.com/rss/search?q=site:bloomberg.com+(airline+OR+travel+OR+hotel)&hl=en-US
+  homepage_url: https://www.bloomberg.com
+
+- slug: reuters-travel
+  name: Reuters (Travel)
+  tier: 2
+  region: global
+  rss_url: https://news.google.com/rss/search?q=site:reuters.com+(airline+OR+travel+OR+hotel)&hl=en-US
+  homepage_url: https://www.reuters.com
+
+- slug: cnbc-travel
+  name: CNBC (Travel)
+  tier: 3
+  region: global
+  rss_url: https://news.google.com/rss/search?q=(travel+OR+airline+OR+hotel+OR+OTA)+site:cnbc.com&hl=en-US
+  homepage_url: https://www.cnbc.com
+
+# Tier 3 — aviation specific
+- slug: simpleflying
+  name: Simple Flying
+  tier: 3
+  region: global
+  rss_url: https://simpleflying.com/feed/
+  homepage_url: https://simpleflying.com
+
+# Tier 3 — regional MENA
+- slug: gulf-news
+  name: Gulf News (Travel)
+  tier: 3
+  region: mena
+  rss_url: https://news.google.com/rss/search?q=site:gulfnews.com+(travel+OR+airline+OR+hotel)&hl=en-US
+  homepage_url: https://gulfnews.com
+
+- slug: zawya
+  name: Zawya (Travel)
+  tier: 3
+  region: mena
+  rss_url: https://news.google.com/rss/search?q=site:zawya.com+(airline+OR+travel+OR+hotel)&hl=en-US
+  homepage_url: https://www.zawya.com
+
+- slug: thenational
+  name: The National (Travel)
+  tier: 3
+  region: mena
+  rss_url: https://news.google.com/rss/search?q=site:thenationalnews.com+(travel+OR+airline+OR+hotel)&hl=en-US
+  homepage_url: https://www.thenationalnews.com
+
+# Tier 3 — South Asia
+- slug: economictimes
+  name: Economic Times (Travel)
+  tier: 3
+  region: south-asia
+  rss_url: https://news.google.com/rss/search?q=site:economictimes.indiatimes.com+(airline+OR+travel+OR+hotel)&hl=en-US
+  homepage_url: https://economictimes.indiatimes.com

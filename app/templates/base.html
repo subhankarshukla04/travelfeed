@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}travelfeed{% endblock %}</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2280%22 font-size=%2280%22>·</text></svg>">
+
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') document.documentElement.classList.remove('dark');
+      else document.documentElement.classList.add('dark');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x"></script>
+
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    [x-cloak] { display: none !important; }
+    .htmx-swapping { opacity: 0.4; transition: opacity 150ms; }
+  </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased">
+  {% block body %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: travelfeed
+    runtime: docker
+    plan: free
+    region: singapore
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: google/gemini-2.5-flash
+      - key: SECRET_KEY
+        generateValue: true
+
+  - type: cron
+    name: travelfeed-refresh
+    runtime: docker
+    plan: starter
+    schedule: "0 */4 * * *"
+    region: singapore
+    dockerCommand: bash -c "flask ingest && flask tag --limit 200 && flask match-companies && flask score"
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: google/gemini-2.5-flash

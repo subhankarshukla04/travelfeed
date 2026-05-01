@@ -1,0 +1,23 @@
+{% if articles %}
+  <ul class="space-y-6">
+  {% for a in articles %}
+    <li class="group">
+      <a href="{{ a.url }}" target="_blank" rel="noopener" class="block hover:bg-zinc-100 dark:hover:bg-zinc-900 -mx-3 px-3 py-2 rounded transition-colors">
+        <h2 class="text-base sm:text-lg leading-snug font-medium text-zinc-900 dark:text-zinc-100">
+          {{ a.title }}
+        </h2>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 mono text-xs text-zinc-500">
+          <span class="uppercase tracking-wide">{{ a.source.name }}</span>
+          <span>·</span>
+          <time>{{ a.published_at | humanize_date }}</time>
+          {% if a.section %}<span>·</span><span>{{ a.section | lower }}</span>{% endif %}
+          {% for r in a.regions %}<span class="uppercase">{{ r }}</span>{% endfor %}
+          <span class="ml-auto tabular-nums text-zinc-400 dark:text-zinc-600">{{ a.score | int }}</span>
+        </div>
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p class="mono text-xs text-zinc-500">no results.</p>
+{% endif %}

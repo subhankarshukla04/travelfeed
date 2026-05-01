@@ -1,0 +1,60 @@
+- name: Booking Holdings
+  aliases: [Booking.com, Booking Holdings, Priceline, Kayak, OpenTable]
+- name: Airbnb
+  aliases: [Airbnb]
+- name: Expedia
+  aliases: [Expedia, Hotels.com, Vrbo, Travelocity, Orbitz]
+- name: Trip.com
+  aliases: [Trip.com, Ctrip, Skyscanner]
+- name: Wego
+  aliases: [Wego, WegoPro, WegoBeds, Travelstop, ShopCash]
+- name: Traveloka
+  aliases: [Traveloka]
+- name: Klook
+  aliases: [Klook]
+- name: Agoda
+  aliases: [Agoda]
+- name: Almosafer
+  aliases: [Almosafer, Seera]
+- name: Marriott
+  aliases: [Marriott, Sheraton, "St. Regis", Westin, Ritz-Carlton]
+- name: Accor
+  aliases: [Accor, Sofitel, Novotel, Pullman]
+- name: IHG
+  aliases: [IHG, InterContinental, "Holiday Inn"]
+- name: Hilton
+  aliases: [Hilton, Conrad, Waldorf, DoubleTree]
+- name: Hyatt
+  aliases: [Hyatt]
+- name: Emirates
+  aliases: ["Emirates Airlines", Emirates]
+- name: Singapore Airlines
+  aliases: ["Singapore Airlines", SIA, Scoot]
+- name: Qatar Airways
+  aliases: ["Qatar Airways"]
+- name: Etihad
+  aliases: [Etihad]
+- name: Cathay Pacific
+  aliases: ["Cathay Pacific", Cathay]
+- name: Hopper
+  aliases: [Hopper]
+- name: Tripadvisor
+  aliases: [Tripadvisor, Viator]
+- name: Hotelbeds
+  aliases: [Hotelbeds, Bedsonline]
+- name: Amadeus
+  aliases: [Amadeus]
+- name: Sabre
+  aliases: [Sabre]
+- name: MakeMyTrip
+  aliases: [MakeMyTrip, Goibibo]
+- name: EaseMyTrip
+  aliases: [EaseMyTrip]
+- name: Cleartrip
+  aliases: [Cleartrip]
+- name: Yatra
+  aliases: [Yatra]
+- name: Saudia
+  aliases: [Saudia, "Saudi Airlines"]
+- name: Flyin
+  aliases: [Flyin]
