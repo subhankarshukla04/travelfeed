@@ -2,10 +2,11 @@ import json
 from datetime import datetime, timezone, timedelta
 from collections import Counter
 from flask import Blueprint, render_template, request, abort
-from sqlalchemy import func
+from sqlalchemy import func, or_
 from app.extensions import db
 from app.models import Source, Article
 from app.archive_loader import all_issues, issue as get_issue, grouped_timeline, timeline_months
+from app.routes.api import WEGO_COMPETITORS
 
 bp = Blueprint("pages", __name__)
 
@@ -15,6 +16,26 @@ PINNED_COMPANIES = [
     "MakeMyTrip", "ixigo", "IndiGo",
     "Klook", "Trip.com",
 ]
+
+
+def _wego_watch(limit=5, days=7):
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    targets = ["Wego"] + WEGO_COMPETITORS
+    ors = [Article.companies.any(c) for c in targets]
+    rows = (
+        Article.query.join(Source)
+        .filter(
+            Article.travel_relevant.is_(True),
+            Article.tagged_at.isnot(None),
+            Article.published_at >= cutoff,
+            Source.active.is_(True),
+            or_(*ors),
+        )
+        .order_by(Article.score.desc(), Article.published_at.desc())
+        .limit(limit)
+        .all()
+    )
+    return rows
 
 
 def _top_companies(limit=14, days=30):
@@ -85,8 +106,9 @@ def _render_shell(mode: str, archive: dict | None = None,
         sources_json=sources_json,
         top_companies=_top_companies(),
         top_themes=_top_themes(),
+        wego_watch=_wego_watch() if mode == "live" else [],
         request_args=request.args,
-        timeline=grouped_timeline(),
+        timeline=grouped_timeline() if mode != "live" else [],
     )
 
 

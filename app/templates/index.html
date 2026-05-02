@@ -13,136 +13,134 @@
   {# ───── Header ───── #}
   <header class="sticky top-0 z-30 backdrop-blur-md"
           style="background: color-mix(in oklab, var(--bg) 88%, transparent); border-bottom: 1px solid var(--line-soft)">
-    <div class="max-w-[1320px] mx-auto px-6 h-14 flex items-center justify-between">
+    <div class="max-w-[1240px] mx-auto px-6 h-14 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2.5 group">
         <span class="w-2 h-2 rounded-full" style="background: var(--accent)"></span>
         <span class="mono text-[13px] tracking-tight font-medium">travelfeed</span>
-        <span class="mono text-[10px] uppercase tracking-[0.12em]" style="color: var(--ink-mute)">the travel-tech index</span>
+        <span class="mono text-[9px] uppercase tracking-[0.14em] px-1.5 py-0.5 rounded-sm hidden sm:inline"
+              style="background: #0EA5E9; color: white; letter-spacing: 0.14em">for wego</span>
+        <span class="mono text-[10px] uppercase tracking-[0.12em] hidden md:inline" style="color: var(--ink-mute)">competitor &amp; capital watch</span>
       </a>
-      <nav class="flex items-center gap-6 mono text-xs" style="color: var(--ink-mute)">
+      <nav class="flex items-center gap-5 mono text-xs" style="color: var(--ink-mute)">
         <a href="/" class="nav-link {% if mode == 'live' %}active{% endif %} hover:text-current" style="color: {% if mode == 'live' %}var(--ink){% else %}var(--ink-soft){% endif %}">feed</a>
         <a href="/archive" class="nav-link {% if mode in ['archive', 'archive_index'] %}active{% endif %} hover:text-current" style="color: {% if mode in ['archive', 'archive_index'] %}var(--ink){% else %}var(--ink-soft){% endif %}">archive</a>
-        <a href="/sources" class="nav-link hover:text-current" style="color: var(--ink-soft)">sources</a>
-        <a href="/methodology" class="nav-link hover:text-current" style="color: var(--ink-soft)">methodology</a>
-        <a href="/about" class="nav-link hover:text-current" style="color: var(--ink-soft)">about</a>
+        {% if mode == 'live' %}
+        <span x-show="newSince > 0" x-cloak
+              class="mono text-[10px] uppercase tracking-[0.12em] px-1.5 py-0.5 rounded-sm"
+              style="background: var(--accent); color: #022c22">
+          <span x-text="newSince"></span> new
+        </span>
+        {% endif %}
         <button type="button"
           @click="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
-          class="hover:text-current">
+          class="hover:text-current" title="theme">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         </button>
       </nav>
     </div>
 
-    {# ───── Filter rail ───── #}
+    {% if mode == 'live' %}
+    {# ───── Filter rail (live) ───── #}
     <div class="border-t" style="border-color: var(--line-soft)">
-      <div class="max-w-[1320px] mx-auto px-6 py-3 space-y-2">
+      <div class="max-w-[1240px] mx-auto px-6 py-3 space-y-2">
 
+        {# Lens row — Ned's mental model #}
         <div class="flex items-center gap-3">
-          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">section</span>
+          <span class="mono text-[10px] uppercase tracking-[0.12em] w-14 shrink-0" style="color: var(--ink-mute)">lens</span>
           <div class="flex flex-wrap gap-1.5">
-            <button class="chip" :class="{ active: !filters.section }" @click="setFilter('section', '')">
+            <button class="chip" :class="{ active: !filters.lens }" @click="setFilter('lens', '')">
               all
-              {% if mode == 'live' %}<span class="count" x-text="facets.total"></span>{% endif %}
+              <span class="count" x-text="facets.total"></span>
             </button>
-            <template x-for="sec in sections" :key="sec.key">
-              <button class="chip" :class="{ active: filters.section === sec.key }" @click="setFilter('section', sec.key)">
-                <span x-text="sec.label"></span>
-                {% if mode == 'live' %}<span class="count" x-text="facets.sections[sec.key] || 0"></span>{% endif %}
+            <template x-for="l in lenses" :key="l.key">
+              <button class="chip" :class="{ active: filters.lens === l.key }" @click="setFilter('lens', l.key)">
+                <span x-text="l.label"></span>
+                <span class="count" x-text="facets.lenses[l.key] || 0"></span>
               </button>
             </template>
           </div>
         </div>
 
-        <div class="flex items-center gap-3">
-          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">region</span>
+        {# Region + window + search #}
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="mono text-[10px] uppercase tracking-[0.12em] w-14 shrink-0" style="color: var(--ink-mute)">region</span>
           <div class="flex flex-wrap gap-1.5">
-            <button class="chip" :class="{ active: !filters.region }" @click="setFilter('region', '')">
-              worldwide
-            </button>
+            <button class="chip" :class="{ active: !filters.region }" @click="setFilter('region', '')">all</button>
             <template x-for="r in regions" :key="r.key">
               <button class="chip" :class="{ active: filters.region === r.key }" @click="setFilter('region', r.key)">
                 <span x-text="r.label"></span>
-                {% if mode == 'live' %}<span class="count" x-text="facets.regions[r.key] || 0"></span>{% endif %}
+                <span class="count" x-text="facets.regions[r.key] || 0"></span>
               </button>
             </template>
           </div>
-        </div>
 
-        {% if mode == 'live' %}
-        <div class="flex items-center gap-3">
-          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">source</span>
-          <div class="flex flex-wrap gap-1.5">
-            <button class="chip" :class="{ active: !filters.source }" @click="setFilter('source', '')">all sources</button>
-            <template x-for="s in sourceList" :key="s.slug">
-              <button class="chip"
-                      :class="['tier-' + s.tier, { active: filters.source === s.slug }]"
-                      @click="setFilter('source', s.slug)">
-                <span class="tier-dot"></span>
-                <span x-text="s.name.toLowerCase()"></span>
-                <span class="count" x-text="facets.sources[s.slug] || 0"></span>
+          <div class="flex gap-1.5 ml-auto items-center">
+            <input
+              type="search"
+              placeholder="search ( / )"
+              x-model.debounce.300ms="filters.q"
+              @input="onSearch()"
+              @keydown.escape="filters.q=''; onSearch()"
+              class="chip"
+              style="width: 200px; cursor: text;"
+              x-ref="searchInput"
+            />
+            <template x-for="w in windows" :key="w.key">
+              <button class="chip" :class="{ active: filters.days === w.key }" @click="setFilter('days', w.key)">
+                <span x-text="w.label"></span>
               </button>
+            </template>
+            <template x-if="hasActiveFilters()">
+              <button class="mono text-[11px] underline-offset-2 hover:underline" style="color: var(--ink-mute)" @click="clearAll()">clear</button>
             </template>
           </div>
         </div>
-
-        <div class="flex items-center gap-3 pt-1">
-          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">sort</span>
-          <div class="flex gap-1.5">
-            <button class="chip" :class="{ active: filters.sort === 'score' || !filters.sort }" @click="setFilter('sort', 'score')">by relevance</button>
-            <button class="chip" :class="{ active: filters.sort === 'date' }" @click="setFilter('sort', 'date')">by date</button>
-          </div>
-          <template x-if="hasActiveFilters()">
-            <button class="ml-auto mono text-[11px] underline-offset-2 hover:underline" style="color: var(--ink-mute)" @click="clearAll()">clear all</button>
-          </template>
-        </div>
-        {% else %}
-        <div class="flex items-center gap-3 pt-1">
-          <span class="mono text-[10px] uppercase tracking-[0.12em] w-16 shrink-0" style="color: var(--ink-mute)">view</span>
-          <div class="flex gap-1.5 items-center">
-            <a href="/" class="chip">← live feed</a>
-            {% if mode == 'archive' %}
-              <span class="mono text-[10px]" style="color: var(--ink-mute)">
-                · viewing
-                <span style="color: var(--ink)">{{ month_names[archive.month] }} {{ archive.year }}</span>
-                {% if archive.status == 'actual' %}<span style="color: var(--accent)">· issue #{{ archive.issue_no }}</span>{% else %}<span> · reconstructed</span>{% endif %}
-              </span>
-            {% endif %}
-          </div>
-          <template x-if="hasActiveFilters()">
-            <button class="ml-auto mono text-[11px] underline-offset-2 hover:underline" style="color: var(--ink-mute)" @click="clearAll()">clear filters</button>
-          </template>
-        </div>
-        {% endif %}
 
       </div>
     </div>
+    {% endif %}
   </header>
 
   {# ───── Main grid ───── #}
-  <div class="max-w-[1320px] mx-auto px-6 py-10 flex gap-10">
+  <div class="max-w-[1240px] mx-auto px-6 py-10 flex gap-10">
 
-    {% with active_year=(archive.year if archive else none), active_month=(archive.month if archive else none) %}
-      {% include "_timeline_rail.html" %}
-    {% endwith %}
+    {% if mode != 'live' %}
+      {% with active_year=(archive.year if archive else none), active_month=(archive.month if archive else none) %}
+        {% include "_timeline_rail.html" %}
+      {% endwith %}
+    {% endif %}
 
     {# ───── Article column ───── #}
     <main class="flex-1 min-w-0">
 
       {# ═══════════ LIVE FEED MODE ═══════════ #}
       {% if mode == 'live' %}
+        <div x-show="greeting" x-cloak class="mb-6 pb-5 border-b" style="border-color: var(--line-soft)">
+          <div class="serif text-[22px] sm:text-[26px] tracking-tightest font-medium" style="color: var(--ink)">
+            Good <span x-text="timeOfDay"></span>, <span x-text="greeting"></span>.
+          </div>
+          <p class="mt-1.5 text-[13px] mono" style="color: var(--ink-mute)">
+            <span x-text="roleLabel"></span> · <span x-text="todayDate"></span> · default lens: <span x-text="defaultLensLabel" class="lowercase"></span>
+          </p>
+        </div>
+
+        <div class="mb-5 flex items-center gap-2 mono text-[10px] uppercase tracking-[0.12em]" style="color: var(--ink-mute)">
+          <span>my role</span>
+          <select x-model="role" @change="onRoleChange()"
+                  class="chip cursor-pointer"
+                  style="padding-right: 1.5rem;">
+            <option value="strategy">strategy &amp; planning</option>
+            <option value="bd">bd &amp; partnerships</option>
+            <option value="product">product</option>
+            <option value="general">general</option>
+          </select>
+        </div>
+
         <div id="article-list"
-             hx-get="/api/feed"
-             hx-trigger="load, refreshFeed from:body"
              hx-swap="innerHTML transition:true"
-             hx-include="[data-feed-param]">
-          <div class="space-y-6">
-            <div class="rounded-xl border p-6" style="border-color: var(--line)">
-              <div class="skeleton h-3 w-24 mb-4"></div>
-              <div class="skeleton h-7 w-3/4 mb-3"></div>
-              <div class="skeleton h-7 w-1/2 mb-5"></div>
-              <div class="skeleton h-3 w-40"></div>
-            </div>
-            {% for _ in range(8) %}
+             @htmx:after-swap.window="onListSwap()">
+          <div class="space-y-4">
+            {% for _ in range(3) %}
             <div class="skeleton-card">
               <div class="skeleton h-2 w-32 mb-3"></div>
               <div class="skeleton h-5 w-11/12 mb-2"></div>
@@ -151,11 +149,6 @@
             {% endfor %}
           </div>
         </div>
-        <input type="hidden" data-feed-param name="section" :value="filters.section">
-        <input type="hidden" data-feed-param name="region" :value="filters.region">
-        <input type="hidden" data-feed-param name="source" :value="filters.source">
-        <input type="hidden" data-feed-param name="q" :value="filters.q">
-        <input type="hidden" data-feed-param name="sort" :value="filters.sort">
 
       {# ═══════════ ARCHIVE INDEX MODE ═══════════ #}
       {% elif mode == 'archive_index' %}
@@ -224,37 +217,24 @@
 
         {% if archive.status == 'predicted' %}
         <div class="mt-6 rounded-md p-4 text-[12.5px] leading-relaxed" style="background: var(--line-soft); color: var(--ink-soft); border-left: 2px solid var(--ink-mute)">
-          Reconstructed digest. Travel Monthly's last published issue was April 2019 (#20). Headlines below are real travel-industry events from this month, with authentic source attribution — what Ned likely would have featured had the series continued.
+          Reconstructed digest. Travel Monthly's last published issue was April 2019 (#20). Headlines below are real travel-industry events from this month, with authentic source attribution.
         </div>
         {% endif %}
 
-        {# Filter chips drive Alpine x-show on each card. Section / region. #}
-        <div class="mt-12 space-y-12"
-             x-data="{
-               matches(secValue, regions) {
-                 const sf = $root.__alpine?.filters?.section || '';
-                 const rf = $root.__alpine?.filters?.region || '';
-                 const sec = sf ? sf === secValue : true;
-                 const reg = rf ? (regions || []).includes(rf) : true;
-                 return sec && reg;
-               }
-             }">
+        <div class="mt-12 space-y-12">
           {% for sec, items in archive_grouped %}
-          <section x-show="!filters.section || filters.section === '{{ sec }}'">
+          <section>
             <h2 class="mono text-[10px] uppercase tracking-[0.14em] pb-2 border-b mb-5" style="color: var(--ink-mute); border-color: var(--line)">{{ sec }}</h2>
             <ul class="divide-y" style="border-color: var(--line-soft)">
               {% for h in items %}
               {% set s = archive_sources.get(h.source_slug) %}
-              <li class="article-card group -mx-3"
-                  x-show="!filters.region || {{ (h.regions or [])|tojson }}.includes(filters.region)">
+              <li class="article-card group -mx-3">
                 <a href="{{ h | archive_url(s) }}" target="_blank" rel="noopener noreferrer"
                    class="block px-3 py-4 rounded-md transition-colors hover:bg-[var(--line-soft)]">
                   <h3 class="text-[15.5px] leading-snug font-medium tracking-tight group-hover:underline" style="color: var(--ink)">{{ h.title }}<span class="ml-1.5 opacity-0 group-hover:opacity-100 transition-opacity" style="color: var(--ink-mute)">↗</span></h3>
                   <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11.5px]">
                     {% if s %}
-                    <span class="inline-flex items-center gap-1.5 mono uppercase tracking-wide tier-{{ s.tier }}" style="color: var(--ink-soft)">
-                      <span class="tier-dot"></span>{{ s.name }}
-                    </span>
+                    <span class="mono uppercase tracking-wide" style="color: var(--ink-soft)">{{ s.name }}</span>
                     {% else %}
                     <span class="mono uppercase tracking-wide" style="color: var(--ink-mute)">{{ h.source_slug }}</span>
                     {% endif %}
@@ -264,7 +244,7 @@
                       {% endfor %}
                     {% endif %}
                     {% if h.capital_signal %}
-                      <span class="mono text-[9.5px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm" style="background: var(--accent); color: #022c22">capital signal</span>
+                      <span class="mono text-[9.5px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm" style="background: var(--accent); color: #022c22">capital</span>
                     {% endif %}
                   </div>
                 </a>
@@ -278,57 +258,53 @@
 
     </main>
 
-    {# ───── Right rail (always visible) ───── #}
-    <aside class="rail" style="width: 240px; flex-shrink: 0;">
+    {# ───── Right rail (live mode only — Wego watch) ───── #}
+    {% if mode == 'live' %}
+    <aside class="rail" style="width: 260px; flex-shrink: 0;">
       <div class="rail-block">
         <div class="rail-label flex items-center justify-between">
-          <span>wego ecosystem</span>
-          <span class="mono text-[9px] uppercase tracking-wider" style="color: var(--ink-mute)">tracked</span>
+          <span>wego watch · 7d</span>
+          <span class="mono text-[9px] uppercase tracking-wider" style="color: var(--ink-mute)">{{ wego_watch|length }}</span>
         </div>
-        <ul class="space-y-1.5 text-sm">
-          {% for c in top_companies %}
+        {% if wego_watch %}
+        <ul class="space-y-3.5">
+          {% for a in wego_watch %}
           <li>
-            <a href="/?q={{ c.name | urlencode }}" class="flex items-center justify-between row-tint -mx-1.5 px-1.5 py-1 rounded">
-              <span class="flex items-center gap-1.5" style="color: {% if c.pinned %}var(--ink){% else %}var(--ink-soft){% endif %}">
-                {% if c.name == 'Wego' %}<span class="mono text-[8.5px] uppercase tracking-wider px-1 py-px rounded-sm" style="background: var(--accent); color: #022c22">core</span>{% endif %}
-                {{ c.name }}
-              </span>
-              <span class="mono text-[11px] tabular-nums" style="color: {% if c.n == 0 %}var(--ink-mute){% else %}var(--ink-soft){% endif %}">{{ c.n if c.n else '·' }}</span>
+            <a href="{{ a.url }}" target="_blank" rel="noopener noreferrer"
+               class="block group">
+              <div class="text-[12.5px] leading-snug font-medium tracking-tight group-hover:underline" style="color: var(--ink)">{{ a.title }}</div>
+              <div class="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] mono" style="color: var(--ink-mute)">
+                <span>{{ a.source.name }}</span>
+                <span>·</span>
+                <span>{{ a.published_at | humanize_date }}</span>
+                {% for c in (a.companies or [])[:2] %}
+                  <span class="px-1 py-px rounded-sm" style="background: var(--line-soft); color: var(--ink-soft)">{{ c }}</span>
+                {% endfor %}
+              </div>
             </a>
           </li>
           {% endfor %}
         </ul>
-        <div class="mt-2 mono text-[9.5px] leading-relaxed" style="color: var(--ink-mute)">
-          MENA OTAs · India outbound · APAC experiences · Saudi flag carrier
-        </div>
-      </div>
-
-      <div class="rail-block">
-        <div class="rail-label">trending themes</div>
-        <ul class="flex flex-wrap gap-1.5">
-          {% for t in top_themes %}
-          <li>
-            <a href="/?q={{ t.name }}" class="chip">
-              {{ t.name }}<span class="count">{{ t.n }}</span>
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <div class="rail-block">
-        <div class="rail-label">how to read</div>
-        <p class="text-[12.5px] leading-relaxed" style="color: var(--ink-soft)">
-          Every story links to the publisher. travelfeed is the index — your subscriptions do the reading.
+        {% else %}
+        <p class="text-[12px] leading-relaxed" style="color: var(--ink-mute)">
+          No Wego or competitor moves in the last 7 days. Quiet week.
         </p>
-        <a href="/methodology" class="mono text-[11px] mt-3 inline-block underline-offset-2 hover:underline" style="color: var(--ink-mute)">methodology →</a>
+        {% endif %}
+        <div class="mt-3 mono text-[9.5px] leading-relaxed" style="color: var(--ink-mute)">
+          Wego, Almosafer, Skyscanner, Trip.com, Traveloka, MakeMyTrip, ixigo, Klook, Hopper, Booking, Expedia, Kayak, Agoda
+        </div>
       </div>
     </aside>
+    {% endif %}
   </div>
 
-  <footer class="max-w-[1320px] mx-auto px-6 py-10 mono text-[11px] flex flex-wrap items-center justify-between gap-3" style="color: var(--ink-mute); border-top: 1px solid var(--line-soft)">
+  <footer class="max-w-[1240px] mx-auto px-6 py-10 mono text-[11px] flex flex-wrap items-center justify-between gap-3" style="color: var(--ink-mute); border-top: 1px solid var(--line-soft)">
     <div>built by Subhankar Shukla · <a href="https://subhankarshukla.vercel.app" target="_blank" rel="noopener" class="hover:underline">portfolio</a></div>
-    <div>links out · no scraping · no tracking</div>
+    <div class="flex gap-4">
+      <a href="/methodology" class="hover:underline">methodology</a>
+      <a href="/sources" class="hover:underline">sources</a>
+      <a href="/about" class="hover:underline">about</a>
+    </div>
   </footer>
 </div>
 
@@ -337,35 +313,94 @@
     return {
       mode: '{{ mode }}',
       filters: {
-        section: '{{ request_args.get("section", "") }}',
+        lens: '{{ request_args.get("lens", "") }}',
         region: '{{ request_args.get("region", "") }}',
-        source: '{{ request_args.get("source", "") }}',
         q: '{{ request_args.get("q", "") }}',
-        sort: '{{ request_args.get("sort", "score") }}',
+        days: parseInt('{{ request_args.get("days", "7") }}', 10) || 7,
       },
-      facets: { total: 0, sections: {}, regions: {}, sources: {} },
-      sections: [
-        { key: 'Travel Tech', label: 'travel tech' },
-        { key: 'Hoteliers', label: 'hoteliers' },
-        { key: 'Airlines', label: 'airlines' },
-        { key: 'M&A', label: 'm&a' },
-        { key: 'Emerging', label: 'emerging' },
-        { key: 'Regulatory', label: 'regulatory' },
-        { key: 'Executive', label: 'executive' },
+      facets: { total: 0, lenses: {}, regions: {} },
+      newSince: 0,
+      role: localStorage.getItem('wegoRole') || 'strategy',
+      greeting: '',
+      timeOfDay: 'morning',
+      todayDate: '',
+      roleDefaults: {
+        strategy: { lens: 'capital',     label: 'Strategy & Planning' },
+        bd:       { lens: 'competitors', label: 'BD & Partnerships' },
+        product:  { lens: 'tech',        label: 'Product' },
+        general:  { lens: '',            label: 'General' },
+      },
+      get roleLabel() { return this.roleDefaults[this.role]?.label || 'General'; },
+      get defaultLensLabel() {
+        const k = this.roleDefaults[this.role]?.lens;
+        if (!k) return 'all';
+        return (this.lenses.find(l => l.key === k) || {}).label || k;
+      },
+      lenses: [
+        { key: 'competitors', label: 'competitor moves' },
+        { key: 'capital',     label: 'capital' },
+        { key: 'demand',      label: 'demand' },
+        { key: 'tech',        label: 'tech & product' },
       ],
       regions: [
-        { key: 'mena', label: 'mena' },
-        { key: 'apac', label: 'apac' },
+        { key: 'mena',       label: 'mena' },
+        { key: 'apac',       label: 'apac' },
         { key: 'south-asia', label: 'south asia' },
-        { key: 'north-america', label: 'n. america' },
-        { key: 'europe', label: 'europe' },
-        { key: 'global', label: 'global' },
+        { key: 'global',     label: 'global' },
       ],
-      sourceList: {{ sources_json | safe }},
+      windows: [
+        { key: 1,  label: '24h' },
+        { key: 7,  label: '7d' },
+        { key: 30, label: '30d' },
+        { key: 90, label: '90d' },
+      ],
 
       boot() {
-        if (this.mode === 'live') this.fetchFacets();
+        this._initGreeting();
+        if (this.mode === 'live') {
+          this._applyRoleDefaultIfFresh();
+          this.fetchFacets();
+          this.refresh();
+        }
         this.bindKeys();
+      },
+
+      _initGreeting() {
+        const params = new URLSearchParams(location.search);
+        const u = (params.get('u') || localStorage.getItem('wegoUser') || '').trim();
+        if (u) {
+          const name = u.charAt(0).toUpperCase() + u.slice(1).toLowerCase();
+          this.greeting = name;
+          localStorage.setItem('wegoUser', u);
+          if (u.toLowerCase() === 'ned') this.role = 'strategy';
+        }
+        const h = new Date().getHours();
+        this.timeOfDay = h < 12 ? 'morning' : h < 18 ? 'afternoon' : 'evening';
+        this.todayDate = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+      },
+
+      _applyRoleDefaultIfFresh() {
+        const hasUrlFilters = new URLSearchParams(location.search).toString().length > 0;
+        if (hasUrlFilters) return;
+        const def = this.roleDefaults[this.role]?.lens || '';
+        if (def && !this.filters.lens) this.filters.lens = def;
+      },
+
+      onRoleChange() {
+        localStorage.setItem('wegoRole', this.role);
+        const def = this.roleDefaults[this.role]?.lens || '';
+        this.filters.lens = def;
+        this.pushState();
+        this.refresh();
+      },
+
+      _feedQuery() {
+        const params = new URLSearchParams();
+        Object.entries(this.filters).forEach(([k, v]) => {
+          if (v === '' || v === null || v === undefined) return;
+          params.set(k, v);
+        });
+        return params.toString();
       },
 
       setFilter(key, val) {
@@ -376,42 +411,72 @@
         }
       },
 
+      onSearch() {
+        if (this.mode !== 'live') return;
+        this.pushState();
+        this.refresh();
+      },
+
       clearAll() {
-        this.filters = { section: '', region: '', source: '', q: '', sort: 'score' };
-        if (this.mode === 'live') {
-          this.pushState();
-          this.refresh();
-        }
+        this.filters = { lens: '', region: '', q: '', days: 7 };
+        this.pushState();
+        this.refresh();
       },
 
       hasActiveFilters() {
-        return !!(this.filters.section || this.filters.region || this.filters.source || this.filters.q);
+        return !!(this.filters.lens || this.filters.region || this.filters.q || this.filters.days !== 7);
       },
 
       pushState() {
         const params = new URLSearchParams();
-        Object.entries(this.filters).forEach(([k, v]) => { if (v && !(k === 'sort' && v === 'score')) params.set(k, v); });
+        Object.entries(this.filters).forEach(([k, v]) => {
+          if (v === '' || v === null || v === undefined) return;
+          if (k === 'days' && v === 7) return;
+          params.set(k, v);
+        });
         const qs = params.toString();
         history.replaceState(null, '', qs ? '/?' + qs : '/');
       },
 
       refresh() {
-        document.body.dispatchEvent(new Event('refreshFeed'));
+        const qs = this._feedQuery();
+        htmx.ajax('GET', '/api/feed' + (qs ? '?' + qs : ''), '#article-list');
         this.fetchFacets();
       },
 
       async fetchFacets() {
         const params = new URLSearchParams();
-        Object.entries(this.filters).forEach(([k, v]) => { if (v && k !== 'sort') params.set(k, v); });
+        Object.entries(this.filters).forEach(([k, v]) => { if (v) params.set(k, v); });
         const r = await fetch('/api/facets?' + params.toString());
         if (r.ok) this.facets = await r.json();
+      },
+
+      onListSwap() {
+        this.computeNewSince();
+      },
+
+      computeNewSince() {
+        const last = parseInt(localStorage.getItem('lastVisit') || '0', 10);
+        const cards = document.querySelectorAll('[data-published]');
+        let n = 0;
+        cards.forEach(el => {
+          const ts = el.getAttribute('data-published');
+          if (!ts) return;
+          if (new Date(ts).getTime() > last) n++;
+        });
+        this.newSince = n;
+        localStorage.setItem('lastVisit', String(Date.now()));
       },
 
       bindKeys() {
         document.addEventListener('keydown', (e) => {
           if (e.target.matches('input, textarea')) return;
-          if (e.key === 'j') this.moveFocus(1);
+          if (e.key === '/') {
+            e.preventDefault();
+            this.$refs.searchInput?.focus();
+          } else if (e.key === 'j') this.moveFocus(1);
           else if (e.key === 'k') this.moveFocus(-1);
+          else if (e.key === 'o') this.openTopFive();
         });
       },
 
@@ -424,6 +489,11 @@
         cards[idx].setAttribute('data-focused', 'true');
         cards[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
         cards[idx].querySelector('a')?.focus({ preventScroll: true });
+      },
+
+      openTopFive() {
+        const links = Array.from(document.querySelectorAll('[data-card] a[href^="http"]')).slice(0, 5);
+        links.forEach(a => window.open(a.href, '_blank', 'noopener'));
       },
     };
   }

@@ -158,6 +158,12 @@ def heuristic_tag_one(article: Article) -> bool:
 
     article.themes = detect_themes(haystack)
     article.capital_signal = detect_capital_signal(haystack)
+
+    from app.services.claims import classify as classify_claim
+    confidence, flags = classify_claim(article.title, article.summary, article.companies)
+    article.confidence = confidence
+    article.confidence_flags = flags
+
     article.tagged_at = datetime.now(timezone.utc)
     return True
 

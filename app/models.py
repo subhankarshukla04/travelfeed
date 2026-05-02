@@ -37,6 +37,8 @@ class Article(db.Model):
     companies = db.Column(ARRAY(db.String), default=list)
     capital_signal = db.Column(db.Boolean, default=False)
     travel_relevant = db.Column(db.Boolean, default=True, index=True)
+    confidence = db.Column(db.String, default="ok", index=True)  # ok / low / drop
+    confidence_flags = db.Column(ARRAY(db.String), default=list)
     raw_meta = db.Column(JSONB)
     tagged_at = db.Column(db.DateTime(timezone=True))
 

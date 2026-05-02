@@ -1,17 +1,32 @@
 {% if articles %}
   {% set hero = articles[0] %}
   {% set rest = articles[1:] %}
+  {% set smaller_label = {1: 'last 24h', 7: 'last 7 days', 30: 'last 30 days'}.get(bucket_smaller_days) %}
+  {% set hero_in_tail = (bucket_cutoff and hero.published_at and hero.published_at >= bucket_cutoff) %}
 
-  {# ───── Featured / hero ───── #}
-  <article data-card class="article-card mb-10 -mx-2 group">
+  {% if hero_in_tail and smaller_label %}
+    <div class="mb-6 mono text-[10px] uppercase tracking-[0.14em] flex items-center gap-3" style="color: var(--ink-mute)">
+      <span class="flex-1 h-px" style="background: var(--line-soft)"></span>
+      <span>already covered · {{ smaller_label }}</span>
+      <span class="flex-1 h-px" style="background: var(--line-soft)"></span>
+    </div>
+  {% endif %}
+
+  {# ───── Lead story ───── #}
+  <article data-card class="article-card mb-8 -mx-2 group" data-published="{{ hero.published_at.isoformat() if hero.published_at else '' }}">
     <a href="{{ hero.url }}" target="_blank" rel="noopener noreferrer"
        title="Read on {{ hero.source.name }}"
        class="block rounded-xl border p-6 sm:p-7 transition-colors"
        style="border-color: var(--line); background: var(--bg-elev)">
       <div class="flex items-center gap-3 mono text-[10px] uppercase tracking-[0.14em]" style="color: var(--ink-mute)">
-        <span class="px-1.5 py-0.5 rounded-sm" style="background: var(--accent); color: #022c22; letter-spacing: 0.1em">featured</span>
-        {% if hero.section %}<span>{{ hero.section | lower }}</span>{% endif %}
-        {% for r in hero.regions %}<span>· {{ r }}</span>{% endfor %}
+        <span>top story</span>
+        {% if hero.capital_signal %}
+          <span class="px-1.5 py-0.5 rounded-sm" style="background: var(--accent); color: #022c22; letter-spacing: 0.1em">capital</span>
+        {% endif %}
+        {% if hero.confidence == 'low' %}
+          <span class="px-1.5 py-0.5 rounded-sm" style="border: 1px solid var(--line); color: var(--ink-mute); letter-spacing: 0.1em" title="Pattern match: {{ (hero.confidence_flags or [])|join(', ') }}">unverified</span>
+        {% endif %}
+        {% for r in hero.regions[:2] %}<span>· {{ r }}</span>{% endfor %}
       </div>
       <h2 class="serif mt-4 text-2xl sm:text-3xl leading-[1.15] font-medium tracking-tightest" style="color: var(--ink)">
         {{ hero.title }}
@@ -19,14 +34,11 @@
       </h2>
       {% if hero.summary %}
       <p class="mt-3 text-[14px] leading-relaxed line-clamp-2" style="color: var(--ink-soft)">
-        {{ hero.summary[:240] }}{% if hero.summary|length > 240 %}…{% endif %}
+        {{ hero.summary[:220] }}{% if hero.summary|length > 220 %}…{% endif %}
       </p>
       {% endif %}
       <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
-        <span class="inline-flex items-center gap-1.5 mono uppercase tracking-wide tier-{{ hero.source.tier }}"
-              style="color: var(--ink-soft)">
-          <span class="tier-dot"></span>{{ hero.source.name }}
-        </span>
+        <span class="mono uppercase tracking-wide" style="color: var(--ink-soft)">{{ hero.source.name }}</span>
         <time class="mono" style="color: var(--ink-mute)">{{ hero.published_at | humanize_date }}</time>
         {% if hero.companies %}
           <span class="flex flex-wrap gap-1.5">
@@ -35,48 +47,34 @@
             {% endfor %}
           </span>
         {% endif %}
-        <span class="ml-auto flex items-center gap-2 mono text-[11px] tabular-nums" style="color: var(--ink-mute)">
-          relevance
-          <span class="score-bar w-16 sm:w-24"><span style="width: {{ (hero.score / 70 * 100) | round | int }}%"></span></span>
-          <span style="color: var(--ink-soft)">{{ hero.score | int }}</span>
-        </span>
       </div>
     </a>
   </article>
 
-  {# ───── Date-grouped list (only when sort=date) or flat dense list ───── #}
-  {% set sort = request.args.get('sort', 'score') %}
-  {% if sort == 'date' %}
-    {% set grouped = rest | group_by_date %}
-    {% for label, items in grouped %}
-      <div class="mb-8">
-        <div class="group-label mb-4">{{ label }}</div>
-        <ul class="divide-y" style="--tw-divide-opacity: 1; border-color: var(--line-soft)">
-          {% for a in items %}{% include "_article_card.html" %}{% endfor %}
-        </ul>
-      </div>
+  {% set ns = namespace(crossed=hero_in_tail) %}
+  <ul class="divide-y" style="border-color: var(--line-soft)">
+    {% for a in rest %}
+      {% if bucket_cutoff and not ns.crossed and a.published_at and a.published_at >= bucket_cutoff %}
+        {% set ns.crossed = true %}
+        <li class="py-5 mono text-[10px] uppercase tracking-[0.14em] flex items-center gap-3" style="color: var(--ink-mute)">
+          <span class="flex-1 h-px" style="background: var(--line-soft)"></span>
+          <span>already covered · {{ smaller_label }}</span>
+          <span class="flex-1 h-px" style="background: var(--line-soft)"></span>
+        </li>
+      {% endif %}
+      {% include "_article_card.html" %}
     {% endfor %}
-  {% else %}
-    <ul class="divide-y" style="border-color: var(--line-soft)">
-      {% for a in rest %}{% include "_article_card.html" %}{% endfor %}
-    </ul>
-  {% endif %}
+  </ul>
 
-  {% if pagination and pagination.has_next %}
-    <div class="mt-10 flex justify-center">
-      <button class="chip"
-              hx-get="/api/feed?page={{ pagination.next_num }}{% for k, v in request.args.items() if k != 'page' %}&{{ k }}={{ v }}{% endfor %}"
-              hx-target="this" hx-swap="outerHTML">
-        load more · {{ pagination.total - pagination.page * pagination.per_page }} more
-      </button>
-    </div>
-  {% endif %}
+  <div class="mt-10 mono text-[10px] uppercase tracking-[0.14em] text-center" style="color: var(--ink-mute)">
+    end · {{ articles|length }} stories
+  </div>
 
 {% else %}
   <div class="py-16 text-center">
     <div class="mono text-xs uppercase tracking-[0.14em] mb-3" style="color: var(--ink-mute)">empty</div>
-    <p class="serif text-xl tracking-tightest" style="color: var(--ink)">No stories match these filters.</p>
-    <p class="mt-2 text-sm" style="color: var(--ink-soft)">Try clearing the region or expanding the date range.</p>
-    <button class="mt-6 chip" onclick="window.location='/'">clear filters</button>
+    <p class="serif text-xl tracking-tightest" style="color: var(--ink)">Nothing in this window.</p>
+    <p class="mt-2 text-sm" style="color: var(--ink-soft)">Try a wider window or clear the lens.</p>
+    <button class="mt-6 chip" onclick="window.location='/'">reset</button>
   </div>
 {% endif %}

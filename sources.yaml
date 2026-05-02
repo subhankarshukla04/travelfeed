@@ -1,9 +1,13 @@
-# Curated source list — based on Nedyalko Terziev's "Travel Monthly" archive
-# (20 issues, 2017–2019) cross-referenced with current 2026 travel-tech beat.
-# Each source earns its slot via either:
-#   (a) cited frequently in Travel Monthly issues, or
-#   (b) high-probability source for 2026 themes (AI, Saudi, India, distribution).
-# No general-news fluff. Every source link-outs only — no scraping.
+# Curated source list — reverse-engineered from Nedyalko Terziev's "Travel Monthly"
+# archive (20 issues, 2017–2019, ~70 distinct publications cited).
+#
+# Inclusion bar:
+#   (a) cited in the archive — kept verbatim, ranked by citation count, OR
+#   (b) high-fit successor for an axis Ned covered (Saudi/Vision 2030, India outbound,
+#       AI distribution, corporate travel, regional aviation).
+#
+# Exclusions: general consumer travel media, aggregator blogs, PR wires,
+# enthusiast aviation, redundant regional dailies. No fluff.
 
 # ─── Tier 1 — Travel-tech trade press (the canonical beat) ────────────────────
 - slug: skift
@@ -48,26 +52,12 @@
   rss_url: https://news.google.com/rss/search?q=site:ttgasia.com&hl=en-US
   homepage_url: https://www.ttgasia.com
 
-- slug: travelweekly
-  name: Travel Weekly
-  tier: 1
-  region: global
-  rss_url: https://news.google.com/rss/search?q=site:travelweekly.com&hl=en-US
-  homepage_url: https://www.travelweekly.com
-
 - slug: hotelnewsnow
   name: Hotel News Now
   tier: 1
   region: global
   rss_url: https://news.google.com/rss/search?q=site:costar.com+(hotel+OR+lodging+OR+hospitality+OR+RevPAR+OR+occupancy)&hl=en-US
   homepage_url: https://www.costar.com/news
-
-- slug: breaking-travel-news
-  name: Breaking Travel News
-  tier: 1
-  region: global
-  rss_url: https://news.google.com/rss/search?q=site:breakingtravelnews.com&hl=en-US
-  homepage_url: https://www.breakingtravelnews.com
 
 # ─── Tier 1 — Specialty trade (high-signal verticals) ─────────────────────────
 - slug: capa
@@ -97,13 +87,6 @@
   region: global
   rss_url: https://news.google.com/rss/search?q=site:hospitalitynet.org&hl=en-US
   homepage_url: https://www.hospitalitynet.org
-
-- slug: hotel-management
-  name: Hotel Management
-  tier: 1
-  region: global
-  rss_url: https://news.google.com/rss/search?q=site:hotelmanagement.net&hl=en-US
-  homepage_url: https://www.hotelmanagement.net
 
 - slug: atw
   name: Aviation Week / ATW
@@ -198,7 +181,7 @@
   rss_url: https://news.google.com/rss/search?q=site:asia.nikkei.com+(airline+OR+travel+OR+hotel+OR+tourism+OR+booking)&hl=en-US
   homepage_url: https://asia.nikkei.com
 
-# ─── Tier 2 — MENA (Wego home region, deep coverage of Saudi/UAE/Gulf) ───────
+# ─── Tier 2 — MENA (Wego home region, Saudi/UAE/Gulf depth) ───────────────────
 - slug: arabian-business
   name: Arabian Business
   tier: 2
@@ -234,20 +217,6 @@
   rss_url: https://news.google.com/rss/search?q=site:saudigazette.com.sa+(travel+OR+airline+OR+hotel+OR+tourism)&hl=en-US
   homepage_url: https://saudigazette.com.sa
 
-- slug: gulf-news
-  name: Gulf News
-  tier: 3
-  region: mena
-  rss_url: https://news.google.com/rss/search?q=site:gulfnews.com+(travel+OR+airline+OR+hotel+OR+tourism)&hl=en-US
-  homepage_url: https://gulfnews.com
-
-- slug: zawya
-  name: Zawya
-  tier: 3
-  region: mena
-  rss_url: https://news.google.com/rss/search?q=site:zawya.com+(airline+OR+travel+OR+hotel+OR+tourism)&hl=en-US
-  homepage_url: https://www.zawya.com
-
 - slug: menabytes
   name: MENABytes
   tier: 2
@@ -262,22 +231,7 @@
   rss_url: https://news.google.com/rss/search?q=site:hoteliermiddleeast.com&hl=en-US
   homepage_url: https://www.hoteliermiddleeast.com
 
-- slug: aviation-business-me
-  name: Aviation Business ME
-  tier: 2
-  region: mena
-  rss_url: https://news.google.com/rss/search?q=site:aviationbusinessme.com&hl=en-US
-  homepage_url: https://www.aviationbusinessme.com
-
-# ─── Tier 3 — Aviation specific ───────────────────────────────────────────────
-- slug: simpleflying
-  name: Simple Flying
-  tier: 3
-  region: global
-  rss_url: https://simpleflying.com/feed/
-  homepage_url: https://simpleflying.com
-
-# ─── Tier 2 — South Asia (Wego India play, Indian aviation is Ned-relevant) ──
+# ─── Tier 2 — South Asia (Wego India play, Indian aviation Ned-relevant) ──────
 - slug: economictimes
   name: Economic Times
   tier: 2

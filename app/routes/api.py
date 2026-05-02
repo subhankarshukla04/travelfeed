@@ -1,10 +1,32 @@
 from datetime import datetime, timezone, timedelta
 from flask import Blueprint, request, render_template, jsonify
-from sqlalchemy import or_, func
+from sqlalchemy import or_, func, case
 from app.extensions import db
 from app.models import Article, Source
 
 bp = Blueprint("api", __name__)
+
+
+WEGO_COMPETITORS = [
+    "Almosafer", "Seera", "Tajawal", "Skyscanner", "Trip.com", "Traveloka",
+    "Kayak", "Booking Holdings", "Booking.com", "Agoda", "Expedia",
+    "MakeMyTrip", "ixigo", "Klook", "Hopper", "Tripadvisor",
+]
+
+LENSES = {
+    "competitors": {"companies_any": ["Wego"] + WEGO_COMPETITORS},
+    "capital":     {"sections": ["M&A"]},
+    "demand":      {"sections": ["Hoteliers", "Airlines", "Emerging"]},
+    "tech":        {"sections": ["Travel Tech"]},
+}
+
+DEFAULT_DAYS = 7
+PRIMARY_REGIONS = ("mena", "apac", "south-asia", "global")
+
+# For each window, the smaller "already-seen" window. Items inside the smaller
+# window get pushed to the bottom of the bigger window's results so the user
+# sees the new-to-this-window slice first.
+WINDOW_TIERS = {1: None, 7: 1, 30: 7, 90: 30}
 
 
 def _parse_date(s, default):
@@ -19,17 +41,40 @@ def _parse_date(s, default):
         return default
 
 
+def _apply_lens(query, lens_key: str):
+    spec = LENSES.get(lens_key)
+    if not spec:
+        return query
+    if "sections" in spec:
+        query = query.filter(Article.section.in_(spec["sections"]))
+    if "companies_any" in spec:
+        ors = [Article.companies.any(c) for c in spec["companies_any"]]
+        query = query.filter(or_(*ors))
+    return query
+
+
+def _window_days() -> int:
+    raw = request.args.get("days")
+    if not raw:
+        return DEFAULT_DAYS
+    try:
+        n = int(raw)
+        return n if n in (1, 7, 30, 90) else DEFAULT_DAYS
+    except ValueError:
+        return DEFAULT_DAYS
+
+
 def _query_from_request():
-    section = request.args.get("section")
+    lens = (request.args.get("lens") or "").strip()
     region = request.args.get("region")
-    source_slug = request.args.get("source")
     q = (request.args.get("q") or "").strip()
-    sort = request.args.get("sort", "score")
-    page = max(1, int(request.args.get("page", 1) or 1))
-    per_page = min(100, max(1, int(request.args.get("per_page", 30) or 30)))
 
     now = datetime.now(timezone.utc)
-    date_from = _parse_date(request.args.get("from"), now - timedelta(days=30))
+    days = _window_days()
+    smaller = WINDOW_TIERS.get(days)
+    smaller_cutoff = (now - timedelta(days=smaller)) if smaller else None
+
+    date_from = _parse_date(request.args.get("from"), now - timedelta(days=days))
     date_to = _parse_date(request.args.get("to"), now)
 
     query = Article.query.join(Source).filter(
@@ -37,30 +82,34 @@ def _query_from_request():
         Article.tagged_at.isnot(None),
         Article.travel_relevant.is_(True),
         Source.active.is_(True),
+        Article.confidence != "drop",
     )
-    if section:
-        query = query.filter(Article.section == section)
+    query = _apply_lens(query, lens)
     if region:
         query = query.filter(Article.regions.any(region))
-    if source_slug:
-        query = query.filter(Source.slug == source_slug)
     if q:
         like = f"%{q}%"
         query = query.filter(or_(Article.title.ilike(like), Article.summary.ilike(like)))
 
-    if sort == "date":
-        query = query.order_by(Article.published_at.desc())
+    if smaller_cutoff is not None:
+        bucket = case((Article.published_at < smaller_cutoff, 0), else_=1)
+        query = query.order_by(bucket.asc(), Article.score.desc(), Article.published_at.desc())
     else:
         query = query.order_by(Article.score.desc(), Article.published_at.desc())
 
-    return query.paginate(page=page, per_page=per_page, error_out=False)
+    return query.all(), smaller_cutoff, smaller
 
 
 @bp.route("/feed")
 def feed():
-    pagination = _query_from_request()
+    items, bucket_cutoff, smaller_days = _query_from_request()
     if request.headers.get("HX-Request") or "text/html" in request.headers.get("Accept", ""):
-        return render_template("_article_list.html", articles=pagination.items, pagination=pagination)
+        return render_template(
+            "_article_list.html",
+            articles=items,
+            bucket_cutoff=bucket_cutoff,
+            bucket_smaller_days=smaller_days,
+        )
     return jsonify({
         "items": [
             {
@@ -75,10 +124,9 @@ def feed():
                 "score": a.score,
                 "published_at": a.published_at.isoformat() if a.published_at else None,
             }
-            for a in pagination.items
+            for a in items
         ],
-        "page": pagination.page,
-        "pages": pagination.pages,
+        "total": len(items),
     })
 
 
@@ -90,7 +138,8 @@ def health():
 @bp.route("/facets")
 def facets():
     now = datetime.now(timezone.utc)
-    date_from = _parse_date(request.args.get("from"), now - timedelta(days=30))
+    days = _window_days()
+    date_from = _parse_date(request.args.get("from"), now - timedelta(days=days))
     date_to = _parse_date(request.args.get("to"), now)
 
     base = Article.query.join(Source).filter(
@@ -98,20 +147,18 @@ def facets():
         Article.tagged_at.isnot(None),
         Article.travel_relevant.is_(True),
         Source.active.is_(True),
+        Article.confidence != "drop",
     )
 
-    section_arg = request.args.get("section")
+    lens_arg = (request.args.get("lens") or "").strip()
     region_arg = request.args.get("region")
-    source_arg = request.args.get("source")
     q = (request.args.get("q") or "").strip()
 
     def apply_other_filters(query, *, except_filter=None):
-        if except_filter != "section" and section_arg:
-            query = query.filter(Article.section == section_arg)
+        if except_filter != "lens" and lens_arg:
+            query = _apply_lens(query, lens_arg)
         if except_filter != "region" and region_arg:
             query = query.filter(Article.regions.any(region_arg))
-        if except_filter != "source" and source_arg:
-            query = query.filter(Source.slug == source_arg)
         if q:
             like = f"%{q}%"
             query = query.filter(or_(Article.title.ilike(like), Article.summary.ilike(like)))
@@ -119,26 +166,16 @@ def facets():
 
     total = apply_other_filters(base).count()
 
-    section_q = apply_other_filters(base, except_filter="section")
-    section_counts = dict(
-        section_q.with_entities(Article.section, func.count(Article.id))
-        .group_by(Article.section).all()
-    )
+    lens_q = apply_other_filters(base, except_filter="lens")
+    lens_counts = {}
+    for key in LENSES:
+        lens_counts[key] = _apply_lens(lens_q, key).count()
 
     region_q = apply_other_filters(base, except_filter="region")
-    region_counts = {}
-    for r in ("global", "mena", "apac", "south-asia", "north-america", "europe"):
-        region_counts[r] = region_q.filter(Article.regions.any(r)).count()
-
-    source_q = apply_other_filters(base, except_filter="source")
-    source_counts = dict(
-        source_q.with_entities(Source.slug, func.count(Article.id))
-        .group_by(Source.slug).all()
-    )
+    region_counts = {r: region_q.filter(Article.regions.any(r)).count() for r in PRIMARY_REGIONS}
 
     return jsonify({
         "total": total,
-        "sections": section_counts,
+        "lenses": lens_counts,
         "regions": region_counts,
-        "sources": source_counts,
     })
