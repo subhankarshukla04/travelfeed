@@ -1,5 +1,6 @@
 import json
 import re
+import sys
 import time
 from datetime import datetime, timezone
 from openai import OpenAI
@@ -91,7 +92,7 @@ def tag_one(article: Article) -> bool:
         )
         raw = resp.choices[0].message.content
     except Exception as e:
-        print(f"  LLM error on {article.id}: {e}")
+        print(f"  LLM error on {article.id}: {type(e).__name__}: {e}", file=sys.stderr, flush=True)
         return False
 
     payload = _extract_json(raw)

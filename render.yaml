@@ -21,7 +21,7 @@ services:
     plan: starter
     schedule: "0 */4 * * *"
     region: singapore
-    dockerCommand: bash -c "flask ingest && flask tag --limit 200 && flask match-companies && flask score"
+    dockerCommand: bash -c "flask refresh --use-llm --limit 200"
     envVars:
       - key: DATABASE_URL
         sync: false
